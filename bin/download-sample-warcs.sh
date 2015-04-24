@@ -8,11 +8,10 @@ if [ $# != 1 ] ; then
 fi
 
 LOCAL_WARC_DIR=$1
-USER_NAME=`whoami`
 
 downloadPath="https://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/"
 
-#download one WARC for now
+#download a single WARC file (for now)
 warcNames="NARA-112TH-CONGRESS-2012-20121211213007728-00000-18872~wbgrp-crawl025.us.archive.org~8443.warc.gz"
 
 mkdir -p $LOCAL_WARC_DIR/warcs/
