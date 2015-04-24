@@ -2,7 +2,7 @@
 set -e
 
 if [ $# != 1 ] ; then
-    echo "usage: setup-hadoop-pseudo-mode.sh <HADOOP_INSTALL_DIR>"
+    echo "usage: $0 <HADOOP_INSTALL_DIR>"
     echo "HADOOP_INSTALL_DIR: Local directory where Hadoop will be installed"
     exit 1
 fi
