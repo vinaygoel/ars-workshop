@@ -2,7 +2,7 @@
 set -e
 
 if [ $# != 1 ] ; then
-    echo "usage: setup-pig.sh <PIG_INSTALL_DIR>"
+    echo "usage: $0 <PIG_INSTALL_DIR>"
     echo "PIG_INSTALL_DIR: Local directory where Pig will be installed"
     exit 1
 fi
