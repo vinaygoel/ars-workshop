@@ -3,8 +3,6 @@ Archive Research Services Workshop
 
 ## Initial Setup
 
-These tools use Hadoop and Pig.
-
 1. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
 2. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-pseudo-mode)
 3. [Setup Pig](#setup-pig)
@@ -37,7 +35,7 @@ Please set the HADOOP_HOME environment variable as specified by the script.
 
 ### Setup Pig ###
 
-If you don't currently have Hadoop installed, execute the following command:
+If you don't currently have Pig installed, execute the following command:
 
 ```
 setup/setup-pig.sh /path/to/pig/install/dir
@@ -53,10 +51,33 @@ Execute the following command:
 setup/download-fat-jars.sh
 ```
 
+## Build Derivatives from WARC files
+
+1. [Download Sample WARC files](#download-sample-warc-files)
+2. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
+
 ### Download Sample WARC files ###
 
 Execute the following command:
 
 ```
-setup/download-sample-warcs.sh path/to/local/warc/dir 
+distributed/download-sample-warcs.sh path/to/local/warc/dir
 ```
+
+### Build Derivatives in Hadoop ###
+
+Execute the following command:
+
+```
+distributed/build-derivatives.sh /path/to/local/warc/dir /path/to/local/derivative/dir /hdfs/path/to/working/dir
+```
+
+* Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
+* Run Hadoop jobs to build the following derivatives:
+  * CDX data
+  * WAT data
+  * Parsed text data
+  * LGA data
+  * WANE data
+* Downloads derivatives from HDFS to local directory
+
