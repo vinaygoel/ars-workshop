@@ -20,7 +20,7 @@ ssh localhost
 If you cannot ssh to localhost without a passphrase, execute the following command:
 
 ```
-setup/setup-passphraseless-ssh.sh
+bin/setup-passphraseless-ssh.sh
 ```  
 
 ### Setup Hadoop in Pseudo Distributed Mode ###
@@ -28,7 +28,7 @@ setup/setup-passphraseless-ssh.sh
 If you don't currently have Hadoop installed, execute the following command:
 
 ```
-setup/setup-hadoop-pseudo-mode.sh /path/to/hadoop/install/dir
+bin/setup-hadoop-pseudo-mode.sh /path/to/hadoop/install/dir
 ```
 
 Please set the HADOOP_HOME environment variable as specified by the script.
@@ -38,7 +38,7 @@ Please set the HADOOP_HOME environment variable as specified by the script.
 If you don't currently have Pig installed, execute the following command:
 
 ```
-setup/setup-pig.sh /path/to/pig/install/dir
+bin/setup-pig.sh /path/to/pig/install/dir
 ```
 
 Please set PIG_HOME and PATH environment variables as specified by the script.
@@ -48,7 +48,7 @@ Please set PIG_HOME and PATH environment variables as specified by the script.
 Execute the following command:
 
 ```
-setup/download-fat-jars.sh
+bin/download-fat-jars.sh
 ```
 
 ## Build Derivatives from WARC files
@@ -61,7 +61,7 @@ setup/download-fat-jars.sh
 Execute the following command:
 
 ```
-distributed/download-sample-warcs.sh path/to/local/warc/dir
+bin/download-sample-warcs.sh path/to/local/warc/dir
 ```
 
 ### Build Derivatives in Hadoop ###
@@ -69,7 +69,7 @@ distributed/download-sample-warcs.sh path/to/local/warc/dir
 Execute the following command:
 
 ```
-distributed/build-derivatives.sh /path/to/local/warc/dir /path/to/local/derivative/dir /hdfs/path/to/working/dir
+bin/build-derivatives.sh /path/to/local/warc/dir /path/to/local/derivative/dir /hdfs/path/to/working/dir
 ```
 
 * Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
