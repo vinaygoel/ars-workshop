@@ -41,9 +41,17 @@ export PIG_HOME=$INSTALL_DIR/$pig_version
 
 echo "Apache Pig has been set up"
 
+echo "Please set HADOOP_HOME to $HADOOP_HOME by running: "
+echo "export HADOOP_HOME=$HADOOP_HOME"
+ech
+
+
 echo "==========================================================="
-echo "Please set PIG_HOME to $PIG_HOME: export PIG_HOME=$PIG_HOME"
-echo "Please add Pig to your path: export PATH=$PIG_HOME/bin:\$PATH";
+echo "Please set PIG_HOME to $PIG_HOME by running: "
+echo "export PIG_HOME=$PIG_HOME"
+echo ""
+echo "Please add Pig to your path by running: "
+echo "export PATH=$PIG_HOME/bin:\$PATH";
 echo "==========================================================="
 
 
