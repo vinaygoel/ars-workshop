@@ -69,7 +69,10 @@ bin/hdfs namenode -format
 echo "Starting NameNode daemon and DataNode daemon"
 sbin/start-dfs.sh
 
+echo "==================================================================="
 echo "Browse the web interface for the Namenode: http://localhost:50070/"
+echo "==================================================================="
+echo ""
 echo "Enter any key to continue..."
 read continueInput
 
@@ -83,7 +86,9 @@ cat output/*
 echo "MapReduce job test run completed"
 echo "Hadoop Pseudo Distributed Mode has been set up"
 
-echo "==========================================================="
-echo "Please set HADOOP_HOME to $HADOOP_HOME: export HADOOP_HOME=$HADOOP_HOME"
+echo "=============================================================="
+echo "Please set HADOOP_HOME to $HADOOP_HOME by running: "
+echo "export HADOOP_HOME=$HADOOP_HOME"
+echo ""
 echo "To stop all Hadoop daemons, run $HADOOP_HOME/sbin/stop-dfs.sh"
-echo "==========================================================="
+echo "=============================================================="
