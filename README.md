@@ -66,7 +66,6 @@ bin/download-sample-warcs.sh path/to/local/warc/dir
 
 ### Build Derivatives in Hadoop ###
 
-#### NOTE: Currently incomplete ####
 Execute the following command:
 
 ```
