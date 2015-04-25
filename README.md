@@ -72,6 +72,7 @@ Execute the following command:
 bin/build-derivatives.sh /path/to/local/warc/dir /path/to/local/derivative/dir /hdfs/path/to/working/dir
 ```
 
+The above command runs the following steps:
 * Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
 * Run Hadoop jobs to build the following derivatives:
   * CDX data
