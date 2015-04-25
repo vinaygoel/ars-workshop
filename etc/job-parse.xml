@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+  <!-- Increase the timeout.  Some very large and complex HTML and PDF
+       files can take minutes and minutes (sometimes hours) to parse.
+       The Hadoop default on a map task to run w/o checking-in is 10
+       mins (600 sec).  Let's go with 200 hours (1200 mins or 72000
+       seconds).  This value is in milliseconds, so multiply by 1000.
+       -->
+  <property>
+    <name>mapred.task.timeout</name>
+    <value>72000000</value>
+  </property>
+
+  <!-- Over-ride the system-wide setting of -1.  With a value > 1,
+       Hadoop will catenate log files together for different tasks
+       running in the same JVM ... which sucks.  So, we use a value of
+       1 here so that each task has its logs stored separately. -->
+  <property>
+    <name>mapred.job.reuse.jvm.num.tasks</name>
+    <value>1</value>
+  </property>
+
+  <property>
+    <name>mapreduce.map.failures.maxpercent</name>
+    <value>10</value>
+  </property>
+
+</configuration>
