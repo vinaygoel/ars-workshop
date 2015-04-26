@@ -14,7 +14,7 @@ LOCAL_DERIVATIVE_DIR=$2
 HDFS_WORKING_DIR=$3
 
 BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-BASE_DIR=$BIN_DIR/../lib/
+BASE_DIR=$BIN_DIR/../
 
 if [ -z "$JAVA_HOME" ]; then
     echo "Please set JAVA_HOME"
@@ -43,14 +43,14 @@ mkdir -p $LOCAL_DERIVATIVE_DIR
 #     exit 6
 #fi
 
-$HDFS_WARC_DIR=$HDFS_WORKING_DIR/warcs/
-$HDFS_DERIVATIVE_DIR=$HDFS_WORKING_DIR/derivatives/
+HDFS_WARC_DIR=$HDFS_WORKING_DIR/warcs/
+HDFS_DERIVATIVE_DIR=$HDFS_WORKING_DIR/derivatives/
 
-$HDFS_CDX_DIR=$HDFS_DERIVATIVE_DIR/cdx/
-$HDFS_WAT_DIR=$HDFS_DERIVATIVE_DIR/wat/
-$HDFS_PARSED_DIR=$HDFS_DERIVATIVE_DIR/parsed/
-$HDFS_WANE_DIR=$HDFS_DERIVATIVE_DIR/wane/
-$HDFS_LGA_DIR=$HDFS_DERIVATIVE_DIR/lga/
+HDFS_CDX_DIR=$HDFS_DERIVATIVE_DIR/cdx/
+HDFS_WAT_DIR=$HDFS_DERIVATIVE_DIR/wat/
+HDFS_PARSED_DIR=$HDFS_DERIVATIVE_DIR/parsed/
+HDFS_WANE_DIR=$HDFS_DERIVATIVE_DIR/wane/
+HDFS_LGA_DIR=$HDFS_DERIVATIVE_DIR/lga/
 
 echo "Creating working directories in HDFS..."
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_WARC_DIR
@@ -63,20 +63,17 @@ echo "Building derivatives in Hadoop..."
 
 echo "1) CDX..."
 
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_CDX_DIR
 $HADOOP_HOME/bin/hadoop jar $BASE_DIR/lib/ia-hadoop-tools-jar-with-dependencies.jar \
                             CDXGenerator -soft $HDFS_CDX_DIR $HDFS_WARC_DIR/*arc.gz
 
 echo "2) Parsed Text..."
 
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_PARSED_DIR
 $HADOOP_HOME/bin/hadoop jar $BASE_DIR/lib/jbs.jar org.archive.jbs.Parse \
                             -conf $BASE_DIR/etc/job-parse.xml \
                             $HDFS_PARSED_DIR $HDFS_WARC_DIR/*arc.gz
 
 echo "3) WAT..."
 
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_WAT_DIR
 $HADOOP_HOME/bin/hadoop jar $BASE_DIR/lib/ia-hadoop-tools-jar-with-dependencies.jar \
                             WATGenerator -soft $HDFS_WAT_DIR $HDFS_WARC_DIR/*arc.gz
 
