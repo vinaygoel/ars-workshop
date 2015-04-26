@@ -9,7 +9,7 @@ Archive Research Services Workshop
 4. [Download Fat JARs](#download-fat-jars)
 5. [Download Sample WARC files](#download-sample-warc-files)
 
-### Setup Passphraseless ssh ###
+#### Setup Passphraseless ssh ####
 
 Check that you can ssh to the localhost without a passphrase:
 
@@ -23,7 +23,7 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 bin/setup-passphraseless-ssh.sh
 ```  
 
-### Setup Hadoop in Pseudo Distributed Mode ###
+#### Setup Hadoop in Pseudo Distributed Mode ####
 
 If you don't currently have Hadoop installed, execute the following command:
 
@@ -33,7 +33,7 @@ bin/setup-hadoop-pseudo-mode.sh /path/to/hadoop/install/dir
 
 Please set the HADOOP_HOME environment variable as specified by the script.
 
-### Setup Pig ###
+#### Setup Pig ####
 
 If you don't currently have Pig installed, execute the following command:
 
@@ -43,7 +43,7 @@ bin/setup-pig.sh /path/to/pig/install/dir
 
 Please set PIG_HOME and PATH environment variables as specified by the script.
 
-### Download Fat JARs ###
+#### Download Fat JARs ####
 
 Execute the following command:
 
@@ -56,7 +56,7 @@ bin/download-fat-jars.sh
 1. [Download Sample WARC files](#download-sample-warc-files)
 2. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
 
-### Download Sample WARC files ###
+#### Download Sample WARC files ####
 
 Execute the following command:
 
@@ -64,12 +64,12 @@ Execute the following command:
 bin/download-sample-warcs.sh path/to/local/warc/dir
 ```
 
-### Build Derivatives in Hadoop ###
+#### Build Derivatives in Hadoop ####
 
 Execute the following command:
 
 ```
-bin/build-derivatives.sh /path/to/local/warc/dir /path/to/local/derivative/dir /hdfs/path/to/working/dir
+bin/build-derivatives.sh /path/to/local/warc/dir /path/to/output/local/derivative/dir /hdfs/path/to/working/dir
 ```
 
 The above command runs the following steps:
@@ -80,5 +80,5 @@ The above command runs the following steps:
   * Parsed text data
   * LGA data
   * WANE data
-* Downloads derivatives from HDFS to local directory
+* Downloads derivatives from HDFS to local directory (/path/to/output/local/derivative/dir)
 
