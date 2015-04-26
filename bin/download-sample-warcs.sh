@@ -11,8 +11,10 @@ LOCAL_WARC_DIR=$1
 
 downloadPath="https://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/"
 
-#download a single WARC file (for now)
-warcNames="NARA-112TH-CONGRESS-2012-20121211213007728-00000-18872~wbgrp-crawl025.us.archive.org~8443.warc.gz"
+# WARC files to download
+warcNames=(
+     'NARA-112TH-CONGRESS-2012-20121211213007728-00000-18872~wbgrp-crawl025.us.archive.org~8443.warc.gz'
+   )
 
 mkdir -p $LOCAL_WARC_DIR/warcs/
 if [ $? -ne 0 ]; then
@@ -23,7 +25,7 @@ fi
 cd $LOCAL_WARC_DIR/warcs/
 
 #download
-for warc in $warcNames; do
+for warc in ${warcNames[@]}; do
    curl -O $downloadPath/$warc
    if [ $? -ne 0 ]; then
       echo "Unable to download WARC from $downloadPath/$warc"
