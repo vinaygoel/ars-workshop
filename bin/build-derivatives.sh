@@ -57,6 +57,7 @@ $HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_WARC_DIR
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p $HDFS_DERIVATIVE_DIR
 
 echo "Uploading WARC files into HDFS..."
+
 $HADOOP_HOME/bin/hdfs dfs -put $LOCAL_WARC_DIR/*arc.gz $HDFS_WARC_DIR
 
 echo "Building derivatives in Hadoop..."
@@ -82,7 +83,7 @@ echo "4) WANE..."
 CLASSIFIER=english.all.3class.distsim.crf.ser.gz
 # upload classifier to HDFS (if not already there)
 if ! $HADOOP_HOME/bin/hdfs dfs -test -e "/tmp/$CLASSIFIER"; then
-    $HADOOP_HOME/bin/hdfs dfs -mkdir /tmp/
+    $HADOOP_HOME/bin/hdfs dfs -mkdir -p /tmp/
     $HADOOP_HOME/bin/hdfs dfs -put $BASE_DIR/lib/$CLASSIFIER /tmp/
 fi
 
