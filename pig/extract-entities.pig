@@ -18,7 +18,7 @@ REGISTER lib/tutorial.jar;
 REGISTER lib/json-simple-1.1.1.jar;
 REGISTER lib/elephant-bird-hadoop-compat-4.1.jar;
 REGISTER lib/elephant-bird-pig-4.1.jar;
-REGISTER lib/piggybank-0.10.jar;
+REGISTER lib/piggybank.jar;
 
 DEFINE TOLOWER org.apache.pig.tutorial.ToLower();
 DEFINE FROMJSON com.twitter.elephantbird.pig.piggybank.JsonStringToMap();
