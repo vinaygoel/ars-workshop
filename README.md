@@ -7,7 +7,6 @@ Archive Research Services Workshop
 2. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-pseudo-mode)
 3. [Setup Pig](#setup-pig)
 4. [Download Fat JARs](#download-fat-jars)
-5. [Download Sample WARC files](#download-sample-warc-files)
 
 #### Setup Passphraseless ssh ####
 
