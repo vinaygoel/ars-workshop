@@ -27,7 +27,7 @@ bin/setup-passphraseless-ssh.sh
 If you don't currently have Hadoop installed, execute the following command:
 
 ```
-bin/setup-hadoop-pseudo-mode.sh /path/to/hadoop/install/dir
+bin/setup-hadoop-pseudo-mode.sh <path_to_hadoop_install_dir>
 ```
 
 Please set the HADOOP_HOME environment variable as specified by the script.
@@ -37,7 +37,7 @@ Please set the HADOOP_HOME environment variable as specified by the script.
 If you don't currently have Pig installed, execute the following command:
 
 ```
-bin/setup-pig.sh /path/to/pig/install/dir
+bin/setup-pig.sh <path_to_pig_install_dir>
 ```
 
 Please set PIG_HOME and PATH environment variables as specified by the script.
@@ -60,7 +60,7 @@ bin/download-fat-jars.sh
 Execute the following command:
 
 ```
-bin/download-sample-warcs.sh path/to/local/warc/dir
+bin/download-sample-warcs.sh <path_to_local_warc_dir>
 ```
 
 #### Build Derivatives in Hadoop ####
@@ -68,7 +68,7 @@ bin/download-sample-warcs.sh path/to/local/warc/dir
 Execute the following command to build derivatives from WARC files in Hadoop:
 
 ```
-bin/build-derivatives.sh /path/to/local/warc/dir /path/to/output/local/derivative/dir /hdfs/path/to/working/dir
+bin/build-derivatives.sh <path_to_local_warc_dir> <path_to_output_local_derivative_dir> <hdfs_path_to_working_dir>
 ```
 Steps:
 * Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
@@ -78,5 +78,5 @@ Steps:
   * Parsed text data
   * LGA data
   * WANE data
-* Downloads derivatives from HDFS to local directory (/path/to/output/local/derivative/dir)
+* Downloads derivatives from HDFS to local directory (<path_to_output_local_derivative_dir)
 
