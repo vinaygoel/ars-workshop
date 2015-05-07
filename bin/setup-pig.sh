@@ -43,7 +43,6 @@ echo "Apache Pig has been set up"
 
 echo "Please set HADOOP_HOME to $HADOOP_HOME by running: "
 echo "export HADOOP_HOME=$HADOOP_HOME"
-ech
 
 
 echo "==========================================================="
