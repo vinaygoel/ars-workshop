@@ -148,5 +148,4 @@ Steps:
   * Parsed text data
   * LGA data
   * WANE data
-* Downloads derivatives from HDFS to local directory (<path_to_output_local_derivative_dir>)
-
+* Downloads derivatives from HDFS to local directory
