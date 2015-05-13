@@ -39,7 +39,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 ### Install Python ####
 
-Install Python:
+If python is not already installed:
 
 Linux
 
