@@ -7,7 +7,7 @@ Archive Research Services Workshop
 2. [Install Java](#install-java)
 3. [Install Python](#install-python)
 4. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
-5. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-pseudo-mode)
+5. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
 6. [Setup Pig](#setup-pig)
 7. [Download Fat JARs](#download-fat-jars)
 
@@ -23,7 +23,15 @@ cd ars-workshop
 
 ### Install Java ####
 
-Please install the latest version of Java and set JAVA_HOME
+Please check if you have Java installed by running:
+
+```
+java -version
+```
+
+If it's not installed, please install Java.
+
+Then, set JAVA_HOME
 
 Linux
 
