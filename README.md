@@ -83,7 +83,7 @@ source setup-env.sh
 
 #### Setup Hadoop in Pseudo Distributed Mode ####
 
-Download and setup [Hadoop](http://hadoop.apache.org/):
+Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mode by running:
 
 ```
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
@@ -91,7 +91,7 @@ bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
 
 #### Setup Pig ####
 
-Download and setup [Pig](http://pig.apache.org/):
+Download and setup [Pig](http://pig.apache.org/) by running:
 
 ```
 bin/setup-pig.sh $PIG_INSTALL_DIR
