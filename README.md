@@ -29,9 +29,9 @@ Please check if you have Java installed by running:
 java -version
 ```
 
-If it's not installed, please install Java.
+If it's not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
 
-Then, set JAVA_HOME
+After Java is installed, Set the JAVA_HOME environment variable 
 
 Linux
 
