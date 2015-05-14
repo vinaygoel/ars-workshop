@@ -7,9 +7,10 @@ Archive Research Services Workshop
 2. [Install Java](#install-java)
 3. [Install Python](#install-python)
 4. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
-5. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
-6. [Setup Pig](#setup-pig)
-7. [Download Fat JARs](#download-fat-jars)
+5. [Set enviroment variables](#set-enviroment-variables)
+6. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
+7. [Setup Pig](#setup-pig)
+8. [Download Fat JARs](#download-fat-jars)
 
 #### Download Workshop ####
 
@@ -29,25 +30,17 @@ Please check if you have Java installed by running:
 java -version
 ```
 
-If it's not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
-
-After Java is installed, Set the JAVA_HOME environment variable 
-
-Linux
-
-```
-export JAVA_HOME=/usr && echo "JAVA_HOME successfully set to $JAVA_HOME"
-```
-
-OS X
-
-```
-export JAVA_HOME=$(/usr/libexec/java_home) && echo "JAVA_HOME successfully set to $JAVA_HOME"
-```
+If not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
 
 ### Install Python ####
 
-If python is not already installed:
+Please check if you have Python installed by running:
+
+```
+python -V
+```
+
+If not already installed:
 
 Linux
 
@@ -64,11 +57,9 @@ curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 
 #### Setup Passphraseless ssh ####
 
-Please make sure that ssh is enabled. 
+To enable ssh for OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
 
-For OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
-
-Check that you can ssh to the localhost without a passphrase:
+Next, check that you can ssh to the localhost without a passphrase:
 
 ```
 ssh localhost
@@ -80,20 +71,22 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 bin/setup-passphraseless-ssh.sh
 ```  
 
+#### Set enviroment variables ####
+
+Take a look at the setup-env.sh and update the values as needed (where specified).
+
+Then, set environment variables by running:
+
+```
+source setup-env.sh
+```
+
 #### Setup Hadoop in Pseudo Distributed Mode ####
 
 Download and setup Hadoop:
 
 ```
-HADOOP_INSTALL_DIR=/tmp/ars-hadoop-install
-
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
-```
-
-Set the HADOOP_HOME environment variable:
-
-```
-export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0/ && echo "HADOOP_HOME successfully set to $HADOOP_HOME"
 ```
 
 #### Setup Pig ####
@@ -101,21 +94,7 @@ export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0/ && echo "HADOOP_HOME succes
 Download and setup Pig:
 
 ```
-PIG_INSTALL_DIR=/tmp/ars-pig-install
-
 bin/setup-pig.sh $PIG_INSTALL_DIR
-```
-
-Set the PIG_HOME environment variable:
-
-```
-export PIG_HOME=$PIG_INSTALL_DIR/pig-0.14.0/ && echo "PIG_HOME successfully set to $PIG_HOME"
-```
-
-Update the PATH environment variable to include path to Pig binary:
-
-```
-export PATH=$PIG_HOME/bin:$PATH && echo "PATH successfully updated to $PATH"
 ```
 
 #### Download Fat JARs ####
@@ -136,8 +115,6 @@ bin/download-fat-jars.sh
 Execute the following commands:
 
 ```
-LOCAL_WARC_DIR=/tmp/ars-workspace-warcs
-
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 ```
 
@@ -146,10 +123,6 @@ bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 Execute the following commands to build derivatives from WARC files in Hadoop:
 
 ```
-LOCAL_DERIVATIVE_DIR=/tmp/ars-workspace-derivatives/
-
-HDFS_DERIVATIVE_DIR=/tmp/ars-workspace-derivatives/
-
 bin/build-derivatives.sh $LOCAL_WARC_DIR $LOCAL_DERIVATIVE_DIR $HDFS_DERIVATIVE_DIR
 ```
 Steps:
