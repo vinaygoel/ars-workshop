@@ -73,7 +73,7 @@ bin/setup-passphraseless-ssh.sh
 
 #### Set enviroment variables ####
 
-Take a look at the setup-env.sh and update the values as needed (where specified).
+Take a look at the setup-env.sh file (in current directory) and update the values as needed (where specified).
 
 Then, set environment variables by running:
 
@@ -83,7 +83,7 @@ source setup-env.sh
 
 #### Setup Hadoop in Pseudo Distributed Mode ####
 
-Download and setup Hadoop:
+Download and setup [Hadoop](http://hadoop.apache.org/):
 
 ```
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
@@ -91,7 +91,7 @@ bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
 
 #### Setup Pig ####
 
-Download and setup Pig:
+Download and setup [Pig](http://pig.apache.org/):
 
 ```
 bin/setup-pig.sh $PIG_INSTALL_DIR
@@ -99,7 +99,7 @@ bin/setup-pig.sh $PIG_INSTALL_DIR
 
 #### Download Fat JARs ####
 
-Execute the following command:
+To download software libraries needed for the workshop, execute the following command:
 
 ```
 bin/download-fat-jars.sh
