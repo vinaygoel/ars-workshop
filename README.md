@@ -36,13 +36,13 @@ Then, set JAVA_HOME
 Linux
 
 ```
-export JAVA_HOME=/usr
+export JAVA_HOME=/usr && echo "JAVA_HOME successfully set to $JAVA_HOME"
 ```
 
 OS X
 
 ```
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home) && echo "JAVA_HOME successfully set to $JAVA_HOME"
 ```
 
 ### Install Python ####
@@ -63,6 +63,10 @@ curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 ```
 
 #### Setup Passphraseless ssh ####
+
+Please make sure that ssh is enabled. 
+
+For OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
 
 Check that you can ssh to the localhost without a passphrase:
 
@@ -89,7 +93,7 @@ bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
 Set the HADOOP_HOME environment variable:
 
 ```
-export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0/
+export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0/ && echo "HADOOP_HOME successfully set to $HADOOP_HOME"
 ```
 
 #### Setup Pig ####
@@ -105,13 +109,13 @@ bin/setup-pig.sh $PIG_INSTALL_DIR
 Set the PIG_HOME environment variable:
 
 ```
-export PIG_HOME=$PIG_INSTALL_DIR/pig-0.14.0/
+export PIG_HOME=$PIG_INSTALL_DIR/pig-0.14.0/ && echo "PIG_HOME successfully set to $PIG_HOME"
 ```
 
 Update the PATH environment variable to include path to Pig binary:
 
 ```
-export PATH=$PIG_HOME/bin:$PATH
+export PATH=$PIG_HOME/bin:$PATH && echo "PATH successfully updated to $PATH"
 ```
 
 #### Download Fat JARs ####
