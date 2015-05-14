@@ -1,7 +1,8 @@
+# Comment lines begin with a '#' symbol
+
 # OS X
 export JAVA_HOME=$(/usr/libexec/java_home)
-
-# For Linux, uncomment the following line:
+# For Linux, comment the above line, and uncomment the following line:
 #export JAVA_HOME=/usr
 
 # Hadoop and Pig installation directories (change as needed)
