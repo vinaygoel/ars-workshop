@@ -69,11 +69,9 @@ bin/hdfs namenode -format
 echo "Starting NameNode daemon and DataNode daemon"
 sbin/start-dfs.sh
 
-echo "==================================================================="
-echo "Browse the web interface for the Namenode: http://localhost:50070/"
-echo "==================================================================="
-echo ""
-echo "Enter any key to continue..."
+echo "=============================================================================================="
+echo "Browse the web interface for the Namenode: http://localhost:50070/  -- enter a key to continue"
+echo "=============================================================================================="
 read continueInput
 
 echo "Testing execution of simple MapReduce job"
