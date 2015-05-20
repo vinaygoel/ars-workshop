@@ -6,15 +6,17 @@ Archive Research Services Workshop
 1. [Download Workshop](#download-workshop)
 2. [Install Java](#install-java)
 3. [Install Python](#install-python)
-5. [Set enviroment variables](#set-enviroment-variables)
-7. [Setup Pig](#setup-pig)
-7. [Setup Elasticsearch](#setup-elasticsearch)
-8. [Download Libraries](#download-libraries)
+4. [Set enviroment variables](#set-enviroment-variables)
+5. [Setup Pig](#setup-pig)
+6. [Setup Elasticsearch](#setup-elasticsearch)
+7. [Download Libraries](#download-libraries)
 
 ## Exercises
 
 0. [Build Derivatives from WARC files](#build-derivatives-from-warc-files)
-1. TODO 
+
+
+==================================
 
 #### Download Workshop ####
 
@@ -87,10 +89,21 @@ bin/download-libraries.sh
 
 ### Build Derivatives from WARC files ###
 
-1. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
-2. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
-3. [Download Sample WARC files](#download-sample-warc-files)
-4. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
+1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
+2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
+3. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
+4. [Download Sample WARC files](#download-sample-warc-files)
+5. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
+
+#### Set Exercise-0 enviroment variables ####
+
+Take a look at the setup-exercise-0-env.sh file (in current directory) and update the values as needed (where specified).
+
+Then, set environment variables by running:
+
+```
+source setup-exercise-0-env.sh
+```
 
 #### Setup Passphraseless ssh ####
 
