@@ -83,10 +83,4 @@ cat output/*
 
 echo "MapReduce job test run completed"
 echo "Hadoop Pseudo Distributed Mode has been set up"
-
-echo "=============================================================="
-echo "Please set HADOOP_HOME to $HADOOP_HOME by running: "
-echo "export HADOOP_HOME=$HADOOP_HOME"
-echo ""
 echo "To stop all Hadoop daemons, run $HADOOP_HOME/sbin/stop-dfs.sh"
-echo "=============================================================="
