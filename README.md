@@ -6,11 +6,15 @@ Archive Research Services Workshop
 1. [Download Workshop](#download-workshop)
 2. [Install Java](#install-java)
 3. [Install Python](#install-python)
-4. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
 5. [Set enviroment variables](#set-enviroment-variables)
-6. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
 7. [Setup Pig](#setup-pig)
-8. [Download Fat JARs](#download-fat-jars)
+7. [Setup Elasticsearch](#setup-elasticsearch)
+8. [Download Libraries](#download-libraries)
+
+## Exercises
+
+0. [Build Derivatives from WARC files](#build-derivatives-from-warc-files)
+1. TODO 
 
 #### Download Workshop ####
 
@@ -55,6 +59,39 @@ sudo easy_install pip
 curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 ```
 
+#### Set enviroment variables ####
+
+Take a look at the setup-env.sh file (in current directory) and update the values as needed (where specified).
+
+Then, set environment variables by running:
+
+```
+source setup-env.sh
+```
+
+#### Setup Pig ####
+
+Download and setup [Pig](http://pig.apache.org/) by running:
+
+```
+bin/setup-pig.sh $PIG_INSTALL_DIR
+```
+
+#### Download Libraries ####
+
+To download software libraries needed for the workshop, execute the following command:
+
+```
+bin/download-libraries.sh
+```
+
+### Build Derivatives from WARC files ###
+
+1. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
+2. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
+3. [Download Sample WARC files](#download-sample-warc-files)
+4. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
+
 #### Setup Passphraseless ssh ####
 
 To enable ssh for OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
@@ -71,16 +108,6 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 bin/setup-passphraseless-ssh.sh
 ```  
 
-#### Set enviroment variables ####
-
-Take a look at the setup-env.sh file (in current directory) and update the values as needed (where specified).
-
-Then, set environment variables by running:
-
-```
-source setup-env.sh
-```
-
 #### Setup Hadoop in Pseudo Distributed Mode ####
 
 Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mode by running:
@@ -88,27 +115,6 @@ Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mod
 ```
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
 ```
-
-#### Setup Pig ####
-
-Download and setup [Pig](http://pig.apache.org/) by running:
-
-```
-bin/setup-pig.sh $PIG_INSTALL_DIR
-```
-
-#### Download Fat JARs ####
-
-To download software libraries needed for the workshop, execute the following command:
-
-```
-bin/download-fat-jars.sh
-```
-
-## Build Derivatives from WARC files
-
-1. [Download Sample WARC files](#download-sample-warc-files)
-2. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
 
 #### Download Sample WARC files ####
 
