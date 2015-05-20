@@ -5,16 +5,11 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # For Linux, comment the above line, and uncomment the following line:
 #export JAVA_HOME=/usr
 
-# Hadoop and Pig installation directories (change as needed)
-export HADOOP_INSTALL_DIR=/tmp/ars-hadoop-install
+# Pig, Elasticsearch installation directory (change as needed)
 export PIG_INSTALL_DIR=/tmp/ars-pig-install
+export ELASTICSEARCH_INSTALL_DIR=/tmp/ars-elasticsearch-install
 
-# Hadoop, Pig and PATH environment variables
-export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0
+# Pig, Elasticsearch and PATH environment variables
 export PIG_HOME=$PIG_INSTALL_DIR/pig-0.14.0
 export PATH=$PIG_HOME/bin:$PATH
-
-# Data directories (change as needed)
-export LOCAL_WARC_DIR=/tmp/ars-workspace-warcs
-export LOCAL_DERIVATIVE_DIR=/tmp/ars-workspace-derivatives
-export HDFS_DERIVATIVE_DIR=/tmp/ars-workspace-derivatives
+export ELASTICSEARCH_HOME=$ELASTICSEARCH_INSTALL_DIR/elasticsearch-1.5.2
