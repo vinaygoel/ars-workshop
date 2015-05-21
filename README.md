@@ -11,7 +11,6 @@ Archive Research Services Workshop
 6. [Setup Elasticsearch](#setup-elasticsearch)
 7. [Download Libraries](#download-libraries)
 
-==================================
 
 ##### Download Workshop #####
 
@@ -90,6 +89,8 @@ To download software libraries needed for the workshop, execute the following co
 bin/download-libraries.sh
 ```
 
+==================================
+
 ## Exercises
 
 [Exercise-0: Build Derivatives from WARC files](#build-derivatives-from-warc-files)
@@ -106,7 +107,7 @@ To continue with the following self-contained exercises, run the following:
 1. [Exercise-1: Store WAT text data into Elasticsearch](#store-wat-text-data-into-elasticsearch)
 2. [Exercise-2: Store WAT GeoIP data into Elasticsearch](#store-wat-geoip-data-into-elasticsearch)
 3. [Exercise-3: Store WANE data into Elasticsearch](#store-wane-data-into-elasticsearch)
-...
+4. etc.
 
 ### Exercise-0: Build Derivatives from WARC files ###
 
