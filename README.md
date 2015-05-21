@@ -13,7 +13,7 @@ Archive Research Services Workshop
 
 ==================================
 
-#### Download Workshop ####
+##### Download Workshop #####
 
 Please make sure *git* is installed, and then run:
 
