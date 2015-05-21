@@ -23,7 +23,7 @@ git clone https://github.com/vinaygoel/ars-workshop.git
 cd ars-workshop
 ```
 
-### Install Java ####
+##### Install Java #####
 
 Please check if you have Java installed by running:
 
@@ -33,7 +33,7 @@ java -version
 
 If not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
 
-### Install Python ####
+##### Install Python #####
 
 Please check if you have Python installed by running:
 
@@ -56,7 +56,7 @@ sudo easy_install pip
 curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 ```
 
-#### Set enviroment variables ####
+##### Set enviroment variables #####
 
 Take a look at the setup-env.sh file (in current directory) and update the values as needed (where specified).
 
@@ -66,7 +66,7 @@ Then, set environment variables by running:
 source setup-env.sh
 ```
 
-#### Setup Pig ####
+##### Setup Pig #####
 
 Download and setup [Pig](http://pig.apache.org/) by running:
 
@@ -74,7 +74,7 @@ Download and setup [Pig](http://pig.apache.org/) by running:
 bin/setup-pig.sh $PIG_INSTALL_DIR
 ```
 
-#### Download Libraries ####
+##### Download Libraries #####
 
 To download software libraries needed for the workshop, execute the following command:
 
@@ -96,7 +96,7 @@ bin/download-libraries.sh
 5. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
 
 
-#### Set Exercise-0 enviroment variables ####
+##### Set Exercise-0 enviroment variables #####
 
 Take a look at the setup-exercise-0-env.sh file (in current directory) and update the values as needed (where specified).
 
@@ -106,7 +106,7 @@ Then, set environment variables by running:
 source setup-exercise-0-env.sh
 ```
 
-#### Setup Passphraseless ssh ####
+##### Setup Passphraseless ssh #####
 
 To enable ssh for OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
 
@@ -122,7 +122,7 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 bin/setup-passphraseless-ssh.sh
 ```  
 
-#### Setup Hadoop in Pseudo Distributed Mode ####
+##### Setup Hadoop in Pseudo Distributed Mode #####
 
 Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mode by running:
 
@@ -130,7 +130,7 @@ Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mod
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
 ```
 
-#### Download Sample WARC files ####
+##### Download Sample WARC files #####
 
 Execute the following commands:
 
@@ -138,7 +138,7 @@ Execute the following commands:
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 ```
 
-#### Build Derivatives in Hadoop ####
+##### Build Derivatives in Hadoop #####
 
 Execute the following commands to build derivatives from WARC files in Hadoop:
 
