@@ -103,8 +103,10 @@ To continue with the following self-contained exercises, run the following:
 # etc.
 ```
 
-1. [Exercise-1: Store WAT text into Elasticsearch](#store-wat-text-into-elasticsearch)
-
+1. [Exercise-1: Store WAT text data into Elasticsearch](#store-wat-text-data-into-elasticsearch)
+2. [Exercise-2: Store WAT GeoIP data into Elasticsearch](#store-wat-geoip-data-into-elasticsearch)
+3. [Exercise-3: Store WANE data into Elasticsearch](#store-wane-data-into-elasticsearch)
+...
 
 ### Exercise-0: Build Derivatives from WARC files ###
 
