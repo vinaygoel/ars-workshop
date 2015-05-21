@@ -93,7 +93,7 @@ bin/download-libraries.sh
 
 ## Exercises
 
-[Exercise-0: Build Derivatives from WARC files](#build-derivatives-from-warc-files)
+[Exercise-0: Build Derivatives from WARC files](#exercise-0: build-derivatives-from-warc-files)
 
 To continue with the following self-contained exercises, run the following:
 
