@@ -11,11 +11,6 @@ Archive Research Services Workshop
 6. [Setup Elasticsearch](#setup-elasticsearch)
 7. [Download Libraries](#download-libraries)
 
-## Exercises
-
-0. [Build Derivatives from WARC files](#build-derivatives-from-warc-files)
-
-
 ==================================
 
 #### Download Workshop ####
@@ -87,13 +82,19 @@ To download software libraries needed for the workshop, execute the following co
 bin/download-libraries.sh
 ```
 
-### Build Derivatives from WARC files ###
+## Exercises
+
+0. [Exercise-0: Build Derivatives from WARC files](#build-derivatives-from-warc-files)
+
+
+### Exercise-0: Build Derivatives from WARC files ###
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
 3. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
 4. [Download Sample WARC files](#download-sample-warc-files)
 5. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
+
 
 #### Set Exercise-0 enviroment variables ####
 
