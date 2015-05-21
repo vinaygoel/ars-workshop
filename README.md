@@ -86,6 +86,16 @@ bin/download-libraries.sh
 
 0. [Exercise-0: Build Derivatives from WARC files](#build-derivatives-from-warc-files)
 
+To download the Derivatives dataset for this workshop, run the following:
+
+```
+#TODO:
+#- download Ferguson datasets
+#- start ES and MongoDB
+```
+
+1. [Exercise-1: Store WAT text into Elasticsearch](#store-wat-text-into-elasticsearch)
+
 
 ### Exercise-0: Build Derivatives from WARC files ###
 
