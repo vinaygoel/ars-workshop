@@ -74,6 +74,14 @@ Download and setup [Pig](http://pig.apache.org/) by running:
 bin/setup-pig.sh $PIG_INSTALL_DIR
 ```
 
+##### Setup Elasticsearch #####
+
+Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
+
+```
+bin/setup-elasticsearch $ELASTICSEARCH_INSTALL_DIR
+```
+
 ##### Download Libraries #####
 
 To download software libraries needed for the workshop, execute the following command:
