@@ -182,3 +182,34 @@ Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch
 ```
 bin/setup-elasticsearch $ELASTICSEARCH_INSTALL_DIR
 ```
+
+Run Elasticsearch in the background:
+
+```
+$ELASTICSEARCH_HOME/bin/elasticsearch -d
+```
+
+##### Download Workshop Derivatives #####
+
+```
+#TODO
+```
+
+### Exercise-1: Store CDX data into Elasticsearch ###
+
+```
+pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars/cdx pig/store-cdx-data-into-elasticsearch.pig
+```
+
+### Exercise-2: Store WAT text data into Elasticsearch ###
+
+```
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars/wat pig/store-wat-text-data-into-elasticsearch.pig
+```
+
+### Exercise-3: Store WANE data into Elasticsearch ###
+
+```
+pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars/wane pig/store-wane-data-into-elasticsearch.pig
+```
+
