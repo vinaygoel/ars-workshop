@@ -73,8 +73,7 @@ To download software libraries needed for the workshop, execute the following co
 bin/download-libraries.sh
 ```
 
-
-## Exercises
+## Homework Exercises
 
 ### Exercise-0: Build Derivatives from WARC files ###
 
@@ -149,9 +148,9 @@ To stop all Hadoop daemons, run:
 $HADOOP_HOME/sbin/stop-dfs.sh
 ```
 
-==================================
+## Exercises
 
-To continue with the following self-contained exercises, run the following:
+To continue with the following self-contained exercises, do the following:
 
 1. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
 2. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
