@@ -73,9 +73,7 @@ To download software libraries needed for the workshop, run:
 bin/download-libraries.sh
 ```
 
-## Homework Exercises
-
-### Exercise-0: Build Derivatives from WARC files ###
+### (Optional) Exercise-0: Build Derivatives from WARC files ###
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
