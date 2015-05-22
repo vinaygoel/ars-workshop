@@ -74,7 +74,7 @@ bin/download-libraries.sh
 ```
 
 ==================================
-### (Optional) Exercise-0: Build Derivatives from WARC files ###
+### Optional Exercise-0: Build Derivatives from WARC files ###
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
@@ -85,7 +85,7 @@ bin/download-libraries.sh
 
 ##### Set Exercise-0 enviroment variables #####
 
-*(optional) Update the values in setup-exercise-0-env.sh file*
+*Optional / If needed, update the values in setup-exercise-0-env.sh file*
 
 Set environment variables by running:
 
@@ -158,7 +158,7 @@ To run the self-contained exercises, do the following:
 
 ##### Set Exercises enviroment variables #####
 
-*(optional) Update the values in setup-exercises-env.sh file*
+*Optional / If needed, update the values in setup-exercises-env.sh file*
 
 Set environment variables by running:
 
