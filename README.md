@@ -40,7 +40,7 @@ Please check if you have Python installed by running:
 python -V
 ```
 
-If not already installed:
+If not installed, install it by running:
 
 Linux
 
@@ -67,7 +67,7 @@ cd ars-workshop
 
 ##### Download Libraries #####
 
-To download software libraries needed for the workshop, execute the following command:
+To download software libraries needed for the workshop, run:
 
 ```
 bin/download-libraries.sh
@@ -86,8 +86,7 @@ bin/download-libraries.sh
 
 ##### Set Exercise-0 enviroment variables #####
 
-Take a look at the setup-exercise-0-env.sh file (in current directory) and update the values as needed (where specified).
-
+Update the values in setup-exercise-0-env.sh file (if needed and where specified)
 Then, set environment variables by running:
 
 ```
@@ -118,12 +117,9 @@ Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apac
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR
 ```
 
-You can browse the [web interface for the Hadoop Distributed File System](http://localhost:50070/)
-
+*You can browse the [web interface for the Hadoop Distributed File System](http://localhost:50070/)*
 
 ##### Download Sample WARC files #####
-
-Execute the following commands:
 
 ```
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
@@ -131,11 +127,10 @@ bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 
 ##### Build Derivatives in Hadoop #####
 
-Execute the following commands to build derivatives from WARC files in Hadoop:
-
 ```
 bin/build-derivatives.sh $LOCAL_WARC_DIR $LOCAL_DERIVATIVE_DIR $HDFS_DERIVATIVE_DIR
 ```
+
 Steps:
 * Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
 * Runs Hadoop jobs to build the following derivatives:
@@ -162,8 +157,7 @@ To run the self-contained exercises, do the following:
 
 ##### Set Exercises enviroment variables #####
 
-Take a look at the setup-exercises-env.sh file (in current directory) and update the values as needed (where specified).
-
+Update the values in setup-exercises-env.sh file (if needed and where specified)
 Then, set environment variables by running:
 
 ```
