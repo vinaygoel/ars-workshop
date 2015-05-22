@@ -150,7 +150,7 @@ $HADOOP_HOME/sbin/stop-dfs.sh
 
 ## Exercises
 
-To continue with the following self-contained exercises, do the following:
+To run the self-contained exercises, do the following:
 
 1. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
 2. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
