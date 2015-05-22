@@ -73,6 +73,7 @@ To download software libraries needed for the workshop, run:
 bin/download-libraries.sh
 ```
 
+==================================
 ### (Optional) Exercise-0: Build Derivatives from WARC files ###
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
@@ -145,6 +146,7 @@ To stop all Hadoop daemons, run:
 $HADOOP_HOME/sbin/stop-dfs.sh
 ```
 
+==================================
 ## Exercises
 
 To run the self-contained exercises, do the following:
