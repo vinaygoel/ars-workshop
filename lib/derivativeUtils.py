@@ -19,6 +19,13 @@ def get_entity_bags(entity_string):
    data_tuple = (ner_dict['PERSON'], ner_dict['ORGANIZATION'], ner_dict['LOCATION'])
    return data_tuple
 
+@outputSchema("text:chararray") 
+def collectBagElements(bag, separator=', '):
+   elements = []
+   for word in bag:
+      elements.append(word[0])
+   return separator.join(elements)
+
 def parse_entity_map(entity_string):
     entity_string = entity_string.replace('{','')
     entity_string = entity_string.replace('}','')
