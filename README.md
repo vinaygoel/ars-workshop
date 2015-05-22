@@ -3,24 +3,10 @@ Archive Research Services Workshop
 
 ## Initial Setup
 
-1. [Download Workshop](#download-workshop)
-2. [Install Java](#install-java)
-3. [Install Python](#install-python)
-4. [Set enviroment variables](#set-enviroment-variables)
-5. [Setup Pig](#setup-pig)
-6. [Setup Elasticsearch](#setup-elasticsearch)
-7. [Download Libraries](#download-libraries)
-
-
-##### Download Workshop #####
-
-Please make sure *git* is installed, and then run:
-
-```
-git clone https://github.com/vinaygoel/ars-workshop.git
-
-cd ars-workshop
-```
+1. [Install Java](#install-java)
+2. [Install Python](#install-python)
+3. [Download Workshop](#download-workshop)
+4. [Download Libraries](#download-libraries)
 
 ##### Install Java #####
 
@@ -31,6 +17,20 @@ java -version
 ```
 
 If not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
+
+Then, set JAVA_HOME:
+
+Linux
+
+```
+export JAVA_HOME=/usr
+```
+
+OS X
+
+```
+export JAVA_HOME=$(/usr/libexec/java_home)
+```
 
 ##### Install Python #####
 
@@ -55,30 +55,14 @@ sudo easy_install pip
 curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 ```
 
-##### Set enviroment variables #####
+##### Download Workshop #####
 
-Take a look at the setup-env.sh file (in current directory) and update the values as needed (where specified).
-
-Then, set environment variables by running:
+Please make sure *git* is installed, and then run:
 
 ```
-source setup-env.sh
-```
+git clone https://github.com/vinaygoel/ars-workshop.git
 
-##### Setup Pig #####
-
-Download and setup [Pig](http://pig.apache.org/) by running:
-
-```
-bin/setup-pig.sh $PIG_INSTALL_DIR
-```
-
-##### Setup Elasticsearch #####
-
-Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
-
-```
-bin/setup-elasticsearch $ELASTICSEARCH_INSTALL_DIR
+cd ars-workshop
 ```
 
 ##### Download Libraries #####
@@ -93,27 +77,11 @@ bin/download-libraries.sh
 
 ## Exercises
 
-[Exercise-0: Build Derivatives from WARC files](#exercise-0: build-derivatives-from-warc-files)
-
-To continue with the following self-contained exercises, run the following:
-
-```
-# TODO:
-# download Ferguson datasets
-# start ES and MongoDB
-# etc.
-```
-
-1. [Exercise-1: Store WAT text data into Elasticsearch](#store-wat-text-data-into-elasticsearch)
-2. [Exercise-2: Store WAT GeoIP data into Elasticsearch](#store-wat-geoip-data-into-elasticsearch)
-3. [Exercise-3: Store WANE data into Elasticsearch](#store-wane-data-into-elasticsearch)
-4. etc.
-
 ### Exercise-0: Build Derivatives from WARC files ###
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
-3. [Setup Hadoop in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
+3. [Setup Hadoop and Pig in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
 4. [Download Sample WARC files](#download-sample-warc-files)
 5. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
 
@@ -146,10 +114,10 @@ bin/setup-passphraseless-ssh.sh
 
 ##### Setup Hadoop in Pseudo Distributed Mode #####
 
-Download and setup [Hadoop](http://hadoop.apache.org/) in pseudo-distributed mode by running:
+Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
 ```
-bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR
+bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR
 ```
 
 ##### Download Sample WARC files #####
@@ -176,3 +144,43 @@ Steps:
   * LGA data
   * WANE data
 * Downloads derivatives from HDFS to local directory
+
+To stop all Hadoop daemons, run:
+```
+$HADOOP_HOME/sbin/stop-dfs.sh
+```
+
+==================================
+
+To continue with the following self-contained exercises, run the following:
+
+1. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
+2. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
+3. [Setup Elasticsearch](#setup-elasticsearch)
+4. [Download Workshop Derivatives](#download-workshop-derivatives)
+
+##### Set Exercises enviroment variables #####
+
+Take a look at the setup-exercises-env.sh file (in current directory) and update the values as needed (where specified).
+
+Then, set environment variables by running:
+
+```
+source setup-exercises-env.sh
+```
+
+##### Setup Hadoop in Local Mode #####
+
+Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Local mode:
+
+```
+bin/setup-hadoop-local-mode.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
+```
+
+##### Setup Elasticsearch #####
+
+Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
+
+```
+bin/setup-elasticsearch $ELASTICSEARCH_INSTALL_DIR
+```
