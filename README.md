@@ -73,7 +73,6 @@ To download software libraries needed for the workshop, execute the following co
 bin/download-libraries.sh
 ```
 
-==================================
 
 ## Exercises
 
@@ -112,7 +111,7 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 bin/setup-passphraseless-ssh.sh
 ```  
 
-##### Setup Hadoop in Pseudo Distributed Mode #####
+##### Setup Hadoop and Pig in Pseudo Distributed Mode #####
 
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
@@ -169,7 +168,7 @@ Then, set environment variables by running:
 source setup-exercises-env.sh
 ```
 
-##### Setup Hadoop in Local Mode #####
+##### Setup Hadoop and Pig in Local Mode #####
 
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Local mode:
 
