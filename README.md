@@ -86,8 +86,9 @@ bin/download-libraries.sh
 
 ##### Set Exercise-0 enviroment variables #####
 
-Update the values in setup-exercise-0-env.sh file (if needed and where specified)
-Then, set environment variables by running:
+*(optional) Update the values in setup-exercise-0-env.sh file*
+
+Set environment variables by running:
 
 ```
 source setup-exercise-0-env.sh
@@ -157,8 +158,9 @@ To run the self-contained exercises, do the following:
 
 ##### Set Exercises enviroment variables #####
 
-Update the values in setup-exercises-env.sh file (if needed and where specified)
-Then, set environment variables by running:
+*(optional) Update the values in setup-exercises-env.sh file*
+
+Set environment variables by running:
 
 ```
 source setup-exercises-env.sh
