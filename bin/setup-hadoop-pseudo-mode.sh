@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 set -e
 
-if [ $# != 1 ] ; then
-    echo "usage: $0 <HADOOP_INSTALL_DIR>"
+if [ $# != 2 ] ; then
+    echo "usage: $0 <HADOOP_INSTALL_DIR> <PIG_INSTALL_DIR>"
     echo "HADOOP_INSTALL_DIR: Local directory where Hadoop will be installed"
+    echo "PIG_INSTALL_DIR: Local directory where Pig will be installed"
     exit 1
 fi
 
-INSTALL_DIR=$1
+HADOOP_INSTALL_DIR=$1
+PIG_INSTALL_DIR=$2
+
+#hadoop install
+INSTALL_DIR=$HADOOP_INSTALL_DIR
 USER_NAME=`whoami`
 hadoop_version=hadoop-2.6.0
 hadoop_stable_mirror=http://mirror.nexcess.net/apache/hadoop/common/stable/$hadoop_version.tar.gz
@@ -17,8 +22,13 @@ if [ -z "$JAVA_HOME" ]; then
     exit 2
 fi
 
-if [ -d "$INSTALL_DIR" ]; then
-  echo "Please specify a non-existent installation directory: $INSTALL_DIR"
+if [ -d "$HADOOP_INSTALL_DIR" ]; then
+  echo "Please specify a non-existent installation directory: $HADOOP_INSTALL_DIR"
+  exit 3
+fi
+
+if [ -d "$PIG_INSTALL_DIR" ]; then
+  echo "Please specify a non-existent installation directory: $PIG_INSTALL_DIR"
   exit 3
 fi
 
@@ -82,5 +92,19 @@ bin/hdfs dfs -get output output
 cat output/*
 
 echo "MapReduce job test run completed"
-echo "Hadoop Pseudo Distributed Mode has been set up"
-echo "To stop all Hadoop daemons, run $HADOOP_HOME/sbin/stop-dfs.sh"
+
+#pig install
+INSTALL_DIR=$PIG_INSTALL_DIR
+pig_version=pig-0.14.0
+pig_stable_mirror=http://apache.mirrors.hoobly.com/pig/$pig_version/$pig_version.tar.gz
+
+mkdir -p $INSTALL_DIR
+cd $INSTALL_DIR
+
+echo "Downloading Pig"
+curl -O $pig_stable_mirror
+
+echo "Installing Pig"
+tar xfvz $pig_version.tar.gz
+echo "Pseudo Distributed Mode installation done!"
+
