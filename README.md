@@ -118,6 +118,9 @@ Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apac
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR
 ```
 
+You can browse the [web interface for the Hadoop Distributed File System](http://localhost:50070/)
+
+
 ##### Download Sample WARC files #####
 
 Execute the following commands:
