@@ -16,13 +16,13 @@ warcNames=(
      'NARA-112TH-CONGRESS-2012-20121211213007728-00000-18872~wbgrp-crawl025.us.archive.org~8443.warc.gz'
    )
 
-mkdir -p $LOCAL_WARC_DIR/warcs/
+mkdir -p $LOCAL_WARC_DIR/
 if [ $? -ne 0 ]; then
-  echo "Unable to create temporary directory: $LOCAL_WARC_DIR/warcs/"
+  echo "Unable to create temporary directory: $LOCAL_WARC_DIR/"
   exit 2
 fi
 
-cd $LOCAL_WARC_DIR/warcs/
+cd $LOCAL_WARC_DIR/
 
 #download
 for warc in ${warcNames[@]}; do
@@ -34,6 +34,6 @@ for warc in ${warcNames[@]}; do
 done
 
 echo "==========================================================="
-echo "Sample WARC(s) downloaded to $LOCAL_WARC_DIR/warcs/"
+echo "Sample WARC(s) downloaded to $LOCAL_WARC_DIR/"
 echo "==========================================================="
 
