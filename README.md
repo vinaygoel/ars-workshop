@@ -132,13 +132,13 @@ This step defines the directory paths to which Hadoop and other tools/scripts wi
 Alternately, you can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
 
 ```
-export HADOOP_INSTALL_DIR=/tmp/ars-hadoop-install
+export PSEUDO_MODE_INSTALL_DIR=/tmp
 ```
 
 To update it to a different directory for instance, it could be changed to:
 
 ```
-export HADOOP_INSTALL_DIR=/Users/superdog/Desktop/ars-hadoop-install
+export PSEUDO_MODE_INSTALL_DIR=/Users/superdog/Desktop/ars-pseudo-mode-install
 ```
 
 This is just an example. Essentially you are defining where the upcoming installs will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
@@ -198,7 +198,7 @@ The WARC is a little under 1GB in size and normally will 2-4 minutes to download
 In this step, you will build derivative datasets from this WARC using Hadoop. The datasets you will be generating are CDX, and Parsed text, which are used in providing access for replay and searching archived web resources, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archve-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
 
 * [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
-* Parsed text data - Full page text and links from html/text resources
+* Parsed text data - Full page text and links from html/text resources stored in [Sequence Files](http://wiki.apache.org/hadoop/SequenceFile)
 * For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
   * WAT - Web Archive Transformation dataset
   * LGA - Longitudinal Graph Analysis dataset
