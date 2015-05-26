@@ -253,7 +253,7 @@ bin/setup-hadoop-local-mode.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
 Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
 
 ```
-bin/setup-elasticsearch $ELASTICSEARCH_INSTALL_DIR
+bin/setup-elasticsearch.sh $ELASTICSEARCH_INSTALL_DIR
 ```
 
 Run Elasticsearch in the background:
@@ -285,4 +285,14 @@ pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat/te
 ```
 pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
+
+### Exercise-4: Use Kibana to explore data stored in Elasticsearch ###
+
+Start the Kibana service:
+```
+$KIBANA_HOME/bin/kibana
+```
+Access the Kibana interface by [clicking here] (http://localhost:5601)
+
+When done exploring, stop the Kibana service by hitting Ctrl+c in the terminal.
 
