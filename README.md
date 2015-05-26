@@ -1,7 +1,7 @@
 Archive Research Services Workshop
 ==================================
 
-This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aahaus, Denmark in June 2015, the workshop is part of IA's ongoing efforts to support reseach use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
+This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aarhus, Denmark in June 2015, the workshop is part of IA's ongoing efforts to support research use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
 
 The workshop assumes some basic familiarity with the command line ("Terminal") and is only intended for those working on Mac or Linux operating systems. For an introduction to using the command line, see [The Command Line Crash Course](http://cli.learncodethehardway.org/book/).
 
@@ -101,10 +101,11 @@ Then "change directory" into the ars-workshop directory by running:
 ```
 cd ars-workshop
 ```
+All exercises will be run from this directory.
 
 ##### Download Libraries #####
 
-This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minues (depending on download speeds)
+This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minutes (depending on download speeds)
 
 To download software libraries needed for the workshop, run:
 
@@ -172,7 +173,7 @@ bin/setup-passphraseless-ssh.sh
 
 ##### Setup Hadoop and Pig in Pseudo Distributed Mode #####
 
-In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts tell Hadoop what types of queries you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (aka, your computers) the processes is the same as running it in a "distributed" environment (aka many nodes).
+In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts describe the jobs you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (aka, your computers) the processes is the same as running it in a "distributed" environment (aka many nodes).
 
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
@@ -197,13 +198,13 @@ The WARC is a little under 1GB in size and normally will 2-4 minutes to download
 In this step, you will build derivative datasets from this WARC using Hadoop. The datasets you will be generating are CDX, and Parsed text, which are used in providing access for replay and searching archived web resources, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archve-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
 
 * [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
-* Parsed text data - Full page text from any 200-response html/txt resources
+* Parsed text data - Full page text and links from html/text resources
 * For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
   * WAT - Web Archive Transformation dataset
   * LGA - Longitudinal Graph Analysis dataset
   * WANE - Web Archive Named Entities dataset
 
-What takes place when you run the command to build these derivaties:
+What takes place when you run the command to build these derivatives:
 * Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
 * Runs Hadoop jobs to build the derivatives:
 * Downloads derivatives from HDFS to local directory
@@ -214,7 +215,7 @@ To build these derivatives, run:
 bin/build-derivatives.sh $LOCAL_WARC_DIR $LOCAL_DERIVATIVE_DIR $HDFS_DERIVATIVE_DIR
 ```
 
-To stop all Hadoop processing, run:
+To stop all Hadoop services, run:
 ```
 $HADOOP_HOME/sbin/stop-dfs.sh
 ```
