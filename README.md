@@ -294,5 +294,5 @@ $KIBANA_HOME/bin/kibana
 ```
 Access the Kibana interface by [clicking here] (http://localhost:5601)
 
-When done exploring, stop the Kibana service by hitting Ctrl+c in the terminal.
+When done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
 
