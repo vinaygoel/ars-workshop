@@ -228,7 +228,8 @@ To run the self-contained exercises, do the following:
 1. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
 2. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
 3. [Setup Elasticsearch](#setup-elasticsearch)
-4. [Download Workshop Derivatives](#download-workshop-derivatives)
+4. [Setup Kibana](#setup-kibana)
+5. [Download Workshop Derivatives](#download-workshop-derivatives)
 
 ##### Set Exercises enviroment variables #####
 
@@ -262,6 +263,14 @@ Run Elasticsearch in the background:
 $ELASTICSEARCH_HOME/bin/elasticsearch -d
 ```
 
+##### Setup Kibana #####
+
+Download and setup [Kibana](https://www.elastic.co/products/kibana) by running:
+
+```
+bin/setup-kibana.sh $KIBANA_INSTALL_DIR
+```
+
 ##### Download Workshop Derivatives #####
 
 ```
@@ -289,9 +298,11 @@ pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/
 ### Exercise-4: Use Kibana to explore data stored in Elasticsearch ###
 
 Start the Kibana service:
+
 ```
 $KIBANA_HOME/bin/kibana
 ```
+
 Access the Kibana interface by [clicking here] (http://localhost:5601)
 
 When done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
