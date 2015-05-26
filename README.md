@@ -1,7 +1,13 @@
 Archive Research Services Workshop
 ==================================
 
+This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aahaus, Denmark in June 2015, the workshop is part of IA's ongoing efforts to support reseach use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
+
+The workshop assumes some basic familiarity with the command line ("Terminal") and is only intended for those working on Mac or Linux operating systems. For an introduction to using the command line, see [The Command Line Crash Course](http://cli.learncodethehardway.org/book/).
+
 ## Initial Setup
+
+The Initial Setup ensures that users have installed the tools and libraries necessary for later exercises.
 
 1. [Install Java](#install-java)
 2. [Install Python](#install-python)
@@ -32,6 +38,8 @@ OS X
 export JAVA_HOME=$(/usr/libexec/java_home)
 ```
 
+Running this command will set the Java home but not produce a response and will instead return to the normal command prompt. 
+
 ##### Install Python #####
 
 Please check if you have Python installed by running:
@@ -55,17 +63,48 @@ sudo easy_install pip
 curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 ```
 
+##### Install Git #####
+
+Please check if you have Git installed by running:
+
+```
+git --version
+```
+
+If not installed, install it by running:
+
+Linux
+
+```
+sudo apt-get install git
+```
+
+OS X
+
+```
+Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac) on Mac.
+```
+
+
 ##### Download Workshop #####
 
-Please make sure *git* is installed, and then run:
+This will create a copy of the workshop repository on your computer.
+
+If (or after) *git* is installed, run:
 
 ```
 git clone https://github.com/vinaygoel/ars-workshop.git
+```
 
+Then "change directory" into the ars-workshop directory by running:
+
+```
 cd ars-workshop
 ```
 
 ##### Download Libraries #####
+
+This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minues (depending on download speeds)
 
 To download software libraries needed for the workshop, run:
 
@@ -76,6 +115,8 @@ bin/download-libraries.sh
 ==================================
 ### Optional Exercise-0: Build Derivatives from WARC files ###
 
+Exercise-0 illustrates for users how derivative datasets are generated from web archives using [Hadoop](https://en.wikipedia.org/wiki/Apache_Hadoop), a framework for "distributed processing of very large data sets on computer clusters." Given the size of even small web archive collections, processing these files to create derived datasets can be very computationally intensive. Hadoop efficiently handles such large-scale jobs using a process called [MapReduce](https://en.wikipedia.org/wiki/MapReduce). Internet Archive uses Hadoop on its cluster to generate derivative datasets from web archives and this exercise mimcs that process by allowing users to run similar "jobs" by installing Hadoop on their local computer.
+
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
 3. [Setup Hadoop and Pig in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
@@ -85,15 +126,33 @@ bin/download-libraries.sh
 
 ##### Set Exercise-0 enviroment variables #####
 
-*Optional / If needed, update the values in setup-exercise-0-env.sh file*
+This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is /tmp/ directory. For Mac users this is a "hidden" folder under the root directory (generally "Macintosh HD"). To view hidden folders in Finder, follow [these instructions](http://www.macworld.co.uk/how-to/mac-software/how-show-hidden-files-in-mac-os-x-finder-3520878/). 
 
-Set environment variables by running:
+Alternately, you can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
+
+```
+export HADOOP_INSTALL_DIR=/tmp/ars-hadoop-install
+```
+
+To update it to a different directory for instance, it could be changed to:
+
+```
+export HADOOP_INSTALL_DIR=/Users/superdog/Desktop/ars-hadoop-install
+```
+
+This is just an example. Essentially you are defining where the upcoming installs will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
+
+You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
 
 ```
 source setup-exercise-0-env.sh
 ```
 
+Running this command will set the paths but will not produce a response and will instead return to the normal command prompt. 
+
 ##### Setup Passphraseless ssh #####
+
+Passphraseless ssh will allow you to run Hadoop jobs on your local computer without having to enter you user credentials each time. 
 
 To enable ssh for OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
 
@@ -103,6 +162,8 @@ Next, check that you can ssh to the localhost without a passphrase:
 ssh localhost
 ```
 
+If successful, the first time you will see a message with "Host key not found from database. Key fingerprint... " and will be asked, "Are you sure you want to continue connecting (yes/no)?" Enter yes.
+
 If you cannot ssh to localhost without a passphrase, execute the following command:
 
 ```
@@ -111,37 +172,49 @@ bin/setup-passphraseless-ssh.sh
 
 ##### Setup Hadoop and Pig in Pseudo Distributed Mode #####
 
+In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts tell Hadoop what types of queries you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (aka, your computers) the processes is the same as running it in a "distributed" environment (aka many nodes).
+
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
 ```
 bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR
 ```
 
-*You can browse the [web interface for the Hadoop Distributed File System](http://localhost:50070/)*
+Hadoop should take 1-3 minutes normally to download and install (depending on your bandwidth). Hadoop includes a GUI for managing its file system (HDFS: Hadoop Distributed File System, and you can browse the [web interface for the Hadoop Distributed File System](http://localhost:50070/)
 
 ##### Download Sample WARC files #####
+
+Next you will download a single WARC file for processing by Pig and Hadoop. WARC files are the ISO-standard preservation file format for web archives and are essentially a convention for concatenating records download by a crawler during capture of web documents. See this page for more information about [the WARC file format](http://bibnum.bnf.fr/WARC/). Run:
 
 ```
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 ```
 
+The WARC is a little under 1GB in size and normally will 2-4 minutes to download (depending on your bandwidth).
+
 ##### Build Derivatives in Hadoop #####
+
+In this step, you will build derivative datasets from this WARC using Hadoop. The datasets you will be generating are CDX, and Parsed text, which are used in providing access for replay and searching archived web resources, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archve-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
+
+* [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
+* Parsed text data - Full page text from any 200-response html/txt resources
+* For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
+  * WAT - Web Archive Transformation dataset
+  * LGA - Longitudinal Graph Analysis dataset
+  * WANE - Web Archive Named Entities dataset
+
+What takes place when you run the command to build these derivaties:
+* Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
+* Runs Hadoop jobs to build the derivatives:
+* Downloads derivatives from HDFS to local directory
+
+To build these derivatives, run:
 
 ```
 bin/build-derivatives.sh $LOCAL_WARC_DIR $LOCAL_DERIVATIVE_DIR $HDFS_DERIVATIVE_DIR
 ```
 
-Steps:
-* Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
-* Runs Hadoop jobs to build the following derivatives:
-  * CDX data
-  * WAT data
-  * Parsed text data
-  * LGA data
-  * WANE data
-* Downloads derivatives from HDFS to local directory
-
-To stop all Hadoop daemons, run:
+To stop all Hadoop processing, run:
 ```
 $HADOOP_HOME/sbin/stop-dfs.sh
 ```
