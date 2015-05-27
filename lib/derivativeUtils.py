@@ -39,3 +39,9 @@ def getClassicTSFormatFromWARCTS(timestamp):
    if not timestamp or len(timestamp) <= 19:
       return None
    return re.sub("[^0-9]", "", timestamp[:19])
+
+@outputSchema("text:chararray") 
+def getDateFormatFromWARCTS(timestamp):
+   if not timestamp or len(timestamp) <= 14:
+      return None
+   return timestamp[0:10]
