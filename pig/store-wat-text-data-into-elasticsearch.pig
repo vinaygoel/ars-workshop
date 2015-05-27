@@ -1,9 +1,9 @@
 /* Input: WAT files generated from WARC files
- * Output: Source URL, timestamp, title, metatext (from title/description/keywords)
+ * Output: WAT text data stored in ES
  */
 
 %default I_WAT_DIR '/Users/archive/Desktop/ars-workshop-data/*wat.gz';
-%default O_ES_INDEX_DIR 'ars/wat';
+%default O_ES_INDEX_DIR 'ars-wat/text';
 %default LIB_DIR 'lib/';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/elasticsearch-hadoop-2.0.2.jar';
