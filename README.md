@@ -221,7 +221,7 @@ $HADOOP_HOME/sbin/stop-dfs.sh
 ```
 
 ==================================
-## Exercises
+## Setup for Exercises
 
 To run the self-contained exercises, do the following:
 
@@ -276,6 +276,9 @@ bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 ```
 #TODO
 ```
+
+==================================
+## Exercises
 
 ### Exercise-1: Store CDX data into Elasticsearch ###
 
