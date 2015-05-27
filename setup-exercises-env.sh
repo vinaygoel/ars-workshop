@@ -4,6 +4,7 @@
 export ARS_EXERCISES_INSTALL_DIR=/tmp/
 
 export ARS_DERIVATIVES_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-exercises-derivatives
+export ARS_EXERCISES_RESULTS_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-exercises-results
 
 export HADOOP_PIG_LOCAL_INSTALL_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-hadoop-pig-local-install
 export ELASTICSEARCH_INSTALL_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-elasticsearch-install
