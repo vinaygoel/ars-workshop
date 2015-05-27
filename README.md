@@ -319,9 +319,9 @@ Start the Kibana service:
 $KIBANA_HOME/bin/kibana
 ```
 
-Access the Kibana interface by [clicking here] (http://localhost:5601)
+Then, access the Kibana interface by [clicking here] (http://localhost:5601)
 
-When done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
+When you're done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
 
 
 ### Exercise-6: GeoIP using WAT data ###
