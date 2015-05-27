@@ -299,7 +299,7 @@ pig -x local -p I_WANE_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane
 
 Steps involved:
 * Extract all image URLs from WATs
-* For each image URL, generate the number of incoming links and top terms (using "alt text" of links)
+* For each image URL, generate number of incoming links and top terms (using "alt text" of links)
 * Store this data into Elasticsearch
 
 To run through these steps:
