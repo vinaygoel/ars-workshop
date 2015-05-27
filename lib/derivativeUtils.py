@@ -33,3 +33,9 @@ def parse_entity_map(entity_string):
     entity_string = entity_string.replace('], ','],')
     entity_list = re.split(r'],?', entity_string)
     return entity_list
+
+@outputSchema("text:chararray")
+def getClassicTSFormatFromWARCTS(timestamp):
+   if not timestamp or len(timestamp) <= 19:
+      return None
+   return re.sub("[^0-9]", "", timestamp[:19])
