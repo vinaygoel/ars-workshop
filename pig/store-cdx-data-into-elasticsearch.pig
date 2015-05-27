@@ -2,7 +2,7 @@
  * Output: CDX lines stored in ES index
  */
 
-%default I_CDX_DIR '/Users/archive/Desktop/ars-workshop-data/*cdx.gz';
+%default I_CDX_DIR '';
 %default O_ES_INDEX_DIR 'ars-cdx/cdx';
 %default LIB_DIR 'lib/';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
