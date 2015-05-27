@@ -11,12 +11,13 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 
 1. [Install Java](#install-java)
 2. [Install Python](#install-python)
-3. [Download Workshop](#download-workshop)
-4. [Download Libraries](#download-libraries)
+3. [Install Git](#install-git)
+4. [Download Workshop](#download-workshop)
+5. [Download Libraries](#download-libraries)
 
 ##### Install Java #####
 
-Please check if you have Java installed by running:
+Please check if you have Java 7 installed by running:
 
 ```
 java -version
@@ -35,7 +36,7 @@ export JAVA_HOME=/usr
 OS X
 
 ```
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 ```
 
 Running this command will set the Java home but not produce a response and will instead return to the normal command prompt. 
@@ -90,7 +91,7 @@ Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Ge
 
 This will create a copy of the workshop repository on your computer.
 
-If (or after) *git* is installed, run:
+After *git* is installed, run:
 
 ```
 git clone https://github.com/vinaygoel/ars-workshop.git

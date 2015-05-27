@@ -2,7 +2,7 @@
  * Output: Embedded images along with number of inlinks and top "alt text" terms stored in ES 
  */
 
-%default I_WATS_DIR '';
+%default I_WAT_DIR '';
 %default O_ES_INDEX_DIR 'ars-wat-images/images';
 
 %default LIB_DIR 'lib/';
@@ -27,8 +27,8 @@ DEFINE SURTURL org.archive.porky.SurtUrlKey();
 DEFINE COMPRESSWHITESPACES org.archive.porky.CompressWhiteSpacesUDF();
 DEFINE TOLOWER org.apache.pig.tutorial.ToLower();
 
--- load data from I_WATS_DIR:
-Orig = LOAD '$I_WATS_DIR' USING
+-- load data from I_WAT_DIR:
+Orig = LOAD '$I_WAT_DIR' USING
           org.archive.hadoop.ArchiveJSONViewLoader(
           'Envelope.WARC-Header-Metadata.WARC-Target-URI',
           'Envelope.WARC-Header-Metadata.WARC-Date',
