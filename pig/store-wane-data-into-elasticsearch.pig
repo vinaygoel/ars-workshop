@@ -3,7 +3,7 @@
  */
 
 %default I_WANE_DIR '/Users/archive/Desktop/ars-workshop-data/*wane.gz';
-%default O_ES_INDEX_DIR 'ars/wane';
+%default O_ES_INDEX_DIR 'ars-wane/entities';
 %default LIB_DIR 'lib/';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/elasticsearch-hadoop-2.0.2.jar';
