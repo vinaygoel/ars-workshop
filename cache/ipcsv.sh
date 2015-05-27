@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-
 # transform IP latlong data into CSV
-grep -v '"",""' | sed "s@,@\t@" | sed "s@\"@@g" | cut -f1,2,3 | sed "s@\t@,@g"
+grep -v '"",""' | tr ',' '\t' | sed "s@\"@@g" | cut -f1-3 | tr '\t' ','
