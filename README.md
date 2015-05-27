@@ -323,3 +323,20 @@ Access the Kibana interface by [clicking here] (http://localhost:5601)
 
 When done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
 
+
+### Exercise-6: GeoIP using WAT data ###
+
+Extract IP addresses and generate latitude and longitude information using [MaxMind](http://dev.maxmind.com/geoip/)
+
+```
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
+```
+
+Convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
+
+```
+cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./cache/ipcsv.sh > $ARS_EXERCISES_RESULTS_DIR/date-lat-long.csv
+```
+
+You can generate a temporal map using this CSV file and the [Torque library of CartoDB] (http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
+
