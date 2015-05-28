@@ -297,6 +297,10 @@ pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cd
 
 ### Exercise-2: Store WAT text data into Elasticsearch ###
 
+The following job takes about 30 minutes to run on the Ferguson WAT data.
+
+For a quick run-through using the sample NARA WATs, replace I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ with I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ below.
+
 ```
 pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
@@ -314,7 +318,9 @@ Steps involved:
 * For each video URL, generate a list of unique terms (using "anchor text" of links), and the number of links to this URL
 * Store this data into Elasticsearch
 
-To run through these steps:
+The following job runs through these steps and takes about 30 minutes to run on the Ferguson WAT data.
+
+For a quick run-through using the sample NARA WATs, replace I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ with I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ below.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
@@ -337,7 +343,7 @@ When you're done exploring, stop the Kibana service by typing Ctrl+c in the term
 
 Extract IP addresses and generate latitude and longitude information using [MaxMind](http://dev.maxmind.com/geoip/)
 
-The Ferguson dataset WARCs do not contain IP Address information, so let's use the sample-wat/ dataset (which contain IP info) for this exercise.  
+The Ferguson dataset WARCs do not contain IP Address information, so let's use the NARA sample WAT dataset (which contains IP info) for this exercise.  
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
