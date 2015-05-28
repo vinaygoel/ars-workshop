@@ -9,18 +9,18 @@ mkdir -p $CACHE_DIR
 
 downloadPath="https://archive.org/~vinay/archive-analysis/ia-libraries/hadoop-2.x/"
 libraryNames=(
-       'webarchive-commons-jar-with-dependencies.jar'
-       'ia-hadoop-tools-jar-with-dependencies.jar'
-       'ia-porky-jar-with-dependencies.jar'
-       'english.all.3class.distsim.crf.ser.gz'
-       'elephant-bird-hadoop-compat-4.1.jar'
-       'elephant-bird-pig-4.1.jar'
-       'elasticsearch-hadoop-2.0.2.jar'
-       'json-simple-1.1.1.jar'
-       'datafu-0.0.10.jar'
-       'piggybank.jar'
-       'tutorial.jar'
-       'jbs.jar'
+       'webarchive-commons-jar-with-dependencies.jar' #https://github.com/internetarchive/webarchive-commons/tree/hadoop-2
+       'ia-hadoop-tools-jar-with-dependencies.jar' #https://github.com/internetarchive/ia-hadoop-tools/tree/hadoop2-prep
+       'ia-porky-jar-with-dependencies.jar' #https://github.com/vinaygoel/archive-analysis/tree/master/ia-porky
+       'english.all.3class.distsim.crf.ser.gz' #http://nlp.stanford.edu/software/CRF-NER.shtml
+       'elephant-bird-hadoop-compat-4.1.jar' #https://github.com/twitter/elephant-bird/
+       'elephant-bird-pig-4.1.jar' #https://github.com/twitter/elephant-bird/
+       'elasticsearch-hadoop-2.0.2.jar' #https://github.com/elastic/elasticsearch-hadoop
+       'json-simple-1.1.1.jar' #https://code.google.com/p/json-simple/
+       'datafu-0.0.10.jar' #https://github.com/linkedin/datafu
+       'piggybank.jar' #https://cwiki.apache.org/confluence/display/PIG/PiggyBank
+       'tutorial.jar' #https://cwiki.apache.org/confluence/display/PIG/PigTutorial
+       'jbs.jar' #https://github.com/internetarchive/jbs
 )       
 
 cd $LIB_DIR
@@ -35,7 +35,7 @@ for jar in ${libraryNames[@]}; do
 done
 
 cacheFileNames=(
-       'GeoLiteCity.dat'
+       'GeoLiteCity.dat' #http://dev.maxmind.com/geoip/legacy/geolite/
        'geo-pack.tgz'
        'stop-words.txt'
 )       
