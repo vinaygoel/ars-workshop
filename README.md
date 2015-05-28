@@ -280,7 +280,7 @@ Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Ar
 bin/download-workshop-derivatives.sh $ARS_DERIVATIVES_DIR
 ```
 
-The derivatives are about 700 MB in size and will take about 5 minutes to download (depending on your bandwidth).
+The derivatives are about 600 MB in size and will take about 5 minutes to download (depending on your bandwidth).
 
 You will use these derivative datasets for the upcoming exercises.
 
