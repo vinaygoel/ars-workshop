@@ -274,9 +274,13 @@ bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 
 ##### Download Workshop Derivatives #####
 
+Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection] (https://archive.org/details/fergusoncrawl&tab=collection)
+
 ```
-#TODO
+bin/download-workshop-derivatives.sh $ARS_DERIVATIVES_DIR
 ```
+
+You will use these derivative datasets for the upcoming exercises.
 
 ==================================
 ## Exercises
