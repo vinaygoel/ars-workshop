@@ -192,7 +192,7 @@ Next you will download a single WARC file for processing by Pig and Hadoop. WARC
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 ```
 
-The WARC is a little under 1GB in size and normally will 2-4 minutes to download (depending on your bandwidth).
+The WARC is a little under 1GB in size and normally will take 2-4 minutes to download (depending on your bandwidth).
 
 ##### Build Derivatives in Hadoop #####
 
@@ -280,6 +280,8 @@ Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Ar
 bin/download-workshop-derivatives.sh $ARS_DERIVATIVES_DIR
 ```
 
+The derivatives are about 700 MB in size and will take about 5 minutes to download (depending on your bandwidth).
+
 You will use these derivative datasets for the upcoming exercises.
 
 ==================================
@@ -294,7 +296,7 @@ pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cd
 ### Exercise-2: Store WAT text data into Elasticsearch ###
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat/text pig/store-wat-text-data-into-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 ### Exercise-3: Store WANE data into Elasticsearch ###
