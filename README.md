@@ -305,17 +305,17 @@ pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-te
 pig -x local -p I_WANE_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
 
-### Exercise-4: Image Search using WAT data and Elasticsearch ###
+### Exercise-4: Video Search using WAT data and Elasticsearch ###
 
 Steps involved:
-* Extract all image URLs from WATs
-* For each image URL, generate a list of top terms (using "alt text" of links), and number of times this image was embedded / linked
+* Extract all URLs to video ("watch") pages from WATs
+* For each video URL, generate a list of unique terms (using "anchor text" of links), and the number of links to this URL
 * Store this data into Elasticsearch
 
 To run through these steps:
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-images/images pig/image-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###

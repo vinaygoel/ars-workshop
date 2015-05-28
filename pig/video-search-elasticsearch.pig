@@ -1,9 +1,10 @@
 /* Input: WAT files generated from WARC files
- * Output: Embedded images along with number of inlinks and top "alt text" terms stored in ES 
+ * Output: Linked videos along with number of inlinks and top "anchor text" terms stored in ES 
  */
 
-%default I_WAT_DIR '';
-%default O_ES_INDEX_DIR 'ars-wat-images/images';
+%default I_WAT_DIR '/tmp/ars-exercises-derivatives/wat/FERGYTV-20150207124415-00415_warc.wat.gz';
+%default O_ES_INDEX_DIR 'ars-wat-videos/videos';
+%default I_VIDEO_URL_FILTER '.*youtube.com/watch.*';
 
 %default LIB_DIR 'lib/';
 %default CACHE_DIR 'cache/';
@@ -58,25 +59,32 @@ Destinations = FOREACH Links GENERATE SURTURL(dst) as url,
 
 Destinations = FILTER Destinations BY url is not null and url != '';
 
---Images with alt text
-ImageEmbeds = FILTER Destinations BY path == 'IMG@/src' AND linktext is not null AND linktext != '';
-ImageEmbeds = FOREACH ImageEmbeds GENERATE url, orig_url, linktext;
+--Example to extract Images with alt text
+--ImageEmbeds = FILTER Destinations BY path == 'IMG@/src' AND linktext is not null AND linktext != '';
+--ImageEmbeds = FOREACH ImageEmbeds GENERATE url, orig_url, linktext;
 
-ImageEmbedsGrp = GROUP ImageEmbeds BY url;
-ImageData = FOREACH ImageEmbedsGrp {
-                  OrigUrls = ORDER ImageEmbeds BY orig_url;
+Links = FILTER Destinations BY path == 'A@/href' AND linktext is not null AND linktext != '';
+Links = FOREACH Links GENERATE url, orig_url, linktext;
+
+--only find links to urls matching the pattern
+VideoLinks = FILTER Links BY TOLOWER(orig_url) matches '$I_VIDEO_URL_FILTER';
+
+VideoLinksGrp = GROUP VideoLinks BY url;
+Data = FOREACH VideoLinksGrp {
+                  OrigUrls = ORDER VideoLinks BY orig_url;
                   OrigUrls = LIMIT OrigUrls 1;
                   GENERATE FLATTEN(OrigUrls.orig_url) as url,
-                           derivativeUtils.collectBagElements(ImageEmbeds.linktext,' ') as linktext,
-                           COUNT(ImageEmbeds) as num_links;
+                           derivativeUtils.collectBagElements(VideoLinks.linktext,' ') as linktext,
+                           COUNT(VideoLinks) as num_links;
                   };
 
-ImageData = FOREACH ImageData GENERATE url,
-                                       num_links,
-                                       FLATTEN(TOKENIZE(TOKENIZETEXT(TOLOWER(linktext)))) as term;
+Data = FOREACH Data GENERATE url,
+                             num_links,
+                             FLATTEN(TOKENIZE(TOKENIZETEXT(TOLOWER(linktext)))) as term;
 
-DocsGrp = GROUP ImageData BY (url, num_links, term);
-DocsGrp2 = FOREACH DocsGrp GENERATE FLATTEN(group) as (url, num_links, term), COUNT(ImageData) as term_freq;
+/* -- To index only top anchor terms per URL 
+DocsGrp = GROUP Data BY (url, num_links, term);
+DocsGrp2 = FOREACH DocsGrp GENERATE FLATTEN(group) as (url, num_links, term), COUNT(Data) as term_freq;
 TopTermFreqScores = GROUP DocsGrp2 BY (url, num_links);
 Out = FOREACH TopTermFreqScores {
                 sorted = ORDER DocsGrp2 BY term_freq DESC;
@@ -84,3 +92,10 @@ Out = FOREACH TopTermFreqScores {
                 GENERATE FLATTEN(group) as (url, num_links), topN.term as top_term;
         };
 STORE Out INTO '$O_ES_INDEX_DIR' USING org.elasticsearch.hadoop.pig.EsStorage();
+*/
+
+--Index all unique anchor terms per URL
+Data = DISTINCT Data;
+DataGrp = GROUP Data BY (url,num_links);
+DataGrp = FOREACH DataGrp GENERATE FLATTEN(group) as (url, num_links), Data.term as anchor_term;
+STORE DataGrp INTO '$O_ES_INDEX_DIR' USING org.elasticsearch.hadoop.pig.EsStorage();
