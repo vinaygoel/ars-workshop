@@ -17,6 +17,7 @@ derivative_names=(
      'lga-ferguson-youtube-crawl.tar.gz'
      'wane-ferguson-youtube-crawl.tar.gz'
      'wat-ferguson-youtube-crawl.tar.gz'
+     'wat-sample-congress112th-crawl.tar.gz'
    )
 
 mkdir -p $ARS_DERIVATIVES_DIR/

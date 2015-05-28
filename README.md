@@ -276,11 +276,13 @@ bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 
 Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection] (https://archive.org/details/fergusoncrawl&tab=collection)
 
+Also, included are a handful of sample WATs from the [NARA congress112th crawl](http://webharvest.gov/collections/congress112th/) for a quick run-through of the WAT exercises.
+
 ```
 bin/download-workshop-derivatives.sh $ARS_DERIVATIVES_DIR
 ```
 
-The derivatives are about 600 MB in size and will take about 5 minutes to download (depending on your bandwidth).
+The derivatives are about 700 MB in size and will take about 5 minutes to download (depending on your bandwidth).
 
 You will use these derivative datasets for the upcoming exercises.
 
@@ -335,8 +337,10 @@ When you're done exploring, stop the Kibana service by typing Ctrl+c in the term
 
 Extract IP addresses and generate latitude and longitude information using [MaxMind](http://dev.maxmind.com/geoip/)
 
+The Ferguson dataset WARCs do not contain IP Address information, so let's use the sample-wat/ dataset (which contain IP info) for this exercise.  
+
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 
 Convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
