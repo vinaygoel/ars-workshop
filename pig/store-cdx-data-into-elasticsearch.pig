@@ -7,6 +7,7 @@
 %default LIB_DIR 'lib/';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/elasticsearch-hadoop-2.0.2.jar';
+
 SET pig.noSplitCombination TRUE;
 
 --Load SURT CDX lines (space separated)
