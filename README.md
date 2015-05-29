@@ -299,10 +299,14 @@ pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cd
 
 The following job takes about 30 minutes to run on the Ferguson WAT data.
 
-For a quick run-through using the sample NARA WATs, replace I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ with I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ below.
-
 ```
 pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
+```
+
+For a quick run-through using the sample NARA WATs, run this instead of the above command:
+
+```
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 ### Exercise-3: Store WANE data into Elasticsearch ###
@@ -320,10 +324,14 @@ Steps involved:
 
 The following job runs through these steps and takes about 30 minutes to run on the Ferguson WAT data.
 
-For a quick run-through using the sample NARA WATs, replace I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ with I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ below.
-
 ```
 pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+```
+
+For a quick run-through using the sample NARA WATs, run this instead of the above command:
+
+```
+pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
