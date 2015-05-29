@@ -234,7 +234,7 @@ To run the self-contained exercises, do the following:
 
 ##### Set Exercises enviroment variables #####
 
-*Optional / If needed, update the values in setup-exercises-env.sh file*
+*If needed, update the values in setup-exercises-env.sh file*
 
 Set environment variables by running:
 
@@ -356,8 +356,9 @@ The Ferguson dataset WARCs do not contain IP Address information, so let's use t
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
+The above command generates a dataset with the following tab-separated fields: **Date**, **Latitude**, **Longitude** and **count**, where count is the number of occurrences of these co-ordinates in the data. 
 
-Convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
+Next, let's convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
 
 ```
 cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./cache/ipcsv.sh > $ARS_EXERCISES_RESULTS_DIR/date-lat-long.csv
@@ -412,4 +413,5 @@ Generate a domain graph dataset that contains the following tab-separated fields
 ```
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
 ```
+
 
