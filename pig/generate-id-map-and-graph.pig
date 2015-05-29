@@ -1,5 +1,5 @@
 /* Input: Parsed Text Captures generated from the 'internetarchive/waimea' project
- * Output: 
+ * Output: LGA dataset 
  */
 
 %default I_PARSED_DATA_DIR '';
