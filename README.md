@@ -276,13 +276,13 @@ bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 
 Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection] (https://archive.org/details/fergusoncrawl&tab=collection)
 
-Also, included are a handful of sample WATs from the [NARA congress112th crawl](http://webharvest.gov/collections/congress112th/) for a quick run-through of the WAT exercises.
+Also, included are a handful of sample WATs from the [Charlie Hebdo Collection](https://archive-it.org/collections/5190) for a quick run-through of the WAT exercises.
 
 ```
 bin/download-workshop-derivatives.sh $ARS_EXERCISES_DERIVATIVES_DIR
 ```
 
-The derivatives are about 700 MB in size and will take about 5 minutes to download (depending on your bandwidth).
+The derivatives total about 1 GB in size and will take around 10 minutes to download (depending on your bandwidth).
 
 You will use these derivative datasets for the upcoming exercises.
 
@@ -303,7 +303,7 @@ The following job takes about 30 minutes to run on the Ferguson WAT data.
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
-For a quick run-through using the sample NARA WATs, run this instead of the above command:
+For a quick run-through using the sample "Charlie Hebdo Collection" WATs, run this instead of the above command:
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
@@ -328,7 +328,7 @@ The following job runs through these steps and takes about 30 minutes to run on 
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-For a quick run-through using the sample NARA WATs, run this instead of the above command:
+For a quick run-through using the sample "Charlie Hebdo Collection" WATs, run this instead of the above command:
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
@@ -351,7 +351,7 @@ When you're done exploring, stop the Kibana service by typing Ctrl+c in the term
 
 Extract IP addresses and generate latitude and longitude information using [MaxMind](http://dev.maxmind.com/geoip/)
 
-The Ferguson dataset WARCs do not contain IP Address information, so let's use the NARA sample WAT dataset (which contains IP info) for this exercise.  
+The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.  
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
