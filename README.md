@@ -414,4 +414,8 @@ Generate a domain graph dataset that contains the following tab-separated fields
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
 ```
 
+Next, let's store this data into a single TSV file for import into [Gephi] (http://gephi.github.io)
 
+```
+cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* > $ARS_EXERCISES_RESULTS_DIR/domain-graph.tsv
+```
