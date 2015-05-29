@@ -297,13 +297,13 @@ pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=
 
 ### Exercise-2: Store WAT text data into Elasticsearch ###
 
-The following job takes about 30 minutes to run on the Ferguson WAT data.
+Option-1: About 30 minutes to process the Ferguson WAT data.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
-For a quick run-through using the sample "Charlie Hebdo Collection" WATs, run this instead of the above command:
+Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
@@ -322,13 +322,13 @@ Steps involved:
 * For each video URL, generate a list of unique terms (using "anchor text" of links), and the number of links to this URL
 * Store this data into Elasticsearch
 
-The following job runs through these steps and takes about 30 minutes to run on the Ferguson WAT data.
+Option-1: About 30 minutes to run through these steps on the Ferguson WAT data.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-For a quick run-through using the sample "Charlie Hebdo Collection" WATs, run this instead of the above command:
+Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
