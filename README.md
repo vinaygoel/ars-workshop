@@ -379,7 +379,7 @@ pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='
 
 ##### degree-distribution/url-indegree-outdegree
 
-The file(s) under this directory contain the following tab-separated fields: URL, in-degree and out-degree.
+The file(s) under this directory contain the following tab-separated fields: **URL**, **in-degree** and **out-degree**.
 The data is ordered in descending order of in-degree.
 
 To get the top 10 URLs with the highest in-degree:
@@ -389,7 +389,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/url-indegree-outdegree/part*
 
 #####degree-distribution/indegree-numurls
 
-The file(s) under this directory contain the following tab-separated fields: in-degree and num_urls, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
+The file(s) under this directory contain the following tab-separated fields: **in-degree** and **num_urls**, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
 
 To get the top 10 most common in-degrees:
 ```
@@ -398,7 +398,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/indegree-numurls/part*
 
 #####degree-distribution/outdegree-numurls
 
-The file(s) under this directory contain the following tab-separated fields: out-degree and num_urls, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
+The file(s) under this directory contain the following tab-separated fields: **out-degree** and **num_urls**, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
 
 To get the top 10 most common out-degrees:
 ```
@@ -407,7 +407,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/outdegree-numurls/part*
 
 ### Exercise-8: Domain Graph using LGA data ###
 
-Generate a domain graph dataset that contains the following tab-separated fields: source_domain, destination_domain and num_links, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
+Generate a domain graph dataset that contains the following tab-separated fields: **source_domain**, **destination_domain** and **num_links**, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
 
 ```
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
