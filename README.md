@@ -357,3 +357,46 @@ cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./cache/ipcsv.sh > $A
 
 You can generate a temporal map using this CSV file and the [Torque library of CartoDB] (http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
 
+### Exercise-7: Degree Distribution of URLs using LGA data ###
+
+Steps involved:
+* Generate the in-degree (number of incoming links) and out-degree (number of outgoing links) for each URL
+* Generate the distribution of in-degree and out-degree (i.e. how many URLs share the same degree value)
+
+```
+pig -x local -p I_LGA_DIR=$ARS_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=$ARS_EXERCISES_RESULTS_DIR/degree-distribution/ pig/url-degree-distribution.pig
+```
+
+Results:
+
+1) $ARS_EXERCISES_RESULTS_DIR/degree-distribution/url-indegree-outdegree/
+
+The file(s) under this directory contain the following tab-separated fields: URL, in-degree and out-degree.
+The data is ordered in descending order of in-degree.
+
+To get the top 10 URLs with the highest in-degree:
+```
+head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/url-indegree-outdegree/part*
+```
+
+2) $ARS_EXERCISES_RESULTS_DIR/degree-distribution/indegree-numurls/
+
+The file(s) under this directory contain the following tab-separated fields: in-degree and num_urls, where num_urls is the number of URLs with the given in-degree
+The data is ordered in descending order of num_urls.
+
+To get the top 10 most common in-degrees:
+```
+head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/indegree-numurls/part*
+```
+
+3) $ARS_EXERCISES_RESULTS_DIR/degree-distribution/outdegree-numurls/
+
+The file(s) under this directory contain the following tab-separated fields: out-degree and num_urls, where num_urls is the number of URLs with the given out-degree
+The data is ordered in descending order of num_urls.
+
+To get the top 10 most common out-degrees:
+```
+head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/outdegree-numurls/part*
+```
+
+### Exercise-8: Domain Graph using LGA data ###
