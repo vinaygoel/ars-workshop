@@ -367,11 +367,9 @@ Steps involved:
 pig -x local -p I_LGA_DIR=$ARS_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=$ARS_EXERCISES_RESULTS_DIR/degree-distribution/ pig/url-degree-distribution.pig
 ```
 
-Results:
+#### Results
 
-
-*degree-distribution/url-indegree-outdegree*
------------
+##### degree-distribution/url-indegree-outdegree
 
 The file(s) under this directory contain the following tab-separated fields: URL, in-degree and out-degree.
 The data is ordered in descending order of in-degree.
@@ -381,10 +379,7 @@ To get the top 10 URLs with the highest in-degree:
 head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/url-indegree-outdegree/part*
 ```
 
-
-
-*degree-distribution/indegree-numurls*
-----------
+#####degree-distribution/indegree-numurls
 
 The file(s) under this directory contain the following tab-separated fields: in-degree and num_urls, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
 
@@ -393,10 +388,8 @@ To get the top 10 most common in-degrees:
 head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/indegree-numurls/part*
 ```
 
+#####degree-distribution/outdegree-numurls
 
-
-*degree-distribution/outdegree-numurls*
------------
 The file(s) under this directory contain the following tab-separated fields: out-degree and num_urls, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
 
 To get the top 10 most common out-degrees:
