@@ -276,7 +276,7 @@ bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 
 Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection] (https://archive.org/details/fergusoncrawl&tab=collection)
 
-Also, included are a handful of sample WATs from the [Charlie Hebdo Collection](https://archive-it.org/collections/5190) for a quick run-through of the WAT exercises.
+Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) for a quick run-through of the WAT exercises.
 
 ```
 bin/download-workshop-derivatives.sh $ARS_EXERCISES_DERIVATIVES_DIR
