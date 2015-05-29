@@ -279,7 +279,7 @@ Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Ar
 Also, included are a handful of sample WATs from the [NARA congress112th crawl](http://webharvest.gov/collections/congress112th/) for a quick run-through of the WAT exercises.
 
 ```
-bin/download-workshop-derivatives.sh $ARS_DERIVATIVES_DIR
+bin/download-workshop-derivatives.sh $ARS_EXERCISES_DERIVATIVES_DIR
 ```
 
 The derivatives are about 700 MB in size and will take about 5 minutes to download (depending on your bandwidth).
@@ -292,7 +292,7 @@ You will use these derivative datasets for the upcoming exercises.
 ### Exercise-1: Store CDX data into Elasticsearch ###
 
 ```
-pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
+pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
 ```
 
 ### Exercise-2: Store WAT text data into Elasticsearch ###
@@ -300,19 +300,19 @@ pig -x local -p I_CDX_DIR=$ARS_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cd
 The following job takes about 30 minutes to run on the Ferguson WAT data.
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 For a quick run-through using the sample NARA WATs, run this instead of the above command:
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 ### Exercise-3: Store WANE data into Elasticsearch ###
 
 ```
-pig -x local -p I_WANE_DIR=$ARS_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
+pig -x local -p I_WANE_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
 
 ### Exercise-4: Video Search using WAT data and Elasticsearch ###
@@ -325,13 +325,13 @@ Steps involved:
 The following job runs through these steps and takes about 30 minutes to run on the Ferguson WAT data.
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 For a quick run-through using the sample NARA WATs, run this instead of the above command:
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
@@ -354,7 +354,7 @@ Extract IP addresses and generate latitude and longitude information using [MaxM
 The Ferguson dataset WARCs do not contain IP Address information, so let's use the NARA sample WAT dataset (which contains IP info) for this exercise.  
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 
 Convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
@@ -372,7 +372,7 @@ Steps involved:
 * Generate the distribution of in-degree and out-degree (i.e. how many URLs share the same degree value)
 
 ```
-pig -x local -p I_LGA_DIR=$ARS_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=$ARS_EXERCISES_RESULTS_DIR/degree-distribution/ pig/url-degree-distribution.pig
+pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=$ARS_EXERCISES_RESULTS_DIR/degree-distribution/ pig/url-degree-distribution.pig
 ```
 
 #### Results
@@ -406,3 +406,10 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/outdegree-numurls/part*
 ```
 
 ### Exercise-8: Domain Graph using LGA data ###
+
+Generate a domain graph dataset that contains the following tab-separated fields: source_domain, destination_domain and num_links, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
+
+```
+pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
+```
+
