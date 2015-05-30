@@ -361,7 +361,7 @@ The above command generates a dataset with the following tab-separated fields: *
 Next, let's convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
 
 ```
-cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./cache/ipcsv.sh > $ARS_EXERCISES_RESULTS_DIR/date-lat-long.csv
+cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./bin/ipcsv.sh > $ARS_EXERCISES_RESULTS_DIR/date-lat-long.csv
 ```
 
 You can generate a temporal map using this CSV file and the [Torque library of CartoDB] (http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
@@ -414,8 +414,8 @@ Generate a domain graph dataset that contains the following tab-separated fields
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
 ```
 
-Next, let's store this data into a single TSV file for import into [Gephi] (http://gephi.github.io)
+Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi] (http://gephi.github.io)
 
 ```
-cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* > $ARS_EXERCISES_RESULTS_DIR/domain-graph.tsv
+cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* | ./bin/generate-gexf.py > $ARS_EXERCISES_RESULTS_DIR/domain-graph.gexf
 ```
