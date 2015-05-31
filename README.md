@@ -128,7 +128,7 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is pseudo-mode/ sub-directory. 
+This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is the "pseudo-mode/" sub-directory. 
 
 You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
 
@@ -234,9 +234,7 @@ To run the self-contained exercises, do the following:
 
 ##### Set Exercises enviroment variables #####
 
-*If needed, update the values in setup-exercises-env.sh file*
-
-Set environment variables by running:
+If needed you can update the values in the setup-exercises-env.sh file, and thenset environment variables by running:
 
 ```
 source setup-exercises-env.sh
