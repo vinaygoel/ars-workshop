@@ -334,7 +334,7 @@ pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
 
-Start the Kibana service:
+Start the Kibana service, a web frontend service to analyze data stored in Elasticsearch:
 
 ```
 $KIBANA_HOME/bin/kibana
@@ -350,7 +350,7 @@ Hit *Create*.
 
 Now that you've configured an index pattern, you can click on the *Discover* tab in the navigation bar at the top of the screen and try out searches to explore your data.
 
-For more, see [Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
+For more information, see the [Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
 
 When you're done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
 
