@@ -224,13 +224,14 @@ $HADOOP_HOME/sbin/stop-dfs.sh
 ==================================
 ## Setup for Exercises
 
-To run the self-contained exercises, do the following:
+Before you run the self-contained exercises, do the following:
 
 1. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
-2. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
-3. [Setup Elasticsearch](#setup-elasticsearch)
+2. [Download Workshop Derivatives](#download-workshop-derivatives)
+3. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
 4. [Setup Kibana](#setup-kibana)
-5. [Download Workshop Derivatives](#download-workshop-derivatives)
+5. [Setup Elasticsearch](#setup-elasticsearch)
+6. [Start Elasticsearch](#start-elasticsearch)
 
 ##### Set Exercises enviroment variables #####
 
@@ -238,36 +239,6 @@ If needed you can update the values in the setup-exercises-env.sh file, and then
 
 ```
 source setup-exercises-env.sh
-```
-
-##### Setup Hadoop and Pig in Local Mode #####
-
-Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Local mode:
-
-```
-bin/setup-hadoop-local-mode.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
-```
-
-##### Setup Elasticsearch #####
-
-Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
-
-```
-bin/setup-elasticsearch.sh $ELASTICSEARCH_INSTALL_DIR
-```
-
-Run Elasticsearch in the background:
-
-```
-$ELASTICSEARCH_HOME/bin/elasticsearch -d
-```
-
-##### Setup Kibana #####
-
-Download and setup [Kibana](https://www.elastic.co/products/kibana) by running:
-
-```
-bin/setup-kibana.sh $KIBANA_INSTALL_DIR
 ```
 
 ##### Download Workshop Derivatives #####
@@ -283,6 +254,38 @@ bin/download-workshop-derivatives.sh $ARS_EXERCISES_DERIVATIVES_DIR
 The derivatives total about 1 GB in size and will take around 10 minutes to download (depending on your bandwidth).
 
 You will use these derivative datasets for the upcoming exercises.
+
+##### Setup Hadoop and Pig in Local Mode #####
+
+Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Local mode:
+
+```
+bin/setup-hadoop-local-mode.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
+```
+
+##### Setup Kibana #####
+
+Download and setup [Kibana](https://www.elastic.co/products/kibana) by running:
+
+```
+bin/setup-kibana.sh $KIBANA_INSTALL_DIR
+```
+
+##### Setup Elasticsearch #####
+
+Download and setup [Elasticsearch](https://www.elastic.co/products/elasticsearch) by running:
+
+```
+bin/setup-elasticsearch.sh $ELASTICSEARCH_INSTALL_DIR
+```
+
+##### Start Elasticsearch #####
+
+Run Elasticsearch in the background:
+
+```
+$ELASTICSEARCH_HOME/bin/elasticsearch -d
+```
 
 ==================================
 ## Exercises
