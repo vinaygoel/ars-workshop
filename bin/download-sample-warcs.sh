@@ -13,7 +13,7 @@ downloadPath="https://archive.org/~vinay/archive-analysis/sample-dataset/crawl-d
 
 # WARC files to download
 warcNames=(
-     'NARA-112TH-CONGRESS-2012-20121211213007728-00000-18872~wbgrp-crawl025.us.archive.org~8443.warc.gz'
+     'ARCHIVEIT-5190-QUARTERLY-415-20150212015221958-00000-wbgrp-crawl105.us.archive.org-6443.warc.gz'
    )
 
 mkdir -p $LOCAL_WARC_DIR/
