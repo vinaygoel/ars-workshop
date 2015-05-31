@@ -121,7 +121,7 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 1. [Set Exercise-0 enviroment variables](#set-exercise-0-enviroment-variables)
 2. [Setup Passphraseless ssh](#setup-passphraseless-ssh)
-3. [Setup Hadoop and Pig in Pseudo Distributed Mode](#setup-hadoop-in-pseudo-mode)
+3. [Setup Hadoop and Pig in Pseudo Distributed Mode](#setup-hadoop-and-pig-in-pseudo-distributed-mode)
 4. [Download Sample WARC files](#download-sample-warc-files)
 5. [Build Derivatives in Hadoop](#build-derivatives-in-hadoop)
 
