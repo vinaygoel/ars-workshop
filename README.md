@@ -128,18 +128,18 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is /tmp/ directory. For Mac users this is a "hidden" folder under the root directory (generally "Macintosh HD"). To view hidden folders in Finder, follow [these instructions](http://www.macworld.co.uk/how-to/mac-software/how-show-hidden-files-in-mac-os-x-finder-3520878/). 
+This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is pseudo-mode/ sub-directory. 
 
-Alternately, you can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
+You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
 
 ```
-export PSEUDO_MODE_INSTALL_DIR=/tmp
+export PSEUDO_MODE_DIR=`pwd`/pseudo-mode
 ```
 
 To update it to a different directory for instance, it could be changed to:
 
 ```
-export PSEUDO_MODE_INSTALL_DIR=/Users/superdog/Desktop/ars-pseudo-mode-install
+export PSEUDO_MODE_DIR=/Users/superdog/Desktop/pseudo-mode
 ```
 
 This is just an example. Essentially you are defining where the upcoming installs will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
