@@ -349,7 +349,7 @@ When you're done exploring, stop the Kibana service by typing Ctrl+c in the term
 
 ### Exercise-6: GeoIP using WAT data ###
 
-Extract IP addresses and generate latitude and longitude information using [MaxMind](http://dev.maxmind.com/geoip/)
+In this exercise, we will extract IP addresses and generate latitude and longitude information using a dataset available through [MaxMind](http://dev.maxmind.com/geoip/)
 
 The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.  
 
