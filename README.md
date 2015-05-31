@@ -342,10 +342,17 @@ $KIBANA_HOME/bin/kibana
 
 Then, access the [local Kibana interface](http://localhost:5601)
 
-[Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
+The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. Here you will fill in the index pattern. e.g. 'ars-wat-videos' as your index pattern for the "Video search" exercise, 'ars-wat-text' for the WAT text example etc.
+
+For the indexes that have time information, Kibana reads your Elasticsearch mapping to find your time fields - select one from the list.
+
+Hit *Create*.
+
+Now that you've configured an index pattern, you can click on the [Discover](#discover) tab in the navigation bar at the top of the screen and try out searches to explore your data.
+
+For more, see [Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
 
 When you're done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
-
 
 ### Exercise-6: GeoIP using WAT data ###
 
