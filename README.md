@@ -342,6 +342,8 @@ $KIBANA_HOME/bin/kibana
 
 Then, access the Kibana interface by [clicking here] (http://localhost:5601)
 
+[Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
+
 When you're done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
 
 
