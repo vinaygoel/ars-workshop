@@ -54,7 +54,7 @@ OS X
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 ```
 
-Running this command will set the Java Home but not produce a response and will instead return to the normal command prompt. 
+Running this command will set the Java Home but not produce a response and will instead return to the normal command prompt.
 
 ##### Install Python #####
 
@@ -121,7 +121,7 @@ All exercises will be run from this directory.
 
 ##### Download Libraries #####
 
-This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minutes (depending on download speeds)
+This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minutes (depending on download speeds).
 
 To download software libraries needed for the workshop, run:
 
@@ -131,7 +131,7 @@ bin/download-libraries.sh
 
 ##### Set Exercises enviroment variables #####
 
-This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "install/" and "data/" sub-directories. 
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "install/" and "data/" sub-directories.
 
 You can update the paths in the setup-exercises-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
 
@@ -159,7 +159,7 @@ Running this command will set the paths but will not produce a response and will
 
 ##### Download Workshop Derivatives #####
 
-Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection] (https://archive.org/details/fergusoncrawl&tab=collection)
+Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
 
 Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) for a quick run-through of the WAT exercises.
 
@@ -203,33 +203,72 @@ Run Elasticsearch in the background:
 $ELASTICSEARCH_HOME/bin/elasticsearch -d
 ```
 
+Elasticsearch is now running and you can confirm it by [clicking here](http://localhost:9200/)
+
+When you're done with this workshop, you can shutdown Elasticsearch by running:
+
+```
+curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
+```
+
 ==================================
 ## Exercises
 
 ### Exercise-1: Store CDX data into Elasticsearch ###
 
+Extract all fields from the CDX dataset and index them into Elasticsearch.
+
 ```
 pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
 ```
 
+The job creates an Elasticsearch index named "ars-cdx" containing the extracted CDX data.
+
+Sample query to search for captures of MIME type "video/mp4":
+
+```
+curl 'http://localhost:9200/ars-cdx/_search?q=mime:"video/mp4"&pretty=true'
+```
+
 ### Exercise-2: Store WAT text data into Elasticsearch ###
 
-Option-1: About 30 minutes to process the Ferguson WAT data.
+From every HTML document, extract URL, timestamp, title text and meta text and index these fields into Elasticsearch.
+
+Option-1: About 30 minutes to process the Ferguson WAT data
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
-Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs.
+Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
+The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-text" containing the extracted WAT text data.
+
+Sample query to search for captures containing the term "obama":
+
+```
+curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
+```
+
+
 ### Exercise-3: Store WANE data into Elasticsearch ###
+
+Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
 
 ```
 pig -x local -p I_WANE_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
+```
+
+The job creates an Elasticsearch index named "ars-wane" containing the extracted WANE data.
+
+Sample query to search for documents mentioning the person "obama":
+
+```
+curl 'http://localhost:9200/ars-wane/_search?q=persons:obama&pretty=true'
 ```
 
 ### Exercise-4: Video Search using WAT data and Elasticsearch ###
@@ -239,16 +278,24 @@ Steps involved:
 * For each video URL, generate a list of unique terms (using "anchor text" of links), and the number of links to this URL
 * Store this data into Elasticsearch
 
-Option-1: About 30 minutes to run through these steps on the Ferguson WAT data.
+Option-1: About 30 minutes to run through these steps on the Ferguson WAT data
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs.
+Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+```
+
+The job creates an Elasticsearch index named "ars-wat-videos"
+
+Sample query to search for videos with incoming links that contain the anchor term "police":
+
+```
+curl 'http://localhost:9200/ars-wat-videos/_search?q=anchor_term:police&pretty=true'
 ```
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
@@ -261,9 +308,14 @@ $KIBANA_HOME/bin/kibana
 
 Then, access the [local Kibana interface](http://localhost:5601)
 
-The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. Here you will fill in the index pattern. e.g. 'ars-wat-videos' as your index pattern for the "Video search" exercise, 'ars-wat-text' for the "WAT text" example etc.
+The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. Here you will fill in the index pattern for each of the indexes generated in previous exercises.
 
-For the indexes that have time information, Kibana reads your Elasticsearch mapping to find your time fields - select one from the list.
+* 'ars-cdx' as your index pattern for CDX data (contains timestamped information)
+* 'ars-wat-text' as your index pattern for WAT text data (contains timestamped information)
+* 'ars-wane' as your index pattern for WANE data (contains timestamped information)
+* 'ars-wat-videos' as your index pattern for the video search data (no timestamp information)
+
+For the indexes that have time information, Kibana reads the Elasticsearch mapping to find the time fields - select one from the list. For our indexes, the time fields are named "timestamp".
 
 Hit *Create*.
 
@@ -277,20 +329,20 @@ When you're done exploring, stop the Kibana service by typing Ctrl+c in the term
 
 In this exercise, we will extract IP addresses and generate latitude and longitude information using a dataset available through [MaxMind](http://dev.maxmind.com/geoip/)
 
-The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.  
+The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.
 
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 The above command generates a dataset with the following tab-separated fields: **Date**, **Latitude**, **Longitude** and **count**, where count is the number of occurrences of these co-ordinates in the data. 
 
-Next, let's convert this data into a CSV file for import into [CartoDB] (https://cartodb.com/)
+Next, let's convert this data into a CSV file for import into [CartoDB](https://cartodb.com/)
 
 ```
 cat $ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/part* | ./bin/ipcsv.sh > $ARS_EXERCISES_RESULTS_DIR/date-lat-long.csv
 ```
 
-You can generate a temporal map using this CSV file and the [Torque library of CartoDB] (http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
+You can generate a temporal map using this CSV file and the [Torque library of CartoDB](http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
 
 ### Exercise-7: Degree Distribution of URLs using LGA data ###
 
@@ -340,7 +392,7 @@ Generate a domain graph dataset that contains the following tab-separated fields
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
 ```
 
-Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi] (http://gephi.github.io)
+Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi](http://gephi.github.io)
 
 ```
 cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* | ./bin/generate-gexf.py > $ARS_EXERCISES_RESULTS_DIR/domain-graph.gexf
@@ -362,7 +414,7 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "pseudo-mode/install/" and "pseudo-mode/data/" sub-directories. 
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "pseudo-mode/install/" and "pseudo-mode/data/" sub-directories.
 
 You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
 
@@ -388,7 +440,7 @@ source setup-exercise-0-env.sh
 
 ##### Setup Passphraseless ssh #####
 
-Passphraseless ssh will allow you to run Hadoop jobs on your local computer without having to enter you user credentials each time. 
+Passphraseless ssh will allow you to run Hadoop jobs on your local computer without having to enter you user credentials each time.
 
 To enable ssh for OS X, follow the [instructions provided here](http://bluishcoder.co.nz/articles/mac-ssh.html)
 
@@ -408,7 +460,7 @@ bin/setup-passphraseless-ssh.sh
 
 ##### Setup Hadoop and Pig in Pseudo Distributed Mode #####
 
-In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts describe the jobs you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (aka, your computers) the processes is the same as running it in a "distributed" environment (aka many nodes).
+In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts describe the jobs you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (your computer) the processes are the same as they they were running in a "distributed" environment (across many computers).
 
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
@@ -426,7 +478,7 @@ Next you will download a single WARC file for processing by Pig and Hadoop. WARC
 bin/download-sample-warcs.sh $LOCAL_WARC_DIR
 ```
 
-The WARC is a little under 1GB in size and normally will take 2-4 minutes to download (depending on your bandwidth).
+The WARC is a little under 1GB in size and normally will take 2-4 minutes to download (depending on your bandwidth)
 
 ##### Build Derivatives in Hadoop #####
 
