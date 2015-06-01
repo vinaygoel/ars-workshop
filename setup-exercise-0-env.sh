@@ -11,6 +11,13 @@ export LOCAL_WARC_DIR=$PSEUDO_MODE_DATA_DIR/ars-exercise-0-warcs
 export LOCAL_DERIVATIVE_DIR=$PSEUDO_MODE_DATA_DIR/ars-exercise-0-derivatives
 export HDFS_DERIVATIVE_DIR=$PSEUDO_MODE_DATA_DIR/ars-exercise-0-derivatives
 
+# unset any of these env variables from before
+export HADOOP_LIBEXEC_DIR=
+export HADOOP_COMMON_HOME=
+export HADOOP_YARN_HOME=
+export HADOOP_MAPRED_HOME=
+export HADOOP_BIN=
+
 # env variables
 export HADOOP_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-hadoop-install
 export PIG_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-pig-install
