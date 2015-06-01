@@ -80,7 +80,7 @@ echo "Starting NameNode daemon and DataNode daemon"
 sbin/start-dfs.sh
 
 echo "=============================================================================================="
-echo "Browse the web interface for the Namenode: http://localhost:50070/ 
+echo "Browse the web interface for the Namenode: http://localhost:50070/"
 echo "=============================================================================================="
 #read continueInput
 
@@ -107,4 +107,3 @@ curl -O $pig_stable_mirror
 echo "Installing Pig"
 tar xfvz $pig_version.tar.gz
 echo "Pseudo Distributed Mode installation done!"
-
