@@ -158,7 +158,7 @@ source setup-exercises-env.sh
 
 Running this command will set the paths but will not produce a response and will instead return to the normal command prompt. 
 
-*NOTE: You will need to run the above command every time you run this workshop!*
+*NOTE: You will need to make sure run the above command every time you run this workshop in a new terminal!*
 
 ##### Download Workshop Derivatives #####
 
