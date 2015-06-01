@@ -223,7 +223,7 @@ pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=
 
 The job creates an Elasticsearch index named "ars-cdx" containing the extracted CDX data.
 
-Sample query to search for captures of MIME type "video/mp4":
+Example query to search for captures of MIME type "video/mp4":
 
 ```
 curl 'http://localhost:9200/ars-cdx/_search?q=mime:"video/mp4"&pretty=true'
@@ -247,7 +247,7 @@ pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_IND
 
 The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-text" containing the extracted WAT text data.
 
-Sample query to search for captures containing the term "obama":
+Example query to search for captures containing the term "obama":
 
 ```
 curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
@@ -264,7 +264,7 @@ pig -x local -p I_WANE_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DI
 
 The job creates an Elasticsearch index named "ars-wane" containing the extracted WANE data.
 
-Sample query to search for documents mentioning the person "obama":
+Example query to search for documents mentioning the person "obama":
 
 ```
 curl 'http://localhost:9200/ars-wane/_search?q=persons:obama&pretty=true'
@@ -291,7 +291,7 @@ pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_
 
 The job creates an Elasticsearch index named "ars-wat-videos"
 
-Sample query to search for videos with incoming links that contain the anchor term "police":
+Example query to search for videos with incoming links that contain the anchor term "police":
 
 ```
 curl 'http://localhost:9200/ars-wat-videos/_search?q=anchor_term:police&pretty=true'
