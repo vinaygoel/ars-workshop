@@ -157,6 +157,8 @@ source setup-exercises-env.sh
 
 Running this command will set the paths but will not produce a response and will instead return to the normal command prompt. 
 
+** You will need to run the above command every time you run this workshop **
+
 ##### Download Workshop Derivatives #####
 
 Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
