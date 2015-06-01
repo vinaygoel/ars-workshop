@@ -314,7 +314,7 @@ The first screen you arrive at will ask you to configure an **index pattern**. A
 * 'ars-wane' as your index pattern for WANE data (contains timestamped information)
 * 'ars-wat-videos' as your index pattern for the video search data (no timestamp information)
 
-For the indexes that have time information, Kibana reads the Elasticsearch mapping to find the time fields - select one from the list. For our indexes, the time fields are named "timestamp".
+For the indexes that have time information, Kibana reads the Elasticsearch mapping to find the time fields - select one from the list. For our indexes, the time field is named "timestamp".
 
 Hit *Create*.
 
