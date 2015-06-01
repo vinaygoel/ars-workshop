@@ -362,7 +362,25 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-Set enviroment variables by running:
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "pseudo-mode/install/" and "pseudo-mode/data/" sub-directories. 
+
+You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
+
+```
+export PSEUDO_MODE_INSTALL_DIR=`pwd`/pseudo-mode/install
+export PSEUDO_MODE_DATA_DIR=`pwd`/pseudo-mode/data
+```
+
+To update them to different directories, as an example, you can change the values to:
+
+```
+export PSEUDO_MODE_INSTALL_DIR=/Users/superdog/Desktop/ars-workshop-pseudo-mode-install
+export PSEUDO_MODE_DATA_DIR=/Users/superdog/Desktop/ars-workshop-pseudo-mode-data
+```
+
+This is just an example. Essentially you are defining where the upcoming installs and datasets will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
+
+You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
 
 ```
 source setup-exercise-0-env.sh
