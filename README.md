@@ -205,7 +205,10 @@ $ELASTICSEARCH_HOME/bin/elasticsearch -d
 
 Elasticsearch is now running and you can confirm it by [clicking here](http://localhost:9200/)
 
-> When you're done with this workshop, you can shutdown Elasticsearch by running:```curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'```
+> When you're done with this workshop, you can shutdown Elasticsearch by running:
+```
+curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
+```
 
 ==================================
 ## Exercises
