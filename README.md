@@ -206,7 +206,7 @@ Run Elasticsearch in the background:
 $ELASTICSEARCH_HOME/bin/elasticsearch -d
 ```
 
-Elasticsearch is now running and you can confirm it by [clicking here](http://localhost:9200/) or running:
+Elasticsearch will start running within a few seconds and you can confirm it by [clicking here](http://localhost:9200/) or running:
 
 ```
 curl 'http://localhost:9200/'
