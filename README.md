@@ -329,7 +329,6 @@ cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* | ./bin/generate-gexf.py > $AR
 
 ## Appendix
 
-==================================
 ### Optional Exercise-0: Build Derivatives from WARC files ###
 
 Exercise-0 illustrates for users how derivative datasets are generated from web archives using [Hadoop](https://en.wikipedia.org/wiki/Apache_Hadoop), a framework for "distributed processing of very large data sets on computer clusters." Given the size of even small web archive collections, processing these files to create derived datasets can be very computationally intensive. Hadoop efficiently handles such large-scale jobs using a process called [MapReduce](https://en.wikipedia.org/wiki/MapReduce). Internet Archive uses Hadoop on its cluster to generate derivative datasets from web archives and this exercise mimcs that process by allowing users to run similar "jobs" by installing Hadoop on their local computer.
