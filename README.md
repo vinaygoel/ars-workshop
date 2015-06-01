@@ -294,7 +294,7 @@ Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WA
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-The job creates an Elasticsearch index named "ars-wat-videos"
+The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-videos"
 
 Example query to search for videos with incoming links that contain the anchor term "police":
 
