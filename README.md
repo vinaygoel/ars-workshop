@@ -117,7 +117,8 @@ Then "change directory" into the ars-workshop directory by running:
 ```
 cd ars-workshop
 ```
-All exercises will be run from this directory.
+
+*NOTE: All exercises will be run from this directory!*
 
 ##### Download Libraries #####
 
