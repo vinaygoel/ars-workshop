@@ -212,6 +212,8 @@ Elasticsearch is now running and you can confirm it by [clicking here](http://lo
 curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
 ```
 
+*NOTE: You will need to ensure that Elasticsearch is running for the Elasticsearch exercises!*
+
 ==================================
 ## Exercises
 
