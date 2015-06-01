@@ -2,16 +2,16 @@
 set -e
 
 if [ $# != 3 ] ; then
-    echo "usage: $0 <LOCAL_WARC_DIR> <LOCAL_DERIVATIVE_DIR> <HDFS_WORKING_DIR>"
+    echo "usage: $0 <LOCAL_WARC_DIR> <LOCAL_DERIVATIVE_DIR> <HDFS_DERIVATIVE_DIR>"
     echo "LOCAL_WARC_DIR: Local directory where WARCs are stored"
     echo "LOCAL_DERIVATIVE_DIR: Local (empty / new) directory where the built derivatives will be copied to"
-    echo "HDFS_WORKING_DIR: HDFS directory where WARCs and derivatives will be stored"
+    echo "HDFS_DERIVATIVE_DIR: HDFS directory where WARCs and derivatives will be stored"
     exit 1
 fi
 
 LOCAL_WARC_DIR=$1
 LOCAL_DERIVATIVE_DIR=$2
-HDFS_WORKING_DIR=$3
+HDFS_DERIVATIVE_DIR=$3
 
 BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BASE_DIR=$BIN_DIR/../
@@ -43,8 +43,8 @@ mkdir -p $LOCAL_DERIVATIVE_DIR
 #     exit 6
 #fi
 
-HDFS_WARC_DIR=$HDFS_WORKING_DIR/warcs/
-HDFS_DERIVATIVE_DIR=$HDFS_WORKING_DIR/derivatives/
+HDFS_WARC_DIR=$HDFS_DERIVATIVE_DIR/warcs/
+HDFS_DERIVATIVE_DIR=$HDFS_DERIVATIVE_DIR/derivatives/
 
 HDFS_CDX_DIR=$HDFS_DERIVATIVE_DIR/cdx/
 HDFS_WAT_DIR=$HDFS_DERIVATIVE_DIR/wat/
