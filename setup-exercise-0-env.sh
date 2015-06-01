@@ -23,4 +23,10 @@ export HADOOP_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-hadoop-install
 export PIG_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-pig-install
 export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop-2.6.0
 export PIG_HOME=$PIG_INSTALL_DIR/pig-0.14.0
-export PATH=$PIG_HOME/bin:$PATH
+
+if [ -z "$BASH_PROFILE_PATH" ]; then
+    export BASH_PROFILE_PATH=$PATH
+else
+    export PATH=$BASH_PROFILE_PATH
+fi
+export PATH=$PIG_HOME/bin:$BASH_PROFILE_PATH
