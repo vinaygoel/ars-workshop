@@ -227,7 +227,7 @@ curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
 Extract all fields from the CDX dataset and index them into Elasticsearch.
 
 ```
-pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/ -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
+pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/*cdx* -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
 ```
 
 The job creates an Elasticsearch index named "ars-cdx" containing the extracted CDX data.
@@ -245,13 +245,13 @@ From every HTML document, extract URL, timestamp, title text and meta text and i
 Option-1: About 30 minutes to process the Ferguson WAT data
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/*.wat.gz -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
 The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-text" containing the extracted WAT text data.
@@ -289,13 +289,13 @@ Steps involved:
 Option-1: About 30 minutes to run through these steps on the Ferguson WAT data
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-videos"
