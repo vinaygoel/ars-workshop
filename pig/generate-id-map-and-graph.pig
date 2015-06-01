@@ -1,5 +1,5 @@
 /* Input: Parsed Text Captures generated from the 'internetarchive/waimea' project
- * Output: 
+ * Output: LGA dataset 
  */
 
 %default I_PARSED_DATA_DIR '';
@@ -20,7 +20,6 @@ DEFINE MD5 datafu.pig.hash.MD5();
 
 SET mapreduce.job.queuename ait;
 SET pig.splitCombination 'false';
-
 
 DEFINE SURTURL org.archive.porky.SurtUrlKey();
 DEFINE COMPRESSWHITESPACES org.archive.porky.CompressWhiteSpacesUDF();
@@ -62,7 +61,7 @@ Links = FOREACH Meta {
 Links = FOREACH Links GENERATE SURTURL(src) as src, 
 			       --ToDate(timestamp,'yyyyMMddHHmmss') as timestamp, 
 			       timestamp, 
-			       SURTURL(dst) as dst, src as origSrc, dst as origDst; 
+			       SURTURL(dst) as dst, REPLACE(src,'\n','') as origSrc, REPLACE(dst,'\n','') as origDst;
 
 SurtOrigMap1 = FOREACH Links GENERATE src as url, origSrc as origUrl;
 SurtOrigMap2 = FOREACH Links GENERATE dst as url, origDst as origUrl;
@@ -160,7 +159,7 @@ IDGraph = FOREACH IDLinks2 {
 		GENERATE FLATTEN(group) as (id,ts), dests.destid as links;
 	};
 
---Load AIT CDX lines (space separated)
+--Load CDX lines (space separated)
 CDXLines = LOAD '$I_CDX_DATA_DIR' USING PigStorage(' ') AS (url:chararray,
                                                        timestamp:chararray,
                                                        orig_url:chararray,

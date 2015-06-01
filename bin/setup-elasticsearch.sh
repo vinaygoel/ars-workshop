@@ -8,9 +8,8 @@ if [ $# != 1 ] ; then
 fi
 
 INSTALL_DIR=$1
-USER_NAME=`whoami`
 elasticsearch_version=elasticsearch-1.5.2
-elasticsearch_stable_mirror=https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.2.tar.gz
+elasticsearch_stable_mirror=https://download.elastic.co/elasticsearch/elasticsearch/$elasticsearch_version.tar.gz
 
 if [ -d "$INSTALL_DIR" ]; then
   echo "Please specify a non-existent installation directory: $INSTALL_DIR"

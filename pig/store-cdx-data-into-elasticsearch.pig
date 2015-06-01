@@ -2,11 +2,12 @@
  * Output: CDX lines stored in ES index
  */
 
-%default I_CDX_DIR '/Users/archive/Desktop/ars-workshop-data/*cdx.gz';
-%default O_ES_INDEX_DIR 'ars/cdx';
+%default I_CDX_DIR '';
+%default O_ES_INDEX_DIR 'ars-cdx/cdx';
 %default LIB_DIR 'lib/';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/elasticsearch-hadoop-2.0.2.jar';
+
 SET pig.noSplitCombination TRUE;
 
 --Load SURT CDX lines (space separated)

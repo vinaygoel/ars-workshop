@@ -1,5 +1,5 @@
 /* Input: Parsed Text Captures generated from the 'internetarchive/waimea' project
- * Output: URL, digest, date, entities
+ * Output: WANE dataset (URL, digest, date, entities)
  */
 
 --pig -Dmapred.cache.files="/user/vinay/english.all.3class.distsim.crf.ser.gz#english.all.3class.distsim.crf.ser.gz" -Dmapred.create.symlink=yes -p I_NER_CLASSIFIER_FILE=english.all.3class.distsim.crf.ser.gz
