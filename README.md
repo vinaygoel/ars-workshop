@@ -5,7 +5,7 @@ This workshop is to provide researchers, developers, and general users an introd
 
 The workshop assumes some basic familiarity with the command line ("Terminal") and is only intended for those working on Mac or Linux operating systems. For an introduction to using the command line, see [The Command Line Crash Course](http://cli.learncodethehardway.org/book/).
 
-The datasets you will be working with are CDX, which are used in providing access for replay, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archve-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
+The datasets you will be working with are CDX, which are used in providing access for replay, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
 
 * [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
 * For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
@@ -24,7 +24,7 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 5. [Download Libraries](#download-libraries)
 6. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
 7. [Download Workshop Derivatives](#download-workshop-derivatives)
-8. [Setup Hadoop and Pig in Local Mode](#setup-hadoop-and-pig-in-local-mode)
+8. [Setup Pig](#setup-pig)
 9. [Setup Kibana](#setup-kibana)
 10. [Setup Elasticsearch](#setup-elasticsearch)
 11. [Start Elasticsearch](#start-elasticsearch)
@@ -151,12 +151,12 @@ The derivatives total about 1 GB in size and will take around 10 minutes to down
 
 You will use these derivative datasets for the upcoming exercises.
 
-##### Setup Hadoop and Pig in Local Mode #####
+##### Setup Pig #####
 
-Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Local mode:
+Download and setup [Pig](http://pig.apache.org/):
 
 ```
-bin/setup-hadoop-local-mode.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
+bin/setup-pig.sh $HADOOP_PIG_LOCAL_INSTALL_DIR
 ```
 
 ##### Setup Kibana #####
