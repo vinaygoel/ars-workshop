@@ -340,7 +340,7 @@ In this exercise, we will extract IP addresses and generate latitude and longitu
 The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.
 
 ```
-pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/ -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
+pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 The above command generates a dataset with the following tab-separated fields: **Date**, **Latitude**, **Longitude** and **count**, where count is the number of occurrences of these co-ordinates in the data. 
 
