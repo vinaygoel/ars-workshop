@@ -38,7 +38,7 @@ Please check if you have Java 7 installed by running:
 java -version
 ```
 
-If not installed, please [install Java](https://www.java.com/en/download/help/download_options.xml)
+If not installed, please [install Java](https://java.com/en/download/manual_java7.jsp)
 
 Then, set JAVA_HOME:
 
