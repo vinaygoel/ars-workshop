@@ -149,7 +149,7 @@ export ARS_EXERCISES_DATA_DIR=/Users/superdog/Desktop/ars-workshop-data
 
 This is just an example. Essentially you are defining where the upcoming installs and datasets will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
 
-You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
+You will then confirm these paths are set by running the below command. If you edit the paths later, you will need to re-run it.
 
 ```
 source setup-exercises-env.sh
@@ -205,11 +205,7 @@ $ELASTICSEARCH_HOME/bin/elasticsearch -d
 
 Elasticsearch is now running and you can confirm it by [clicking here](http://localhost:9200/)
 
-When you're done with this workshop, you can shutdown Elasticsearch by running:
-
-```
-curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
-```
+> When you're done with this workshop, you can shutdown Elasticsearch by running:```curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'```
 
 ==================================
 ## Exercises
@@ -432,7 +428,7 @@ export PSEUDO_MODE_DATA_DIR=/Users/superdog/Desktop/ars-workshop-pseudo-mode-dat
 
 This is just an example. Essentially you are defining where the upcoming installs and datasets will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
 
-You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
+You will then confirm these paths are set by running the below command. If you edit the paths later, you will need to re-run it.
 
 ```
 source setup-exercise-0-env.sh
