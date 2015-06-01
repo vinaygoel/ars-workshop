@@ -1,11 +1,11 @@
 Archive Research Services Workshop
 ==================================
 
-This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aarhus, Denmark in June 2015, the workshop is part of IA's ongoing efforts to support research use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
+This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aarhus, Denmark on June 2015, the workshop is part of IA's ongoing efforts to support research use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
 
 The workshop assumes some basic familiarity with the command line ("Terminal") and is only intended for those working on Mac or Linux operating systems. For an introduction to using the command line, see [The Command Line Crash Course](http://cli.learncodethehardway.org/book/).
 
-The datasets you will be working with are CDX, which are used in providing access for replay, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
+The datasets you will be working with are CDX, which are used in providing access for replay through the Wayback Machine, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
 
 * [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
 * For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
@@ -54,7 +54,7 @@ OS X
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 ```
 
-Running this command will set the Java home but not produce a response and will instead return to the normal command prompt. 
+Running this command will set the Java Home but not produce a response and will instead return to the normal command prompt. 
 
 ##### Install Python #####
 
@@ -131,11 +131,31 @@ bin/download-libraries.sh
 
 ##### Set Exercises enviroment variables #####
 
-If needed you can update the values in the setup-exercises-env.sh file, and thenset environment variables by running:
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "install/" and "data/" sub-directories. 
+
+You can update the paths in the setup-exercises-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
+
+```
+export ARS_EXERCISES_INSTALL_DIR=`pwd`/install
+export ARS_EXERCISES_DATA_DIR=`pwd`/data
+```
+
+To update them to different directories, as an example, you can change the values to:
+
+```
+export ARS_EXERCISES_INSTALL_DIR=/Users/superdog/Desktop/ars-workshop-install
+export ARS_EXERCISES_DATA_DIR=/Users/superdog/Desktop/ars-workshop-data
+```
+
+This is just an example. Essentially you are defining where the upcoming installs and datasets will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
+
+You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
 
 ```
 source setup-exercises-env.sh
 ```
+
+Running this command will set the paths but will not produce a response and will instead return to the normal command prompt. 
 
 ##### Download Workshop Derivatives #####
 
@@ -342,29 +362,11 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-This step defines the directory paths to which Hadoop and other tools/scripts will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default location is the "pseudo-mode/" sub-directory. 
-
-You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default first value is:
-
-```
-export PSEUDO_MODE_DIR=`pwd`/pseudo-mode
-```
-
-To update it to a different directory for instance, it could be changed to:
-
-```
-export PSEUDO_MODE_DIR=/Users/superdog/Desktop/pseudo-mode
-```
-
-This is just an example. Essentially you are defining where the upcoming installs will be located. Future exercise steps and scripts will depend on these paths being accurate, so be sure they are correct and the path/directory already exists if you choose to change it. Be sure to save the file if you have edited it.
-
-You will then confirm these paths are set by running the below. If you edit the paths later, you will need to re-run this command. Run:
+Set enviroment variables by running:
 
 ```
 source setup-exercise-0-env.sh
 ```
-
-Running this command will set the paths but will not produce a response and will instead return to the normal command prompt. 
 
 ##### Setup Passphraseless ssh #####
 

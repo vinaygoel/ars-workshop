@@ -4,18 +4,20 @@
 export ARS_EXERCISES_INSTALL_DIR=`pwd`/install
 export ARS_EXERCISES_DATA_DIR=`pwd`/data
 
-#data directories
+# Please don't make any changes below this line
+
+# data directories
 export ARS_EXERCISES_DERIVATIVES_DIR=$ARS_EXERCISES_DATA_DIR/ars-exercises-derivatives
 export ARS_EXERCISES_RESULTS_DIR=$ARS_EXERCISES_DATA_DIR/ars-exercises-results
 
-#installation directories
+# installation directories
 export HADOOP_PIG_LOCAL_INSTALL_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-hadoop-pig-local-install
 export ELASTICSEARCH_INSTALL_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-elasticsearch-install
 export ELASTICSEARCH_HOME=$ELASTICSEARCH_INSTALL_DIR/elasticsearch-1.5.2
 export KIBANA_INSTALL_DIR=$ARS_EXERCISES_INSTALL_DIR/ars-kibana-install
 export KIBANA_HOME=$KIBANA_INSTALL_DIR/kibana-4.0.2
 
-#setting env variables
+# setting env variables
 export HADOOP_INSTALL_DIR=$HADOOP_PIG_LOCAL_INSTALL_DIR/hadoop-2-local-mode
 export HADOOP_HOME=$HADOOP_INSTALL_DIR/hadoop
 export HADOOP_COMMON_HOME=$HADOOP_INSTALL_DIR/hadoop
