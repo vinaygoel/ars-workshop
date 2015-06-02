@@ -458,7 +458,7 @@ Next, check that you can ssh to the localhost without a passphrase:
 ssh localhost
 ```
 
-If successful, the first time you will see a message with "Host key not found from database. Key fingerprint... " and will be asked, "Are you sure you want to continue connecting (yes/no)?" Enter yes.
+If successful, the first time you will see a message with "Host key not found from database. Key fingerprint... " and will be asked, "Are you sure you want to continue connecting (yes/no)?" Enter yes. Then type in Ctrl+d to exit this sub-shell.
 
 If you cannot ssh to localhost without a passphrase, execute the following command:
 
