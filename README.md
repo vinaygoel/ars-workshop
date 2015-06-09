@@ -168,7 +168,7 @@ Running this command will set the paths but will not produce a response and will
 
 ##### Download Workshop Derivatives #####
 
-Download derivatives (WAT, WANE, LGA and CDX) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
+Download derivatives (`WAT`, `WANE`, `LGA` and `CDX`) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
 
 Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) for a quick run-through of the WAT exercises.
 
@@ -262,7 +262,7 @@ pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p 
 
 The job (either option-1 or option-2) creates an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
 
-Example query to search for captures containing the term "obama":
+Example query to search for captures containing the term `obama`:
 
 ```
 curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
@@ -324,12 +324,12 @@ Then, access the [local Kibana interface](http://localhost:5601)
 
 The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. Here you will fill in the index pattern for each of the indexes generated in previous exercises.
 
-* 'ars-cdx' as your index pattern for CDX data (contains timestamped information)
-* 'ars-wat-text' as your index pattern for WAT text data (contains timestamped information)
-* 'ars-wane' as your index pattern for WANE data (contains timestamped information)
-* 'ars-wat-videos' as your index pattern for the video search data (no timestamp information)
+* `ars-cdx` as your index pattern for CDX data (contains timestamped information)
+* `ars-wat-text` as your index pattern for WAT text data (contains timestamped information)
+* `ars-wane` as your index pattern for WANE data (contains timestamped information)
+* `ars-wat-videos` as your index pattern for the video search data (no timestamp information)
 
-For the indexes that have time information, Kibana reads the Elasticsearch mapping to find the time fields - select one from the list. For our indexes, the time field is named "timestamp".
+For the indexes that have time information, Kibana reads the Elasticsearch mapping to find the time fields - select one from the list. For our indexes, the time field is named `timestamp`.
 
 Hit *Create*.
 
@@ -428,7 +428,7 @@ Exercise-0 illustrates for users how derivative datasets are generated from web 
 
 ##### Set Exercise-0 enviroment variables #####
 
-This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "pseudo-mode/install/" and "pseudo-mode/data/" sub-directories.
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the `pseudo-mode/install/` and `pseudo-mode/data/` sub-directories.
 
 You can update the paths in the setup-exercise-0-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
 
