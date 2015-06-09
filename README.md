@@ -514,7 +514,7 @@ To stop Hadoop services, run:
 $HADOOP_HOME/sbin/stop-dfs.sh
 ```
 
-> To restart Hadoop services when you want to run this exercise at a later time:
+> To start Hadoop services when you want to re-run this exercise at a later time:
 ```
 $HADOOP_HOME/sbin/start-dfs.sh
 ```
