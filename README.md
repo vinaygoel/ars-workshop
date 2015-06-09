@@ -1,11 +1,11 @@
 Archive Research Services Workshop
 ==================================
 
-This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by Internet Archive for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aarhus, Denmark on June 2015, the workshop is part of IA's ongoing efforts to support research use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
+This workshop is to provide researchers, developers, and general users an introduction to data mining and computational tools and methods for working with web archives. Originally created by `Internet Archive` for an in-person training event at the [RESAW conference](http://resaw.eu/events/international-conference-aarhus-june-2015/) "Web Archives as Scholarly Sources: Issues, Practices and Perspectives" in Aarhus, Denmark on June 2015, the workshop is part of IA's ongoing efforts to support research use of web archives that also include [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Archive-It+Research+Services) and other support services, collaborations, and partnerships with researchers, web scientists, and data engineering projects.
 
 The workshop assumes some basic familiarity with the command line ("Terminal") and is only intended for those working on Mac or Linux operating systems. For an introduction to using the command line, see [The Command Line Crash Course](http://cli.learncodethehardway.org/book/).
 
-The datasets you will be working with are CDX, which are used in providing access for replay through the Wayback Machine, and WAT, LGA, and WANE datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
+The datasets you will be working with are `CDX`, which are used in providing access for replay through the Wayback Machine, and `WAT`, `LGA`, and `WANE` datasets, which are derivative datasets Internet Archive makes available for research use as part of its [Archive-It Research Services](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available). For more information:
 
 * [CDX File Format](https://archive.org/web/researcher/cdx_file_format.php)
 * For information on research datasets, [see this wiki space](https://webarchive.jira.com/wiki/display/ARS/Datasets+Available)
@@ -32,7 +32,7 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 
 ##### Install Java #####
 
-Please check if you have Java 7 installed by running:
+Please check if you have `Java 7` installed by running:
 
 ```
 java -version
@@ -58,7 +58,7 @@ Running this command will set the Java Home but not produce a response and will 
 
 ##### Install Python #####
 
-Please check if you have Python installed by running:
+Please check if you have `Python` installed by running:
 
 ```
 python -V
@@ -81,7 +81,7 @@ curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py | python
 
 ##### Install Git #####
 
-Please check if you have Git installed by running:
+Please check if you have `Git` installed by running:
 
 ```
 git --version
@@ -106,7 +106,7 @@ Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Ge
 
 This will create a copy of the workshop repository on your computer.
 
-After *git* is installed, run:
+Run:
 
 ```
 git clone https://github.com/vinaygoel/ars-workshop.git
@@ -120,6 +120,12 @@ cd ars-workshop
 
 *NOTE: All exercises will be run from this directory!*
 
+To get the latest copy of the workshop, run:
+
+```
+git pull
+```
+
 ##### Download Libraries #####
 
 This will install about a dozen different libraries necessary for the workshop exercises. All libraries should download in under two minutes (depending on download speeds).
@@ -132,7 +138,7 @@ bin/download-libraries.sh
 
 ##### Set Exercises enviroment variables #####
 
-This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the "install/" and "data/" sub-directories.
+This step defines the directory paths to which tools, scripts and workshop datasets will be downloaded. Future scripts depend on these settings, so users are advised to update them or know how to access the default location. The default locations are the `install/` and `data/` sub-directories.
 
 You can update the paths in the setup-exercises-env.sh file by opening it in a text editor and defining a new path. For instance, the default values are:
 
@@ -230,9 +236,9 @@ Extract all fields from the CDX dataset and index them into Elasticsearch.
 pig -x local -p I_CDX_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/cdx/*cdx* -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
 ```
 
-The job creates an Elasticsearch index named "ars-cdx" containing the extracted CDX data.
+The job creates an Elasticsearch index named `ars-cdx` containing the extracted CDX data.
 
-Example query to search for captures of MIME type "video/mp4":
+Example query to search for captures of MIME type `video/mp4`:
 
 ```
 curl 'http://localhost:9200/ars-cdx/_search?q=mime:"video/mp4"&pretty=true'
@@ -240,7 +246,7 @@ curl 'http://localhost:9200/ars-cdx/_search?q=mime:"video/mp4"&pretty=true'
 
 ### Exercise-2: Store WAT text data into Elasticsearch ###
 
-From every HTML document, extract URL, timestamp, title text and meta text and index these fields into Elasticsearch.
+From every HTML document, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
 
 Option-1: About 30 minutes to process the Ferguson WAT data
 
@@ -254,7 +260,7 @@ Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WA
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
 ```
 
-The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-text" containing the extracted WAT text data.
+The job (either option-1 or option-2) creates an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
 
 Example query to search for captures containing the term "obama":
 
@@ -271,9 +277,9 @@ Extract named entities (Persons, Locations and Organizations) from the WANE data
 pig -x local -p I_WANE_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
 
-The job creates an Elasticsearch index named "ars-wane" containing the extracted WANE data.
+The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data.
 
-Example query to search for documents mentioning the person "obama":
+Example query to search for documents mentioning the person `obama`:
 
 ```
 curl 'http://localhost:9200/ars-wane/_search?q=persons:obama&pretty=true'
@@ -282,8 +288,8 @@ curl 'http://localhost:9200/ars-wane/_search?q=persons:obama&pretty=true'
 ### Exercise-4: Video Search using WAT data and Elasticsearch ###
 
 Steps involved:
-* Extract all URLs to video ("watch") pages from WATs
-* For each video URL, generate a list of unique terms (using "anchor text" of links), and the number of links to this URL
+* Extract all URLs to video (`watch`) pages from WATs
+* For each video URL, generate a list of unique terms (using `anchor text` of links), and the number of links to this URL
 * Store this data into Elasticsearch
 
 Option-1: About 30 minutes to run through these steps on the Ferguson WAT data
@@ -298,9 +304,9 @@ Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WA
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-The job (either option-1 or option-2) creates an Elasticsearch index named "ars-wat-videos"
+The job (either option-1 or option-2) creates an Elasticsearch index named `ars-wat-videos`
 
-Example query to search for videos with incoming links that contain the anchor term "police":
+Example query to search for videos with incoming links that contain the anchor term `police`:
 
 ```
 curl 'http://localhost:9200/ars-wat-videos/_search?q=anchor_term:police&pretty=true'
@@ -342,7 +348,7 @@ The Ferguson dataset WARCs do not contain IP Address information, so let's use t
 ```
 pig -x local -p I_WAT_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/sample-wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=$ARS_EXERCISES_RESULTS_DIR/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
-The above command generates a dataset with the following tab-separated fields: **Date**, **Latitude**, **Longitude** and **count**, where count is the number of occurrences of these co-ordinates in the data. 
+The above command generates a dataset with the following tab-separated fields: `Date`, `Latitude`, `Longitude` and `count`, where count is the number of occurrences of these co-ordinates in the data. 
 
 Next, let's convert this data into a CSV file for import into [CartoDB](https://cartodb.com/)
 
@@ -366,7 +372,7 @@ pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='
 
 ##### degree-distribution/url-indegree-outdegree
 
-The file(s) under this directory contain the following tab-separated fields: **URL**, **in-degree** and **out-degree**.
+The file(s) under this directory contain the following tab-separated fields: `URL`, `in-degree` and `out-degree`.
 The data is ordered in descending order of in-degree.
 
 To get the top 10 URLs with the highest in-degree:
@@ -376,7 +382,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/url-indegree-outdegree/part*
 
 #####degree-distribution/indegree-numurls
 
-The file(s) under this directory contain the following tab-separated fields: **in-degree** and **num_urls**, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
+The file(s) under this directory contain the following tab-separated fields: `in-degree` and `num_urls`, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
 
 To get the top 10 most common in-degrees:
 ```
@@ -385,7 +391,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/indegree-numurls/part*
 
 #####degree-distribution/outdegree-numurls
 
-The file(s) under this directory contain the following tab-separated fields: **out-degree** and **num_urls**, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
+The file(s) under this directory contain the following tab-separated fields: `out-degree` and `num_urls`, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
 
 To get the top 10 most common out-degrees:
 ```
@@ -394,7 +400,7 @@ head $ARS_EXERCISES_RESULTS_DIR/degree-distribution/outdegree-numurls/part*
 
 ### Exercise-8: Domain Graph using LGA data ###
 
-Generate a domain graph dataset that contains the following tab-separated fields: **source_domain**, **destination_domain** and **num_links**, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
+Generate a domain graph dataset that contains the following tab-separated fields: `source_domain`, `destination_domain` and `num_links`, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
 
 ```
 pig -x local -p I_LGA_DIR=$ARS_EXERCISES_DERIVATIVES_DIR/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=$ARS_EXERCISES_RESULTS_DIR/domain-graph/ pig/generate-domain-graph.pig
@@ -468,7 +474,7 @@ bin/setup-passphraseless-ssh.sh
 
 ##### Setup Hadoop and Pig in Pseudo Distributed Mode #####
 
-In these steps you will install a local version (aka "pseudo-distributed") of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts describe the jobs you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (your computer) the processes are the same as they they were running in a "distributed" environment (across many computers).
+In these steps you will install a local version (aka `pseudo-distributed`) of Hadoop and will also install Pig, which is a language for writing large-scale data analysis jobs that run on Hadoop. Simply put, Pig scripts describe the jobs you want to run and Hadoop manages running the job. Though you are running Hadoop on a single node (your computer) the processes are the same as they they were running in a "distributed" environment (across many computers).
 
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
@@ -490,12 +496,12 @@ The WARC is a little under 1GB in size and normally will take 2-4 minutes to dow
 
 ##### Build Derivatives in Hadoop #####
 
-In this step, you will build derivative datasets from this WARC using Hadoop. The datasets you will be generating are CDX, WAT, LGA and WANE datasets. You will also generate the Parsed text derivatives that are [Sequence Files](http://wiki.apache.org/hadoop/SequenceFile) containing page text and links extracted from html/text resources.
+In this step, you will build derivative datasets from this WARC using Hadoop. The datasets you will be generating are `CDX`, `WAT`, `LGA` and `WANE` datasets. You will also generate the `Parsed text` derivatives that are [Sequence Files](http://wiki.apache.org/hadoop/SequenceFile) containing page text and links extracted from html/text resources.
 
 What takes place when you run the following command to build these derivatives:
-* Uploads WARC files from Local directory to the Hadoop Distributed File System (HDFS)
+* Uploads WARC files from Local directory (`$LOCAL_WARC_DIR`) to the Hadoop Distributed File System (HDFS)
 * Runs Hadoop jobs to build the derivatives:
-* Downloads derivatives from HDFS to local directory
+* Downloads derivatives from HDFS to local directory (`$LOCAL_DERIVATIVE_DIR`)
 
 To build these derivatives, run:
 
@@ -503,7 +509,12 @@ To build these derivatives, run:
 bin/build-derivatives.sh $LOCAL_WARC_DIR $LOCAL_DERIVATIVE_DIR $HDFS_DERIVATIVE_DIR
 ```
 
-To stop all Hadoop services, run:
+To stop Hadoop services, run:
 ```
 $HADOOP_HOME/sbin/stop-dfs.sh
+```
+
+> To restart Hadoop services when you want to run this exercise at a later time:
+```
+$HADOOP_HOME/sbin/start-dfs.sh
 ```
