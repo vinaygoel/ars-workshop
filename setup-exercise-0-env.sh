@@ -5,6 +5,10 @@
 export PSEUDO_MODE_INSTALL_DIR=`pwd`/pseudo-mode/install
 export PSEUDO_MODE_DATA_DIR=`pwd`/pseudo-mode/data
 
+#Hadoop and pig versions (change as needed)
+export HADOOP_VERSION=hadoop-2.6.0
+export PIG_VERSION=pig-0.14.0
+
 # Please don't make any changes below this line
 
 export LOCAL_WARC_DIR=$PSEUDO_MODE_DATA_DIR/ars-exercise-0-warcs
@@ -21,8 +25,6 @@ export HADOOP_BIN=
 # env variables
 export HADOOP_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-hadoop-install
 export PIG_INSTALL_DIR=$PSEUDO_MODE_INSTALL_DIR/ars-pig-install
-export HADOOP_VERSION=hadoop-2.6.0
-export PIG_VERSION=pig-0.14.0
 export HADOOP_HOME=$HADOOP_INSTALL_DIR/$HADOOP_VERSION
 export PIG_HOME=$PIG_INSTALL_DIR/$PIG_VERSION
 
