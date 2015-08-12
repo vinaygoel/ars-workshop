@@ -479,7 +479,7 @@ In these steps you will install a local version (aka `pseudo-distributed`) of Ha
 Download and setup [Hadoop](http://hadoop.apache.org/) and [Pig](http://pig.apache.org/) - Pseudo-distributed mode:
 
 ```
-bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR
+bin/setup-hadoop-pseudo-mode.sh $HADOOP_INSTALL_DIR $PIG_INSTALL_DIR $HADOOP_VERSION $PIG_VERSION
 ```
 
 Hadoop should take 1-3 minutes normally to download and install (depending on your bandwidth). Hadoop includes a GUI for managing its file system (HDFS: Hadoop Distributed File System, and you can browse the [local web interface for the Hadoop Distributed File System](http://localhost:50070/explorer.html)

@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 set -e
 
-if [ $# != 2 ] ; then
-    echo "usage: $0 <HADOOP_INSTALL_DIR> <PIG_INSTALL_DIR>"
+if [ $# != 4 ] ; then
+    echo "usage: $0 <HADOOP_INSTALL_DIR> <PIG_INSTALL_DIR> <HADOOP_VERSION> <PIG_VERSION>"
     echo "HADOOP_INSTALL_DIR: Local directory where Hadoop will be installed"
     echo "PIG_INSTALL_DIR: Local directory where Pig will be installed"
+    echo "HADOOP_VERSION: Version of Hadoop to be installed (e.g. hadoop-2.6.0)"
+    echo "PIG_VERSION: Version of Pig to be installed (e.g. pig-0.14.0)"
     exit 1
 fi
 
 HADOOP_INSTALL_DIR=$1
 PIG_INSTALL_DIR=$2
+hadoop_version=$3
+pig_version=$4
 
 #hadoop install
 INSTALL_DIR=$HADOOP_INSTALL_DIR
 USER_NAME=`whoami`
-hadoop_version=hadoop-2.6.0
-hadoop_stable_mirror=http://mirror.nexcess.net/apache/hadoop/common/stable/$hadoop_version.tar.gz
+hadoop_stable_mirror=http://mirror.nexcess.net/apache/hadoop/common/$hadoop_version/$hadoop_version.tar.gz
 
 if [ -z "$JAVA_HOME" ]; then
     echo "Please set JAVA_HOME"
@@ -95,7 +98,6 @@ echo "MapReduce job test run completed"
 
 #pig install
 INSTALL_DIR=$PIG_INSTALL_DIR
-pig_version=pig-0.14.0
 pig_stable_mirror=http://apache.mirrors.hoobly.com/pig/$pig_version/$pig_version.tar.gz
 
 mkdir -p $INSTALL_DIR
