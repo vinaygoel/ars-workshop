@@ -7,7 +7,26 @@
 %default I_DATE_FILTER '^201.*$';
 %default O_DEGREE_DISTRIBUTION_DIR '';
 
-Graph = LOAD '$I_LGA_DIR/id.graph.gz/' as (src:chararray, timestamp:chararray, dests:{d:(dst:chararray)});
+%default LIB_DIR 'lib/';
+REGISTER '$LIB_DIR/elephant-bird-hadoop-compat-4.1.jar';
+REGISTER '$LIB_DIR/elephant-bird-pig-4.1.jar';
+DEFINE FROMJSON com.twitter.elephantbird.pig.piggybank.JsonStringToMap();
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
+REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
+
+-- Load LGA data
+Graph = LOAD '$I_LGA_DIR/id.graph.gz/' as (value: chararray);
+Graph = FOREACH Graph GENERATE FROMJSON(value) AS m:[];
+Graph = FOREACH Graph GENERATE m#'id'           AS src:chararray,
+                               m#'timestamp'    AS timestamp:chararray,
+                               m#'outlink_ids'  AS outlink_ids_array:chararray;
+Graph = FOREACH Graph GENERATE src, timestamp, derivativeUtils.generateBagFromArray(outlink_ids_array) as dests:{d:(dst:chararray)};
+
+IdMap = LOAD '$I_LGA_DIR/id.map.gz/' as (value: chararray);
+IdMap = FOREACH IdMap GENERATE FROMJSON(value) AS m:[];
+IdMap = FOREACH IdMap GENERATE m#'id'           AS id:chararray,
+                               m#'url'          AS orig_url:chararray,
+                               m#'surt_url'     AS surt_url:chararray;
 
 --filter out timestamps as needed.
 Graph = FILTER Graph BY timestamp matches '$I_DATE_FILTER';
@@ -26,9 +45,7 @@ In = FOREACH In {
 		GENERATE group as id, COUNT(Links) as numInLinks:long;
 	};
 
-IdMap = LOAD '$I_LGA_DIR/id.map.gz/' as (id:chararray, url:chararray, orig_url:chararray);
 IdMap = FOREACH IdMap GENERATE id, orig_url;
-
 IdMapWithIn = Join IdMap BY id left, In BY id;
 IdMapWithIn = FOREACH IdMapWithIn GENERATE IdMap::id as id, IdMap::orig_url as orig_url, (In::numInLinks is null ? 0 : In::numInLinks) as indegree;
 
