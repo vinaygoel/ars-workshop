@@ -6,6 +6,7 @@
 %default I_CDX_DATA_DIR '';
 %default O_GRAPH_DATA_DIR '';
 
+%default LIB_DIR 'lib/';
 SET mapred.max.map.failures.percent 10;
 SET mapred.reduce.slowstart.completed.maps 0.9
 
@@ -13,10 +14,8 @@ REGISTER lib/ia-porky-jar-with-dependencies.jar;
 REGISTER lib/datafu-0.0.10.jar;
 DEFINE MD5 datafu.pig.hash.MD5();
 
---REGISTER lib/getOrigTsMimeResDigestFileNameOffsetFromCdxLine.py using jython as CDXHELPER;
-
---REGISTER lib/parquet-pig.jar;
---SET parquet.compression gzip;
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
+REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 
 SET mapreduce.job.queuename ait;
 SET pig.splitCombination 'false';
@@ -183,6 +182,9 @@ IdChecksumLinks = DISTINCT IdChecksumLinks;
 Joined = Join IdTsChecksum BY (id,checksum), IdChecksumLinks BY (id,checksum);
 ExpandedIDGraph = FOREACH Joined GENERATE IdTsChecksum::id as id, IdTsChecksum::ts as ts, IdChecksumLinks::links as links;
 ExpandedIDGraph = DISTINCT ExpandedIDGraph;
+
+IDMapToStore = FOREACH IDMapToStore GENERATE derivativeUtils.LgaIdMapWriter(id, origUrl, url);
+ExpandedIDGraph = FOREACH ExpandedIDGraph GENERATE derivativeUtils.LgaIdGraphWriter(id, ts, links);
 
 STORE IDMapToStore into '$O_GRAPH_DATA_DIR/id.map.gz';
 STORE ExpandedIDGraph into '$O_GRAPH_DATA_DIR/id.graph.gz';

@@ -6,14 +6,29 @@
 %default I_DATE_FILTER '^201.*$';
 %default O_DOMAIN_GRAPH_DIR '';
 %default LIB_DIR 'lib/';
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
+REGISTER '$LIB_DIR/elephant-bird-hadoop-compat-4.1.jar';
+REGISTER '$LIB_DIR/elephant-bird-pig-4.1.jar';
+DEFINE FROMJSON com.twitter.elephantbird.pig.piggybank.JsonStringToMap();
 REGISTER lib/ia-porky-jar-with-dependencies.jar;
 DEFINE DOMAIN org.archive.porky.ExtractTopPrivateDomainFromHostNameUDF();
 
-IDMap = LOAD '$I_LGA_DIR/id.map.gz/' as (id:chararray, url:chararray);
-Graph = LOAD '$I_LGA_DIR/id.graph.gz/' as (src:chararray, timestamp:chararray, dests:{dest:(dst:chararray)});
+-- Load LGA data
+Graph = LOAD '$I_LGA_DIR/id.graph.gz/' as (value: chararray);
+Graph = FOREACH Graph GENERATE FROMJSON(value) AS m:[];
+Graph = FOREACH Graph GENERATE m#'id'           AS src:chararray,
+                               m#'timestamp'    AS timestamp:chararray,
+                               m#'outlink_ids'  AS outlink_ids_array:chararray;
+Graph = FOREACH Graph GENERATE src, timestamp, derivativeUtils.generateBagFromArray(outlink_ids_array) as dests:{dest:(dst:chararray)};
 
-HostIdMap = FOREACH IDMap GENERATE derivativeUtils.getHostFromSurtUrl(url) as host, id;
+IdMap = LOAD '$I_LGA_DIR/id.map.gz/' as (value: chararray);
+IdMap = FOREACH IdMap GENERATE FROMJSON(value) AS m:[];
+IdMap = FOREACH IdMap GENERATE m#'id'           AS id:chararray,
+                               m#'url'          AS orig_url:chararray,
+                               m#'surt_url'     AS surt_url:chararray;
+
+HostIdMap = FOREACH IdMap GENERATE derivativeUtils.getHostFromSurtUrl(surt_url) as host, id;
 HostIdMap = FILTER HostIdMap BY host is not null and host != '';
 
 -- top domains

@@ -8,11 +8,14 @@
 %default O_ENTITIES_DIR '/tmp/ent-8';
 %default I_URL_PREFIX_FILTER '^.*$';
 %default I_NER_CLASSIFIER_FILE '/tmp/hadoop/cache/english.all.3class.distsim.crf.ser.gz';
+%default LIB_DIR 'lib/';
 
 SET pig.splitCombination 'false';
 SET mapred.max.map.failures.percent 10;
 SET mapred.reduce.slowstart.completed.maps 0.9
 
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
+REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER lib/ia-porky-jar-with-dependencies.jar;
 REGISTER lib/tutorial.jar;
 REGISTER lib/json-simple-1.1.1.jar;
@@ -29,6 +32,7 @@ DEFINE NER3CLASS org.archive.porky.NER3ClassUDF('$I_NER_CLASSIFIER_FILE');
 
 -- Load the metadata from the parsed data, which is JSON strings stored in a Hadoop SequenceFile.
 Meta  = LOAD '$I_PARSED_DATA_DIR' USING SequenceFileLoader() AS (key:chararray, value:chararray);
+
 
 -- Convert the JSON strings into Pig Map objects.
 Meta = FOREACH Meta GENERATE FROMJSON(value) AS m:[];
@@ -58,6 +62,6 @@ Meta = FILTER Meta BY not src matches '.*robots.txt$';
 Meta = FILTER Meta BY src matches '$I_URL_PREFIX_FILTER';
 
 Entities = FOREACH Meta GENERATE src as url, date, digest, NER3CLASS(content) as entityString;
-
-STORE Entities into '$O_ENTITIES_DIR';  
+Wane = FOREACH Entities GENERATE derivativeUtils.WaneWriter(url, date, digest, entityString);
+STORE Wane into '$O_ENTITIES_DIR';  
 

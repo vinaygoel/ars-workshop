@@ -21,6 +21,7 @@ libraryNames=(
        'piggybank.jar' #https://cwiki.apache.org/confluence/display/PIG/PiggyBank
        'tutorial.jar' #https://cwiki.apache.org/confluence/display/PIG/PigTutorial
        'jbs.jar' #https://github.com/internetarchive/jbs
+       'jyson-1.0.2.zip' #http://opensource.xhaus.com/attachments/download/3/jyson-1.0.2.zip
 )       
 
 cd $LIB_DIR
@@ -33,6 +34,8 @@ for jar in ${libraryNames[@]}; do
       exit 1
    fi
 done
+
+unzip jyson-1.0.2.zip
 
 cacheFileNames=(
        'GeoLiteCity.dat' #http://dev.maxmind.com/geoip/legacy/geolite/

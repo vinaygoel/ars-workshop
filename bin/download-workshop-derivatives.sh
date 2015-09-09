@@ -14,8 +14,8 @@ downloadPath="https://archive.org/~vinay/archive-analysis/datasets/"
 # derivative datasets to download
 derivative_names=(
      'cdx-ferguson-youtube-crawl.tar.gz'
-     'lga-ferguson-youtube-crawl.tar.gz'
-     'wane-ferguson-youtube-crawl.tar.gz'
+     'lga-ferguson-youtube-crawl-v2.tar.gz'
+     'wane-ferguson-youtube-crawl-v2.tar.gz'
      'wat-ferguson-youtube-crawl.tar.gz'
      'wat-sample-charlie-hebdo-crawl.tar.gz'
    )
@@ -41,4 +41,3 @@ done
 echo "==========================================================="
 echo "Workshop derivatives available under $ARS_DERIVATIVES_DIR/"
 echo "==========================================================="
-
