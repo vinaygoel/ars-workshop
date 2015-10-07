@@ -10,6 +10,7 @@
 %default CACHE_DIR 'cache/';
 %default I_STOP_WORDS_FILE 'stop-words.txt';
 
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/tutorial.jar';
 REGISTER '$LIB_DIR/piggybank.jar';

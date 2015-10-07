@@ -14,6 +14,7 @@ SET mapred.max.map.failures.percent 10;
 
 DEFINE iplookup `ipwrapper.sh` SHIP ('$CACHE_DIR/ipwrapper.sh') cache('$CACHE_DIR/GeoLiteCity.dat#GeoLiteCity.dat');
 
+REGISTER '$LIB_DIR/jyson-1.0.2/lib/jyson-1.0.2.jar';
 REGISTER '$LIB_DIR/derivativeUtils.py' using jython as derivativeUtils;
 REGISTER '$LIB_DIR/elasticsearch-hadoop-2.0.2.jar';
 REGISTER lib/ia-porky-jar-with-dependencies.jar;
