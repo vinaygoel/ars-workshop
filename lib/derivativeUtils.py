@@ -65,9 +65,11 @@ def collectBagElements(bag, separator=', '):
 
 @outputSchema('links:bag{t:(link:chararray)}')
 def generateBagFromArray(arrayString):
-    arrayString = arrayString[1:-1]
-    bag = [ (c,) for c in arrayString.split(',') ]
-    return bag
+    if arrayString is not None:
+        arrayString = arrayString[1:-1]
+        bag = [ (c,) for c in arrayString.split(',') ]
+        return bag
+    return None
 
 def parse_entity_map(entity_string):
      entity_string = entity_string.replace('{','')

@@ -32,8 +32,8 @@ Lines = FOREACH Lines GENERATE url,
 Lines = FOREACH Lines GENERATE url,
                                ToDate(timestamp,'yyyyMMddHHmmss') as timestamp,
                                digest,
-                               derivativeUtils.generateBagFromArray(m#'PERSON') as persons,
-                               derivativeUtils.generateBagFromArray(m#'ORGANIZATION') as organizations,
-                               derivativeUtils.generateBagFromArray(m#'LOCATION') as locations;
+                               derivativeUtils.generateBagFromArray(m#'persons') as persons,
+                               derivativeUtils.generateBagFromArray(m#'organizations') as organizations,
+                               derivativeUtils.generateBagFromArray(m#'locations') as locations;
 
 STORE Lines INTO '$O_ES_INDEX_DIR' USING org.elasticsearch.hadoop.pig.EsStorage();
