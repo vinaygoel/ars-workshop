@@ -3,13 +3,13 @@ Archive Research Services Workshop - Notebooks Edition
 
 ## Initial Setup
 
-Please make sure that you've run through steps 1-7 of the [Initial Setup](https://github.com/vinaygoel/ars-workshop#initial-setup)
+Please make sure that you've run through steps 3-7 of the [Initial Setup](https://github.com/vinaygoel/ars-workshop#initial-setup)
 
-### Install Anaconda
+#### Install Anaconda
 
 Follow these [instructions for installing Anaconda](http://docs.continuum.io/anaconda/install)
 
-### Create the notebook environment
+#### Create the notebook environment
 ```
 ./notebooks/create-environment.sh
 ```
