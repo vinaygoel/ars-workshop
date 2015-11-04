@@ -7,8 +7,7 @@ Please make sure that you've run through steps 3-7 of the [Initial Setup](https:
 
 #### Install Anaconda
 
-Follow these [instructions for installing Anaconda](http://docs.continuum.io/anaconda/install). 
-(make sure that location of the Anaconda installation directory has been added to the bash PATH)
+Follow these [instructions for installing Anaconda](http://docs.continuum.io/anaconda/install) (make sure that location of the Anaconda installation directory has been added to the bash PATH)
 
 #### Create the notebook environment
 ```
