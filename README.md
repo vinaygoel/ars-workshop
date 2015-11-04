@@ -170,7 +170,7 @@ Running this command will set the paths but will not produce a response and will
 
 Download derivatives (`WAT`, `WANE`, `LGA` and `CDX`) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
 
-Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) and [Occupy Movement](https://archive-it.org/collections/2950) for a quick run-through of the WAT exercises.
+Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) and [Occupy Movement Collection](https://archive-it.org/collections/2950) for a quick run-through of the WAT exercises.
 
 ```
 bin/download-workshop-derivatives.sh $ARS_EXERCISES_DERIVATIVES_DIR
