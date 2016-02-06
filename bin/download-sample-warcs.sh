@@ -7,7 +7,10 @@ if [ $# != 1 ] ; then
     exit 1
 fi
 
+BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 LOCAL_WARC_DIR=$1
+
+source $BIN_DIR/functions.sh
 
 downloadPath="https://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/"
 
@@ -26,14 +29,9 @@ cd $LOCAL_WARC_DIR/
 
 #download
 for warc in ${warcNames[@]}; do
-   curl -O $downloadPath/$warc
-   if [ $? -ne 0 ]; then
-      echo "Unable to download WARC from $downloadPath/$warc"
-      exit 3
-   fi
+   downloadFile $downloadPath $warc
 done
 
 echo "==========================================================="
 echo "Sample WARC(s) downloaded to $LOCAL_WARC_DIR/"
 echo "==========================================================="
-
