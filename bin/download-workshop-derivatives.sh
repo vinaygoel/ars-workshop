@@ -7,7 +7,10 @@ if [ $# != 1 ] ; then
     exit 1
 fi
 
+BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 ARS_DERIVATIVES_DIR=$1
+
+source $BIN_DIR/functions.sh
 
 downloadPath="https://archive.org/~vinay/archive-analysis/datasets/"
 
@@ -31,11 +34,7 @@ cd $ARS_DERIVATIVES_DIR/
 
 #download and unpack
 for derivative_tar_ball in ${derivative_names[@]}; do
-   curl -O $downloadPath/$derivative_tar_ball
-   if [ $? -ne 0 ]; then
-      echo "Unable to download file from $downloadPath/$derivative_tar_ball"
-      exit 3
-   fi
+   downloadFile $downloadPath $derivative_tar_ball
    tar xfz $derivative_tar_ball
 done
 
