@@ -271,6 +271,12 @@ curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
 
 ### Exercise-3: Store WANE data into Elasticsearch ###
 
+Create an index mapping for the WANE data (to use keyword analyzer)
+
+```
+curl -XPOST http://localhost:9200/ars-wane -d @ars-es-mappings/ars-wane-mapping.json
+```
+
 Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
 
 ```
