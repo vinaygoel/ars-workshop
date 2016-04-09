@@ -7,7 +7,8 @@ Please make sure that you've run through steps 3-7 of the [Initial Setup](https:
 
 #### Install Anaconda
 
-Follow these [instructions for installing Anaconda](http://docs.continuum.io/anaconda/install) (make sure that location of the Anaconda installation directory has been added to the bash PATH)
+Follow these [instructions for installing Anaconda](http://docs.continuum.io/anaconda/install).
+Make sure that location of the Anaconda installation directory has been added to the bash PATH.
 
 You can test that Conda has been installed by running:
 ```
@@ -17,13 +18,11 @@ conda --version
 #### Create the notebook environment
 ```
 ./notebooks/create-environment.sh
-# the above command will also open up a window with a prompt to download the nltk corpus. 
-# Please download the corpus and then close the window to complete the creation of the notebook environment.
 ```
 
 ## IPython Notebooks
 
-You're now ready to start working with [IPython notebooks](https://ipython.org/ipython-doc/3/notebook/notebook.html)
+You're now ready to start working with [IPython notebooks](https://ipython.org/ipython-doc/3/notebook/notebook.html) and will only need to run the following commands in the future.
 
 To start, run
 ```
