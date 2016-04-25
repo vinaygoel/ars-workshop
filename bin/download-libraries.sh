@@ -7,6 +7,8 @@ CACHE_DIR=$BIN_DIR/../cache/
 mkdir -p $LIB_DIR
 mkdir -p $CACHE_DIR
 
+source $BIN_DIR/functions.sh
+
 downloadPath="https://archive.org/~vinay/archive-analysis/ia-libraries/hadoop-2.x/"
 libraryNames=(
        'webarchive-commons-jar-with-dependencies.jar' #https://github.com/internetarchive/webarchive-commons/tree/hadoop-2
@@ -22,17 +24,13 @@ libraryNames=(
        'tutorial.jar' #https://cwiki.apache.org/confluence/display/PIG/PigTutorial
        'jbs.jar' #https://github.com/internetarchive/jbs
        'jyson-1.0.2.zip' #http://opensource.xhaus.com/attachments/download/3/jyson-1.0.2.zip
-)       
+)
 
 cd $LIB_DIR
 
 #download
 for jar in ${libraryNames[@]}; do
-   curl -O $downloadPath/$jar
-   if [ $? -ne 0 ]; then
-      echo "Unable to download from $downloadPath/$jar"
-      exit 1
-   fi
+   downloadFile $downloadPath $jar
 done
 
 unzip jyson-1.0.2.zip
@@ -41,17 +39,13 @@ cacheFileNames=(
        'GeoLiteCity.dat' #http://dev.maxmind.com/geoip/legacy/geolite/
        'geo-pack.tgz'
        'stop-words.txt'
-)       
+)
 
 cd $CACHE_DIR
 
 #download
 for cacheFile in ${cacheFileNames[@]}; do
-   curl -O $downloadPath/$cacheFile
-   if [ $? -ne 0 ]; then
-      echo "Unable to download from $downloadPath/$cacheFile"
-      exit 1
-   fi
+   downloadFile $downloadPath $cacheFile
 done
 
 echo "==========================================================="
