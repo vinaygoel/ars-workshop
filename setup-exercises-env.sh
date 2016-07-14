@@ -1,10 +1,13 @@
 # Comment lines begin with a '#' symbol
 
+
 # installation and data directories (change as needed)
 export ARS_EXERCISES_INSTALL_DIR=`pwd`/install
 export ARS_EXERCISES_DATA_DIR=`pwd`/data
 
 # Please don't make any changes below this line
+
+export ARS_WORKSHOP_DIR=`pwd`
 
 # data directories
 export ARS_EXERCISES_DERIVATIVES_DIR=$ARS_EXERCISES_DATA_DIR/ars-exercises-derivatives

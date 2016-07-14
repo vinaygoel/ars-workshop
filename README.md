@@ -20,14 +20,15 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 1. [Install Java](#install-java)
 2. [Install Python](#install-python)
 3. [Install Git](#install-git)
-4. [Download Workshop](#download-workshop)
-5. [Download Libraries](#download-libraries)
-6. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
-7. [Download Workshop Derivatives](#download-workshop-derivatives)
-8. [Setup Pig](#setup-pig)
-9. [Setup Kibana](#setup-kibana)
-10. [Setup Elasticsearch](#setup-elasticsearch)
-11. [Start Elasticsearch](#start-elasticsearch)
+4. [Install Docker](#install-docker)
+5. [Download Workshop](#download-workshop)
+6. [Download Libraries](#download-libraries)
+7. [Set Exercises enviroment variables](#set-exercises-enviroment-variables)
+8. [Download Workshop Derivatives](#download-workshop-derivatives)
+9. [Setup Pig](#setup-pig)
+10. [Setup Kibana](#setup-kibana)
+11. [Setup Elasticsearch](#setup-elasticsearch)
+12. [Start Elasticsearch](#start-elasticsearch)
 
 
 ##### Install Java #####
@@ -101,6 +102,15 @@ OS X
 Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac) on Mac.
 ```
 
+##### Install Docker #####
+
+[Install Docker](https://docs.docker.com/engine/installation/) by following specific instructions for your OS.
+
+Please check if you have `docker` installed by running:
+
+```
+docker -v
+```
 
 ##### Download Workshop #####
 
@@ -417,6 +427,19 @@ Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for im
 ```
 cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* | ./bin/generate-gexf.py > $ARS_EXERCISES_RESULTS_DIR/domain-graph.gexf
 ```
+
+
+## Jupyter Notebooks
+
+You can analyze ARS data with [Jupyter notebooks](http://jupyter.org/)
+
+Start the ARS Jupyter notebook container as a daemon process:
+
+```
+docker run -i -t -d -p 8888:8888 -v $ARS_WORKSHOP_DIR:/ars-workshop -v $ARS_EXERCISES_DATA_DIR:/ars-data vinaygoel/ars-docker-notebooks
+```
+
+You can now open up the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open your notebook of choice. The datasets will be available under `/ars-data`
 
 
 ## Appendix
