@@ -431,15 +431,15 @@ cat $ARS_EXERCISES_RESULTS_DIR/domain-graph/part* | ./bin/generate-gexf.py > $AR
 
 ## Jupyter Notebooks
 
-You can analyze ARS data with [Jupyter notebooks](http://jupyter.org/)
+You can also analyze ARS data using [Jupyter notebooks](http://jupyter.org/)
 
-Start the ARS Jupyter notebook container as a daemon process:
+To start the ARS Jupyter notebook docker container, run:
 
 ```
 docker run -i -t -d -p 8888:8888 -v $ARS_WORKSHOP_DIR:/ars-workshop -v $ARS_EXERCISES_DATA_DIR:/ars-data vinaygoel/ars-docker-notebooks
 ```
 
-You can now open up the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open your notebook of choice. The datasets will be available under `/ars-data`
+You can now access the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open your notebook of choice. The datasets will be available under `/ars-data`
 
 
 ## Appendix
