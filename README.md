@@ -96,7 +96,7 @@ docker run -i -t -p 9200:9200 -p 5601:5601 -p 8888:8888 -v `pwd`:/ars-workshop -
 
 The above command mounts the project and data directories so that any changes made by you will be saved even after the container is killed.
 
-Next, start up services like Elasticsearch, Kibana etc. by running:
+Next, start up the [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services by running:
 ```
 source /set-environment.sh && /start-services.sh && cd /ars-workshop
 ```
@@ -195,7 +195,7 @@ curl 'http://localhost:9200/ars-wat-videos/_search?q=anchor_term:police&pretty=t
 
 ### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
 
-Access the [Kibana](https://www.elastic.co/products/kibana) [interface](http://localhost:5601), a web frontend service to analyze data stored in Elasticsearch:
+Access the [Kibana interface](http://localhost:5601), a web frontend service to analyze data stored in Elasticsearch:
 
 The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. Here you will fill in the index pattern for each of the indexes generated in previous exercises.
 
@@ -287,6 +287,6 @@ cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/re
 
 ### Exercise-9: Analyze WAT data using Jupyter Notebooks ###
 
-You can analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
+You can analyze ARS data with Python by accessing the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
 When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `data` folder in your current working directory.
