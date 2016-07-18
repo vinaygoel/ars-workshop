@@ -94,7 +94,7 @@ You will run the following exercises in an ARS Docker container. To start the co
 docker run -i -t -p 9200:9200 -p 5601:5601 -p 8888:8888 -v `pwd`:/ars-workshop -v `pwd`/data:/ars-data -v `pwd`/elasticsearch-index-data:/ars-elasticsearch-index-data vinaygoel/ars-docker-notebooks
 ```
 
-The above command "mounts" the project and data directories so that any changes made by you will be saved enough after the container is killed.
+The above command mounts the project and data directories so that any changes made by you will be saved even after the container is killed.
 
 Next, start up services like Elasticsearch, Kibana etc. by running:
 ```
