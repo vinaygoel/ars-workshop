@@ -287,4 +287,4 @@ cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/re
 
 You can analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
-When you're done with the exercises, type in `exit` in the terminal to quit the container.
+When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `data/` folder.
