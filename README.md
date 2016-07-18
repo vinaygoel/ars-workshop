@@ -94,9 +94,11 @@ You will run the following exercises in an ARS Docker container. To start the co
 docker run -i -t -p 9200:9200 -p 5601:5601 -p 8888:8888 -v `pwd`:/ars-workshop -v `pwd`/data:/ars-data -v `pwd`/elasticsearch-index-data:/ars-elasticsearch-index-data vinaygoel/ars-docker-notebooks
 ```
 
+The above command "mounts" the project and data directories so that any changes made by you will be saved enough after the container is killed.
+
 Next, start up services like Elasticsearch, Kibana etc. by running:
 ```
-source /set-environment.sh && /start-services.sh
+source /set-environment.sh && /start-services.sh && cd /ars-workshop
 ```
 
 You are now ready!
@@ -287,4 +289,4 @@ cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/re
 
 You can analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
-When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `data/` folder.
+When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `data` folder in your current working directory.
