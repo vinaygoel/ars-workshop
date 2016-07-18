@@ -64,10 +64,10 @@ Run:
 git clone https://github.com/vinaygoel/ars-workshop.git
 ```
 
-Then "change directory" into the ars-workshop directory, and download software libraries needed for the workshop:
+Then "change directory" into the ars-workshop directory, and download software libraries and the docker container needed for the workshop:
 
 ```
-cd ars-workshop && bin/download-libraries.sh
+cd ars-workshop && bin/download-libraries.sh && docker pull vinaygoel/ars-docker-notebooks
 ```
 
 ##### Download Workshop Derivatives #####
@@ -87,6 +87,19 @@ You will use these derivative datasets for the upcoming exercises.
 
 ==================================
 ## Exercises
+
+You will run the following exercises in an ARS Docker container. To start the container, run the following from the `ars-workshop` directory:
+
+```
+docker run -i -t -p 9200:9200 -p 5601:5601 -p 8888:8888 -v `pwd`:/ars-workshop -v `pwd`/data:/ars-data -v `pwd`/elasticsearch-index-data:/ars-elasticsearch-index-data vinaygoel/ars-docker-notebooks
+```
+
+Next, start up services like Elasticsearch, Kibana etc. by running:
+```
+source /set-environment.sh && /start-services.sh
+```
+
+You are now ready!
 
 ### Exercise-1: Store CDX data into Elasticsearch ###
 
@@ -274,5 +287,4 @@ cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/re
 
 You can analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
-
-When done with the exercises, type in `exit` in the terminal.
+When you're done with the exercises, type in `exit` in the terminal to quit the container.
