@@ -197,8 +197,6 @@ Now that you've configured an index pattern, you can click on the *Discover* tab
 
 For more information, see the [Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
 
-When you're done exploring, stop the Kibana service by typing Ctrl+c in the terminal.
-
 ### Exercise-6: GeoIP using WAT data ###
 
 In this exercise, we will extract IP addresses and generate latitude and longitude information using a dataset available through [MaxMind](http://dev.maxmind.com/geoip/)
@@ -272,7 +270,9 @@ Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for im
 cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/results/domain-graph.gexf
 ```
 
-## Jupyter Notebooks
+### Exercise-9: Analyze WAT data using Jupyter Notebooks ###
 
-You can also analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open your notebook of choice. The datasets will be available under `/ars-data`
+You can analyze ARS data with Python by accessing the [Jupyter](http://jupyter.org/) [notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
+
+When done with the exercises, type in `exit` in the terminal.
