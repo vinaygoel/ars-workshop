@@ -152,11 +152,13 @@ curl -XPOST http://localhost:9200/ars-wane -d @ars-es-mappings/ars-wane-mapping.
 
 Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
 
+Let's run this exercise for 1M records (`wane-sample`) from the Ferguson WANE dataset.
+
 ```
-pig -x local -p I_WANE_DIR=/ars-data/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
+pig -x local -p I_WANE_DIR=/ars-data/wane-sample/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
 
-The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data. This will take some time as the Feruson WANE dataset is fairly large.
+The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data.
 
 
 ### Exercise-4: Video Search using WAT data and Elasticsearch ###

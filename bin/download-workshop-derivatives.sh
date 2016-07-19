@@ -19,6 +19,7 @@ derivative_names=(
      'cdx-ferguson-youtube-crawl.tar.gz'
      'lga-ferguson-youtube-crawl-v2.tar.gz'
      'wane-ferguson-youtube-crawl-v2.tar.gz'
+     'wane-sample-ferguson-youtube-crawl-v2.tar.gz'
      'wat-ferguson-youtube-crawl.tar.gz'
      'wat-sample-charlie-hebdo-crawl.tar.gz'
      'wat-sample-occupy-crawl.tar.gz'
