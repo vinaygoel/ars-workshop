@@ -156,7 +156,7 @@ Extract named entities (Persons, Locations and Organizations) from the WANE data
 pig -x local -p I_WANE_DIR=/ars-data/wane/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
 ```
 
-The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data.
+The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data. This will take some time as the Feruson WANE dataset is fairly large.
 
 Example query to search for documents mentioning the person `obama`:
 
