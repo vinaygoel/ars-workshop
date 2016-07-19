@@ -158,11 +158,6 @@ pig -x local -p I_WANE_DIR=/ars-data/wane/ -p O_ES_INDEX_DIR=ars-wane/entities p
 
 The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data. This will take some time as the Feruson WANE dataset is fairly large.
 
-Example query to search for documents mentioning the person `obama`:
-
-```
-curl 'http://localhost:9200/ars-wane/_search?q=persons:obama&pretty=true'
-```
 
 ### Exercise-4: Video Search using WAT data and Elasticsearch ###
 
