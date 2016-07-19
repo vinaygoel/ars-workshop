@@ -68,7 +68,7 @@ Then "change directory" into the ars-workshop directory, and download software l
 cd ars-workshop && bin/download-libraries.sh
 ```
 
-Start the Docker Daemon and download the ARS docker container by running:
+Start the Docker Daemon, and then download the ARS docker container by running:
 ```
 docker pull vinaygoel/ars-docker-notebooks
 ```
