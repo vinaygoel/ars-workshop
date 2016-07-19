@@ -144,15 +144,15 @@ curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
 
 ### Exercise-3: Store WANE data into Elasticsearch ###
 
-Create an index mapping for the WANE data (to use keyword analyzer)
+Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
+
+First, create an index mapping for the WANE data (to use keyword analyzer)
 
 ```
 curl -XPOST http://localhost:9200/ars-wane -d @ars-es-mappings/ars-wane-mapping.json
 ```
 
-Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
-
-Let's run this exercise for 1M records (`wane-sample`) from the Ferguson WANE dataset.
+Let's run this exercise for a sample 1 Million records (`wane-sample`) from the Ferguson WANE dataset.
 
 ```
 pig -x local -p I_WANE_DIR=/ars-data/wane-sample/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
