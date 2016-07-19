@@ -62,10 +62,15 @@ Run:
 git clone https://github.com/vinaygoel/ars-workshop.git
 ```
 
-Then "change directory" into the ars-workshop directory, and download software libraries and the docker container needed for the workshop:
+Then "change directory" into the ars-workshop directory, and download software libraries needed for the workshop:
 
 ```
-cd ars-workshop && bin/download-libraries.sh && docker pull vinaygoel/ars-docker-notebooks
+cd ars-workshop && bin/download-libraries.sh
+```
+
+Start the Docker Daemon and download the ARS docker container by running:
+```
+docker pull vinaygoel/ars-docker-notebooks
 ```
 
 ##### Download Workshop Derivatives #####
