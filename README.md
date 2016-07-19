@@ -40,9 +40,7 @@ sudo apt-get install git
 
 OS X
 
-```
 Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac) on Mac.
-```
 
 ##### Install Docker #####
 
