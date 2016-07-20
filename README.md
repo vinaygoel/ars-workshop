@@ -32,15 +32,12 @@ Install and Run Docker for your OS ([Mac](https://docs.docker.com/docker-for-mac
 
 ##### Download Workshop #####
 
-This will create a copy of the workshop repository on your computer.
-
-Run:
-
+Create a copy of the workshop repository on your computer by running:
 ```
 git clone https://github.com/vinaygoel/ars-workshop.git
 ```
 
-Then "change directory" into the ars-workshop directory, and download software libraries needed for the workshop:
+Then "change directory" into the `ars-workshop` directory, and download software libraries needed for the workshop:
 
 ```
 cd ars-workshop && bin/download-libraries.sh
