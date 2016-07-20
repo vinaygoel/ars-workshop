@@ -28,7 +28,7 @@ Install `Git` by following these [instructions](https://git-scm.com/book/en/v2/G
 
 ##### Install and Run Docker #####
 
-Install and Run Docker for [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) or [Linux](https://docs.docker.com/engine/installation/linux/ubuntulinux/) 
+Install and Run Docker for your OS ([Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) or [Linux](https://docs.docker.com/engine/installation/linux/ubuntulinux/)) 
 
 ##### Download Workshop #####
 
