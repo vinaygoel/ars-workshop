@@ -18,7 +18,7 @@ The datasets you will be working with are `CDX`, which are used in providing acc
 The Initial Setup ensures that users have installed the tools and libraries necessary for later exercises.
 
 1. [Install Git](#install-git)
-2. [Install Docker](#install-docker)
+2. [Install and Run Docker](#install-docker)
 3. [Download Workshop](#download-workshop)
 4. [Download Workshop Derivatives](#download-workshop-derivatives)
 
@@ -42,15 +42,9 @@ OS X
 
 Follow these instructions for [installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac) on Mac.
 
-##### Install Docker #####
+##### Install and Run Docker #####
 
-[Install Docker](https://docs.docker.com/engine/installation/) by following specific instructions for your OS.
-
-Please check if you have `docker` installed by running:
-
-```
-docker -v
-```
+Install and Run Docker for [Mac] (https://docs.docker.com/docker-for-mac/), Windows (https://docs.docker.com/docker-for-windows/) or [Linux](https://docs.docker.com/engine/installation/linux/ubuntulinux/) 
 
 ##### Download Workshop #####
 
