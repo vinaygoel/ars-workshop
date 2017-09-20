@@ -27,7 +27,10 @@ DEFINE FROMJSON org.archive.porky.FromJSON();
 DEFINE SequenceFileLoader org.archive.porky.SequenceFileLoader();
 
 -- Load the metadata from the parsed data, which is JSON strings stored in a Hadoop SequenceFile.
-Meta  = LOAD '$I_PARSED_DATA_DIR' USING SequenceFileLoader() AS (key:chararray, value:chararray);
+--Meta  = LOAD '$I_PARSED_DATA_DIR' USING SequenceFileLoader() AS (key:chararray, value:chararray);
+
+--non seq file 
+Meta  = LOAD '$I_PARSED_DATA_DIR'  AS (key:chararray, value:chararray);
 
 -- Convert the JSON strings into Pig Map objects.
 Meta = FOREACH Meta GENERATE FROMJSON(value) AS m:[];

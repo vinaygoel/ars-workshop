@@ -31,8 +31,10 @@ DEFINE SURTURL org.archive.porky.SurtUrlKey();
 DEFINE NER3CLASS org.archive.porky.NER3ClassUDF('$I_NER_CLASSIFIER_FILE');
 
 -- Load the metadata from the parsed data, which is JSON strings stored in a Hadoop SequenceFile.
-Meta  = LOAD '$I_PARSED_DATA_DIR' USING SequenceFileLoader() AS (key:chararray, value:chararray);
+--Meta  = LOAD '$I_PARSED_DATA_DIR' USING SequenceFileLoader() AS (key:chararray, value:chararray);
 
+--non seq file input
+Meta  = LOAD '$I_PARSED_DATA_DIR' AS (key:chararray, value:chararray);
 
 -- Convert the JSON strings into Pig Map objects.
 Meta = FOREACH Meta GENERATE FROMJSON(value) AS m:[];
