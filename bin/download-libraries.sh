@@ -24,6 +24,7 @@ libraryNames=(
        'tutorial.jar' #https://cwiki.apache.org/confluence/display/PIG/PigTutorial
        'jbs.jar' #https://github.com/internetarchive/jbs
        'jyson-1.0.2.zip' #http://opensource.xhaus.com/attachments/download/3/jyson-1.0.2.zip
+       'parse.tar.gz' #parse home for parsed text generation
 )
 
 cd $LIB_DIR
@@ -33,7 +34,8 @@ for jar in ${libraryNames[@]}; do
    downloadFile $downloadPath $jar
 done
 
-unzip jyson-1.0.2.zip
+unzip -o jyson-1.0.2.zip
+tar xf parse.tar.gz
 
 cacheFileNames=(
        'GeoLiteCity.dat' #http://dev.maxmind.com/geoip/legacy/geolite/
