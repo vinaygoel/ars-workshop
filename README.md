@@ -32,20 +32,11 @@ Install and Run Docker for your OS ([Mac](https://docs.docker.com/docker-for-mac
 
 ##### Download Workshop #####
 
-Create a copy of the workshop repository on your computer by running:
+Download workshop materials on your computer by running:
 ```
-git clone https://github.com/vinaygoel/ars-workshop.git
-```
-
-Then "change directory" into the `ars-workshop` directory, and download software libraries needed for the workshop:
-
-```
-cd ars-workshop && bin/download-libraries.sh
-```
-
-Download the ARS docker container by running:
-```
-docker pull vinaygoel/ars-docker-notebooks
+git clone https://github.com/vinaygoel/ars-workshop.git &&
+    cd ars-workshop && bin/download-libraries.sh &&
+    docker pull vinaygoel/ars-docker-notebooks
 ```
 
 ##### Download Workshop Derivatives #####
@@ -69,7 +60,11 @@ You will use these derivative datasets for the upcoming exercises.
 You will run the following exercises in an ARS Docker container. To start the container, run the following from the `ars-workshop` directory:
 
 ```
-docker run -i -t -p 9200:9200 -p 5601:5601 -p 8888:8888 -v `pwd`:/ars-workshop -v `pwd`/data:/ars-data -v `pwd`/elasticsearch-index-data:/ars-elasticsearch-index-data vinaygoel/ars-docker-notebooks
+#set path_to_data_directory to the location of your data directory
+path_to_data_directory=`pwd`/data
+
+bin/start-container.sh ${path_to_data_directory}
+
 ```
 
 The above command mounts the project and data directories so that any changes made by you will be saved even after the container is killed.
