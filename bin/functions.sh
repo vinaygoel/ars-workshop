@@ -23,7 +23,7 @@ downloadFile () {
       # get remote filesize
       remote_filesize=$(curl -sI $urlPath/$filename | grep Content-Length | awk '{print $2}')
       remote_filesize_no_whitespace="$(echo -e "${remote_filesize}" | tr -d '[[:space:]]')"
-      local_filesize=$(stat --printf="%s" "$filename")
+      local_filesize=$(ls -l "$filename" | awk '{print $5}')
 
       # compare file sizes
       if [ "$remote_filesize_no_whitespace" = "$local_filesize" ]; then
