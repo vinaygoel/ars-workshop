@@ -45,11 +45,11 @@ docker pull vinaygoel/ars-docker-notebooks
 
 Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. Derivatives and results will be generated under this `ars-data` directory.
 
-You will run the workshop exercises inside a Docker container. To start the ARS container along with the packaged [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services, run:
-
+You will run the workshop exercises inside a Docker container. To start the ARS container, run:
 ```
 export path_to_ars_data_directory=<path/to/ars/data/directory>
 bin/start-container.sh ${path_to_ars_data_directory}
+source /set-environment.sh
 ```
 
 You are now all set to run through the exercises!
@@ -194,6 +194,10 @@ cat /ars-data/results/domain-graph/part* | /ars-workshop/bin/generate-gexf.py > 
 
 ### Exercise-7: Analyze WAT data using Jupyter Notebooks ###
 
-You can analyze ARS data with Python by accessing the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
+Start a notebook instance by running:
+```
+/ars-workshop/bin/start-jupyter-notebook.sh
+```
+Enter the Jupyter notebook URL returned by the command in your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/derivatives/wat`
 
-When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `data` folder in your current working directory.
+When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `ars-data` folder.

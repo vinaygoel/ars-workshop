@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
+
 if [ $# != 2 ] ; then
     echo "usage: $0 <LOCAL_WARC_DIR> <LOCAL_DERIVATIVE_DIR>"
     echo "LOCAL_WARC_DIR: Local directory where WARCs are stored"

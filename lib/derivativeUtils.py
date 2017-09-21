@@ -67,7 +67,7 @@ def collectBagElements(bag, separator=', '):
 def generateBagFromArray(arrayString):
     if arrayString is not None:
         arrayString = arrayString[1:-1]
-        bag = [ (c,) for c in arrayString.split(',') ]
+        bag = [ (c,) for c in arrayString.split(',')  ]
         return bag
     return None
 
