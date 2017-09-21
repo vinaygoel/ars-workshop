@@ -193,7 +193,7 @@ cd /ars-workshop/ && pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_D
 Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi](http://gephi.github.io)
 
 ```
-cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/results/domain-graph.gexf
+cat /ars-data/results/domain-graph/part* | /ars-workshop/bin/generate-gexf.py > /ars-data/results/domain-graph.gexf
 ```
 
 ### Exercise-7: Analyze WAT data using Jupyter Notebooks ###
