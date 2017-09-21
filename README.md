@@ -123,8 +123,6 @@ For more information, see the [Kibana 4 Tutorial](https://www.timroes.de/2015/02
 
 In this exercise, we will extract IP addresses and generate latitude and longitude information using a dataset available through [MaxMind](http://dev.maxmind.com/geoip/)
 
-The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.
-
 ```
 cd /ars-workshop/ && pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=/ars-data/results/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
