@@ -34,8 +34,8 @@ Install and Run Docker for your OS ([Mac](https://docs.docker.com/docker-for-mac
 Download workshop materials on your computer by running:
 ```
 git clone https://github.com/vinaygoel/ars-workshop.git &&
-    cd ars-workshop && bin/download-libraries.sh &&
-    docker pull vinaygoel/ars-docker-notebooks
+cd ars-workshop && bin/download-libraries.sh &&
+docker pull vinaygoel/ars-docker-notebooks
 ```
 
 ## Exercises
