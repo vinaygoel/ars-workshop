@@ -39,131 +39,82 @@ git clone https://github.com/vinaygoel/ars-workshop.git &&
     docker pull vinaygoel/ars-docker-notebooks
 ```
 
-##### Download Workshop Derivatives #####
-
-Download derivatives (`WAT`, `WANE`, `LGA` and `CDX`) for the [Ferguson Youtube Video Archiving Project](https://archive.org/details/fergusoncrawl&tab=collection?and[]=fergytv), a subset of the [Ferguson Tweets Collection](https://archive.org/details/fergusoncrawl&tab=collection)
-
-Also, included are some sample WATs from [Archive-It's](https://archive-it.org/) [Charlie Hebdo Collection](https://archive-it.org/collections/5190) and [Occupy Movement Collection](https://archive-it.org/collections/2950) for a quick run-through of the WAT exercises.
-
-```
-bin/download-workshop-derivatives.sh data/
-```
-
-The derivatives total about 1 GB in size and will take around 10 minutes to download (depending on your bandwidth).
-
-You will use these derivative datasets for the upcoming exercises.
-
-
 ==================================
 ## Exercises
+
+
+### Stage WARCs for analysis ###
+
+Create a directory named `data` and download or copy WARCs into the directory `data/warcs`. Derivatives and results will be generated under this `data` directory.
+
+
+```
+export path_to_data_directory=<path/to/data/directory>
+```
 
 You will run the following exercises in an ARS Docker container. To start the container, run the following from the `ars-workshop` directory:
 
 ```
-#set path_to_data_directory to the location of your data directory
-path_to_data_directory=`pwd`/data
-
 bin/start-container.sh ${path_to_data_directory}
-
 ```
 
-The above command mounts the project and data directories so that any changes made by you will be saved even after the container is killed.
+The above command mounts the project and data directories so that any changes made by you will persist even after the container is killed.
 
 Next, start up the [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services by running:
 ```
 cd /ars-workshop && source /set-environment.sh && /start-services.sh
 ```
 
-You are now ready!
+You are now ready to run through the exercises!
 
-### Exercise-1: Store CDX data into Elasticsearch ###
-
-Extract all fields from the CDX dataset and index them into Elasticsearch.
+### Exercise-0: Build derivatives from WARC data ###
 
 ```
-pig -x local -p I_CDX_DIR=/ars-data/cdx/*cdx* -p O_ES_INDEX_DIR=ars-cdx/cdx pig/store-cdx-data-into-elasticsearch.pig
+bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
+```
+The above command will build derivatives from the provided WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `derivatives/`
+
+
+### Exercise-1: Store Derivative data into Elasticsearch ###
+
+* `CDX`: Extract all fields from the CDX dataset and index them into Elasticsearch.
+  * Create an Elasticsearch index named `ars-cdx` containing the extracted CDX data.
+* `WAT`: From every HTML document, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
+  * Create an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
+* `WANE`: Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
+  * Create an Elasticsearch index named `ars-wane` containing the extracted WANE data
+
+Run the following command to accomplish the above tasks:
+```
+bin/store-derivatives-into-elasticsearch.sh /ars-data/derivatives/
 ```
 
-The job creates an Elasticsearch index named `ars-cdx` containing the extracted CDX data.
-
-Example query to search for captures of MIME type `video/mp4`:
+`CDX`: Example query to search for captures of MIME type `video/mp4`:
 
 ```
 curl 'http://localhost:9200/ars-cdx/_search?q=mime:"video/mp4"&pretty=true'
 ```
 
-### Exercise-2: Store WAT text data into Elasticsearch ###
-
-From every HTML document, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
-
-Option-1: About 30 minutes to process the Ferguson WAT data
-
-```
-pig -x local -p I_WAT_DIR=/ars-data/wat/*.wat.gz -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
-```
-
-Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
-
-```
-pig -x local -p I_WAT_DIR=/ars-data/sample-wat/*.wat.gz -p O_ES_INDEX_DIR=ars-wat-text/text pig/store-wat-text-data-into-elasticsearch.pig
-```
-
-The job (either option-1 or option-2) creates an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
-
-Example query to search for captures containing the term `obama`:
+`WAT`: Example query to search for captures containing the term `obama`:
 
 ```
 curl 'http://localhost:9200/ars-wat-text/_search?q=obama&pretty=true'
 ```
 
+etc.
 
-### Exercise-3: Store WANE data into Elasticsearch ###
-
-Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
-
-First, create an index mapping for the WANE data (to use keyword analyzer)
-
-```
-curl -XPOST http://localhost:9200/ars-wane -d @ars-es-mappings/ars-wane-mapping.json
-```
-
-Let's run this exercise for a sample 1 Million records (`wane-sample`) from the Ferguson WANE dataset.
-
-```
-pig -x local -p I_WANE_DIR=/ars-data/wane-sample/ -p O_ES_INDEX_DIR=ars-wane/entities pig/store-wane-data-into-elasticsearch.pig
-```
-
-The job creates an Elasticsearch index named `ars-wane` containing the extracted WANE data.
-
-
-### Exercise-4: Video Search using WAT data and Elasticsearch ###
+### Exercise-2: Build a simple Video Search service using WAT data and Elasticsearch ###
 
 Steps involved:
-* Extract all URLs to video (`watch`) pages from WATs
+* Extract all URLs to Youtube video (`watch`) pages from WATs
 * For each video URL, generate a list of unique terms (using `anchor text` of links), and the number of links to this URL
-* Store this data into Elasticsearch
-
-Option-1: About 30 minutes to run through these steps on the Ferguson WAT data
+* Create an Elasticsearch index named `ars-wat-videos`
 
 ```
-pig -x local -p I_WAT_DIR=/ars-data/wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
-Option-2: For a faster run-through, use the sample "Charlie Hebdo Collection" WATs
-
-```
-pig -x local -p I_WAT_DIR=/ars-data/sample-wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
-```
-
-The job (either option-1 or option-2) creates an Elasticsearch index named `ars-wat-videos`
-
-Example query to search for videos with incoming links that contain the anchor term `police`:
-
-```
-curl 'http://localhost:9200/ars-wat-videos/_search?q=anchor_term:police&pretty=true'
-```
-
-### Exercise-5: Use Kibana to explore data stored in Elasticsearch ###
+### Exercise-3: Use Kibana to explore data stored in Elasticsearch ###
 
 Access the [Kibana interface](http://localhost:5601), a web frontend service to analyze data stored in Elasticsearch:
 
@@ -182,14 +133,14 @@ Now that you've configured an index pattern, you can click on the *Discover* tab
 
 For more information, see the [Kibana 4 Tutorial](https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/)
 
-### Exercise-6: GeoIP using WAT data ###
+### Exercise-4: GeoIP using WAT data ###
 
 In this exercise, we will extract IP addresses and generate latitude and longitude information using a dataset available through [MaxMind](http://dev.maxmind.com/geoip/)
 
 The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.
 
 ```
-pig -x local -p I_WAT_DIR=/ars-data/sample-wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=/ars-data/results/date-lat-long-count/ pig/geoip-from-wat.pig
+pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=/ars-data/results/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 The above command generates a dataset with the following tab-separated fields: `Date`, `Latitude`, `Longitude` and `count`, where count is the number of occurrences of these co-ordinates in the data. 
 
@@ -201,14 +152,14 @@ cat /ars-data/results/date-lat-long-count/part* | ./bin/ipcsv.sh > /ars-data/res
 
 You can generate a temporal map using this CSV file and the [Torque library of CartoDB](http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
 
-### Exercise-7: Degree Distribution of URLs using LGA data ###
+### Exercise-5: Degree Distribution of URLs using LGA data ###
 
 Steps involved:
 * Generate the in-degree (number of incoming links) and out-degree (number of outgoing links) for each URL
 * Generate the distribution of in-degree and out-degree (i.e. how many URLs share the same degree value)
 
 ```
-pig -x local -p I_LGA_DIR=/ars-data/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=/ars-data/results/degree-distribution/ pig/url-degree-distribution.pig
+pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=/ars-data/results/degree-distribution/ pig/url-degree-distribution.pig
 ```
 
 #### Results
@@ -241,12 +192,12 @@ To get the top 10 most common out-degrees:
 head /ars-data/results/degree-distribution/outdegree-numurls/part*
 ```
 
-### Exercise-8: Domain Graph using LGA data ###
+### Exercise-6: Domain Graph using LGA data ###
 
 Generate a domain graph dataset that contains the following tab-separated fields: `source_domain`, `destination_domain` and `num_links`, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
 
 ```
-pig -x local -p I_LGA_DIR=/ars-data/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=/ars-data/results/domain-graph/ pig/generate-domain-graph.pig
+pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=/ars-data/results/domain-graph/ pig/generate-domain-graph.pig
 ```
 
 Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi](http://gephi.github.io)
@@ -255,7 +206,7 @@ Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for im
 cat /ars-data/results/domain-graph/part* | ./bin/generate-gexf.py > /ars-data/results/domain-graph.gexf
 ```
 
-### Exercise-9: Analyze WAT data using Jupyter Notebooks ###
+### Exercise-7: Analyze WAT data using Jupyter Notebooks ###
 
 You can analyze ARS data with Python by accessing the [Jupyter notebook dashboard](http://localhost:8888/) on your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/`
 
