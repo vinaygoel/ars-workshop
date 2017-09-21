@@ -50,19 +50,10 @@ Create a directory named `data` and download or copy WARCs into the directory `d
 export path_to_data_directory=<path/to/data/directory>
 ```
 
-You will run the following exercises in an ARS Docker container. To start the container, run the following from the `ars-workshop` directory:
+You will run the workshop exercises in an ARS Docker container. To start the container with [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services:
 
 ```
 bin/start-container.sh ${path_to_data_directory}
-```
-
-The above command mounts the project and data directories so that any changes made by you will persist even after the container is killed.
-
-You are now in the ARS container!
-
-Go ahead and start up the [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services by running:
-```
-cd /ars-workshop && source /set-environment.sh && /start-services.sh
 ```
 
 You are all set to run through the exercises!
@@ -70,7 +61,7 @@ You are all set to run through the exercises!
 ### Exercise-0: Build derivatives from WARC data ###
 
 ```
-bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
+/ars-workshop/bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
 ```
 The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `data/derivatives/`
 
@@ -85,7 +76,7 @@ The above command will build the following derivatives from your WARCs: `CDX`, `
 
 Run the following command to accomplish the above tasks:
 ```
-bin/store-derivatives-into-elasticsearch.sh /ars-data/derivatives/
+/ars-workshop/bin/store-derivatives-into-elasticsearch.sh /ars-data/derivatives/
 ```
 
 `CDX`: Example query to search for captures of MIME type `video/mp4`:
@@ -110,7 +101,7 @@ Steps involved:
 * Create an Elasticsearch index named `ars-wat-videos`
 
 ```
-pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
+cd /ars-workshop/ && pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p I_VIDEO_URL_FILTER='.*youtube.com/watch.*' -p O_ES_INDEX_DIR=ars-wat-videos/videos pig/video-search-elasticsearch.pig
 ```
 
 ### Exercise-3: Use Kibana to explore data stored in Elasticsearch ###
@@ -139,14 +130,14 @@ In this exercise, we will extract IP addresses and generate latitude and longitu
 The Ferguson dataset WARCs do not contain IP Address information, so let's use the "Charlie Hebdo Collection" sample WAT dataset (which contains IP info) for this exercise.
 
 ```
-pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=/ars-data/results/date-lat-long-count/ pig/geoip-from-wat.pig
+cd /ars-workshop/ && pig -x local -p I_WAT_DIR=/ars-data/derivatives/wat/*.wat.gz -p O_DATE_LAT_LONG_COUNT_DIR=/ars-data/results/date-lat-long-count/ pig/geoip-from-wat.pig
 ```
 The above command generates a dataset with the following tab-separated fields: `Date`, `Latitude`, `Longitude` and `count`, where count is the number of occurrences of these co-ordinates in the data. 
 
 Next, let's convert this data into a CSV file for import into [CartoDB](https://cartodb.com/)
 
 ```
-cat /ars-data/results/date-lat-long-count/part* | ./bin/ipcsv.sh > /ars-data/results/date-lat-long.csv
+cat /ars-data/results/date-lat-long-count/part* | /ars-workshop/bin/ipcsv.sh > /ars-data/results/date-lat-long.csv
 ```
 
 You can generate a temporal map using this CSV file and the [Torque library of CartoDB](http://blog.cartodb.com/torque-is-live-try-it-on-your-cartodb-maps-today/)
@@ -158,7 +149,7 @@ Steps involved:
 * Generate the distribution of in-degree and out-degree (i.e. how many URLs share the same degree value)
 
 ```
-pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=/ars-data/results/degree-distribution/ pig/url-degree-distribution.pig
+cd /ars-workshop/ && pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DEGREE_DISTRIBUTION_DIR=/ars-data/results/degree-distribution/ pig/url-degree-distribution.pig
 ```
 
 #### Results
@@ -196,7 +187,7 @@ head /ars-data/results/degree-distribution/outdegree-numurls/part*
 Generate a domain graph dataset that contains the following tab-separated fields: `source_domain`, `destination_domain` and `num_links`, where num_links is the number of links from pages of the source_domain to pages in the destination_domain.
 
 ```
-pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=/ars-data/results/domain-graph/ pig/generate-domain-graph.pig
+cd /ars-workshop/ && pig -x local -p I_LGA_DIR=/ars-data/derivatives/lga/ -p I_DATE_FILTER='^201.*$' -p O_DOMAIN_GRAPH_DIR=/ars-data/results/domain-graph/ pig/generate-domain-graph.pig
 ```
 
 Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for import into graph visualizations tools like [Gephi](http://gephi.github.io)
