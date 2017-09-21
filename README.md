@@ -23,7 +23,7 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 
 ##### Install Git #####
 
-Install `Git` by following these [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+Install Git by following these [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ##### Install and Run Docker #####
 
@@ -43,17 +43,17 @@ docker pull vinaygoel/ars-docker-notebooks
 
 ### Stage WARCs for analysis ###
 
-Create a directory named `data` and download or copy WARCs into the directory `data/warcs`. Derivatives and results will be generated under this `data` directory.
+Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. Derivatives and results will be generated under this `ars-data` directory.
 
 
 ```
-export path_to_data_directory=<path/to/data/directory>
+export path_to_ars_data_directory=<path/to/ars/data/directory>
 ```
 
 You will run the workshop exercises in an ARS Docker container. To start the container with [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services:
 
 ```
-bin/start-container.sh ${path_to_data_directory}
+bin/start-container.sh ${path_to_ars_data_directory}
 ```
 
 You are all set to run through the exercises!
