@@ -45,18 +45,14 @@ docker pull vinaygoel/ars-docker-notebooks
 
 Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. Derivatives and results will be generated under this `ars-data` directory.
 
+You will run the workshop exercises inside a Docker container. To start the ARS container along with the packaged [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services, run:
 
 ```
 export path_to_ars_data_directory=<path/to/ars/data/directory>
-```
-
-You will run the workshop exercises in an ARS Docker container. To start the container with [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services:
-
-```
 bin/start-container.sh ${path_to_ars_data_directory}
 ```
 
-You are all set to run through the exercises!
+You are now all set to run through the exercises!
 
 ### Exercise-0: Build derivatives from WARC data ###
 
