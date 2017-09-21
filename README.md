@@ -58,12 +58,14 @@ bin/start-container.sh ${path_to_data_directory}
 
 The above command mounts the project and data directories so that any changes made by you will persist even after the container is killed.
 
-Next, start up the [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services by running:
+You are now in the ARS container!
+
+Go ahead and start up the [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Kibana](https://www.elastic.co/products/kibana) and [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/) services by running:
 ```
 cd /ars-workshop && source /set-environment.sh && /start-services.sh
 ```
 
-You are now ready to run through the exercises!
+You are all set to run through the exercises!
 
 ### Exercise-0: Build derivatives from WARC data ###
 
