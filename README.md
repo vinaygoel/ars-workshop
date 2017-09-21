@@ -196,8 +196,8 @@ cat /ars-data/results/domain-graph/part* | /ars-workshop/bin/generate-gexf.py > 
 
 Start a notebook instance by running:
 ```
-/ars-workshop/bin/start-jupyter-notebook.sh
+cd /ars-workshop/notebooks/ && /ars-workshop/bin/start-jupyter-notebook.sh
 ```
-Enter the Jupyter notebook URL returned by the command in your browser. In the dashboard, navigate to the `/ars-workshop/notebooks/` folder and open the `WAT-Analysis.ipynb` notebook. The WAT datasets will be available under `/ars-data/derivatives/wat`
+Enter the Jupyter notebook URL returned by the command in your browser. In the dashboard, open the `WAT-Analysis.ipynb` notebook. Your WAT datasets will be available under `/ars-data/derivatives/wat`. After working through the notebook, you can type Ctrl-c on the command line to stop the notebook server.
 
-When you're done with the exercises, type in `exit` in the terminal to quit the container. All your datasets and results will be available under the `ars-data` folder.
+When you're done with all the exercises, type in `exit` in the terminal to quit the ARS container.
