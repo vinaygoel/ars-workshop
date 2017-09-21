@@ -173,7 +173,7 @@ To get the top 10 URLs with the highest in-degree:
 head /ars-data/results/degree-distribution/url-indegree-outdegree/part*
 ```
 
-#####degree-distribution/indegree-numurls
+##### degree-distribution/indegree-numurls
 
 The file(s) under this directory contain the following tab-separated fields: `in-degree` and `num_urls`, where num_urls is the number of URLs with the given in-degree. The data is ordered in descending order of num_urls.
 
@@ -182,7 +182,7 @@ To get the top 10 most common in-degrees:
 head /ars-data/results/degree-distribution/indegree-numurls/part*
 ```
 
-#####degree-distribution/outdegree-numurls
+##### degree-distribution/outdegree-numurls
 
 The file(s) under this directory contain the following tab-separated fields: `out-degree` and `num_urls`, where num_urls is the number of URLs with the given out-degree. The data is ordered in descending order of num_urls.
 
