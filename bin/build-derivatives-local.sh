@@ -21,9 +21,6 @@ fi
 
 mkdir -p $LOCAL_DERIVATIVE_DIR
 
-LOCAL_WARC_DIR=$LOCAL_DERIVATIVE_DIR/warcs/
-LOCAL_DERIVATIVE_DIR=$LOCAL_DERIVATIVE_DIR/derivatives/
-
 LOCAL_CDX_DIR=$LOCAL_DERIVATIVE_DIR/cdx/
 LOCAL_WAT_DIR=$LOCAL_DERIVATIVE_DIR/wat/
 LOCAL_PARSED_DIR=$LOCAL_DERIVATIVE_DIR/parsed/
@@ -37,6 +34,7 @@ echo "Building derivatives..."
 echo "1) CDX..."
 
 mkdir -p ${LOCAL_CDX_DIR}
+
 for warc_file in $LOCAL_WARC_DIR/*arc.gz; do
 	cdx_file=$(basename $warc_file)
 	cdx_file=${cdx_file%%.gz}.cdx.gz
