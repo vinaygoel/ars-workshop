@@ -20,7 +20,6 @@ The Initial Setup ensures that users have installed the tools and libraries nece
 1. [Install Git](#install-git)
 2. [Install and Run Docker](#install-docker)
 3. [Download Workshop](#download-workshop)
-4. [Download Workshop Derivatives](#download-workshop-derivatives)
 
 ##### Install Git #####
 
@@ -39,7 +38,6 @@ git clone https://github.com/vinaygoel/ars-workshop.git &&
     docker pull vinaygoel/ars-docker-notebooks
 ```
 
-==================================
 ## Exercises
 
 
