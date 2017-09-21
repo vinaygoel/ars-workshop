@@ -25,9 +25,9 @@ if timeout 36000 /usr/bin/java \
     ${TMP_DIR} \
     ${warc_file} ;
 then
-    mv -v ${TMP_DIR}/${warc_file##*/} ${parse_file}
+    mv ${TMP_DIR}/${warc_file##*/} ${parse_file}
     exit 0
 else
-    echo "Un-oh!"
+    echo "Uh-oh!"
     exit 1
 fi
