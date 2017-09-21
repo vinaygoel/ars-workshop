@@ -59,7 +59,7 @@ You are now all set to run through the exercises!
 ```
 /ars-workshop/bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
 ```
-The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `data/derivatives/`
+The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `ars-data/derivatives/`
 
 ### Exercise-1: Store Derivative data into Elasticsearch ###
 
