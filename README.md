@@ -70,8 +70,7 @@ You are now ready to run through the exercises!
 ```
 bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
 ```
-The above command will build derivatives from the provided WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `derivatives/`
-
+The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `data/derivatives/`
 
 ### Exercise-1: Store Derivative data into Elasticsearch ###
 
@@ -80,7 +79,7 @@ The above command will build derivatives from the provided WARCs: `CDX`, `WAT`, 
 * `WAT`: From every HTML document, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
   * Create an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
 * `WANE`: Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
-  * Create an Elasticsearch index named `ars-wane` containing the extracted WANE data
+  * Create an Elasticsearch index named `ars-wane` containing the extracted WANE data.
 
 Run the following command to accomplish the above tasks:
 ```
