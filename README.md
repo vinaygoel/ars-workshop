@@ -47,8 +47,7 @@ Create a directory named `ars-data` and download or copy your own WARCs into the
 
 You will run the workshop exercises inside a Docker container. To start the ARS container, run:
 ```
-export path_to_ars_data_directory=<path/to/ars/data/directory>
-bin/start-container.sh ${path_to_ars_data_directory}
+bin/start-container.sh <path/to/ars/data/directory>
 source /set-environment.sh
 ```
 
