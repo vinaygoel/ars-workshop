@@ -72,7 +72,7 @@ The above command will build the following derivatives from your WARCs: `CDX`, `
 
 * `CDX`: Extract all fields from the CDX dataset and index them into Elasticsearch.
   * Create an Elasticsearch index named `ars-cdx` containing the extracted CDX data.
-* `WAT`: From every HTML document, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
+* `WAT`: From WAT records for HTML documents, extract `URL`, `timestamp`, `title text` and `meta text` and index these fields into Elasticsearch.
   * Create an Elasticsearch index named `ars-wat-text` containing the extracted WAT text data.
 * `WANE`: Extract named entities (Persons, Locations and Organizations) from the WANE dataset and index them into Elasticsearch.
   * Create an Elasticsearch index named `ars-wane` containing the extracted WANE data.
