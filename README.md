@@ -43,7 +43,7 @@ docker pull vinaygoel/ars-docker-notebooks
 
 ### Stage WARCs for analysis ###
 
-Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. [Click to download an example WARC file](http://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/EOT-2016-20161117233212076-00004-13036-wbgrp-crawl004.us.archive.org-8443.warc.gz) from the [End of Term 2016 Web Crawls collection](https://archive.org/details/EndOfTerm2016WebCrawls). Derivatives and results will be generated under this `ars-data` directory.
+Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. [Click to download an example WARC file](http://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/EOT-2016-20161117233212076-00004-13036-wbgrp-crawl004.us.archive.org-8443.warc.gz) from the [End of Term 2016 Web Crawls collection](https://archive.org/details/EndOfTerm2016WebCrawls). Derivatives and results will be generated under the `ars-data` directory.
 
 You will run the workshop exercises inside a Docker container. To start the ARS container, run:
 ```
@@ -58,15 +58,17 @@ You are now all set to run through the exercises!
 ```
 /ars-workshop/bin/build-derivatives-local.sh /ars-data/warcs/ /ars-data/derivatives/
 ```
-The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `ars-data/derivatives/`
+The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`.
 
 **Derivative Chain**
 * `WARC`
   * `CDX`: Plain Text file with one metadata line per WARC record
   * `WAT`: Metadata WARC file with one metadata JSON record per WARC record
-  * `Parsed Text`: Plain Text file with one *<Key, Value>* line per text document in the WARC. *Key=<URL, Digest>*, *Value=JSON* containing the parsed out plain text 
-    * `LGA`: Plain Text files with one JSON line per HTML document. *Map* file that maps URLs to unique identifiers and *Graph* file that lists the set of identifiers that a HTML capture links to.
+  * `Parsed Text`: Plain Text file with one *<Key, Value>* line per HTML document in the WARC. *Key=<URL, Digest>*, *Value=JSON* containing the parsed out plain text and hyperlinks 
+    * `LGA`: Plain Text files with one JSON line per HTML document. *Map* file that maps URLs to unique identifiers and *Graph* file that lists the set of URLs (identifiers) that a HTML document links to.
     * `WANE`: Plain Text files with one JSON line per HTML document. JSON contains the set of named entities extracted from the document.
+
+These derivatives will be generated in sub-directories under `ars-data/derivatives/`
 
 ### Exercise-1: Store Derivative data into Elasticsearch ###
 
