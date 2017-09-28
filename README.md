@@ -43,7 +43,7 @@ docker pull vinaygoel/ars-docker-notebooks
 
 ### Stage WARCs for analysis ###
 
-Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. Derivatives and results will be generated under this `ars-data` directory.
+Create a directory named `ars-data` and download or copy your own WARCs into the directory `ars-data/warcs`. [Click to download an example WARC file](http://archive.org/~vinay/archive-analysis/sample-dataset/crawl-data/warcs/EOT-2016-20161117233212076-00004-13036-wbgrp-crawl004.us.archive.org-8443.warc.gz) from the [End of Term 2016 Web Crawls collection](https://archive.org/details/EndOfTerm2016WebCrawls). Derivatives and results will be generated under this `ars-data` directory.
 
 You will run the workshop exercises inside a Docker container. To start the ARS container, run:
 ```
