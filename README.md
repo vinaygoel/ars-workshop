@@ -60,13 +60,13 @@ You are now all set to run through the exercises!
 ```
 The above command will build the following derivatives from your WARCs: `CDX`, `WAT`, `Parsed Text` (parsed out text and links from WARCs), `WANE`, and `LGA`. These derivatives will be generated in sub-directories under `ars-data/derivatives/`
 
-Derivative Chain:
-* WARC
-  * CDX: Plain Text file with one metadata line per WARC record
-  * WAT: Metadata WARC file with one metadata JSON record per WARC record
-  * Parsed Text: Plain Text file with one *<Key, Value>* line per text document in the WARC. *Key=<URL, Digest>*, *Value=JSON* containing the parsed out plain text 
-    * LGA: Plain Text files with one JSON line per HTML document. *Map* file that maps URLs to unique identifiers and *Graph* file that lists the set of identifiers that a HTML capture links to.
-    * WANE: Plain Text files with one JSON line per HTML document. JSON contains the set of named entities extracted from the document.
+**Derivative Chain**
+* `WARC`
+  * `CDX`: Plain Text file with one metadata line per WARC record
+  * `WAT`: Metadata WARC file with one metadata JSON record per WARC record
+  * `Parsed Text`: Plain Text file with one *<Key, Value>* line per text document in the WARC. *Key=<URL, Digest>*, *Value=JSON* containing the parsed out plain text 
+    * `LGA`: Plain Text files with one JSON line per HTML document. *Map* file that maps URLs to unique identifiers and *Graph* file that lists the set of identifiers that a HTML capture links to.
+    * `WANE`: Plain Text files with one JSON line per HTML document. JSON contains the set of named entities extracted from the document.
 
 ### Exercise-1: Store Derivative data into Elasticsearch ###
 
