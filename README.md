@@ -199,12 +199,19 @@ Next, let's convert this data into a [GEXF file](http://gexf.net/format/) for im
 cat /ars-data/results/domain-graph/part* | /ars-workshop/bin/generate-gexf.py > /ars-data/results/domain-graph.gexf
 ```
 
-### Exercise-7: Analyze WAT data using Jupyter Notebooks ###
+### Exercise-7: Analyze data using Jupyter Notebooks ###
 
 Start a notebook instance by running:
 ```
 cd /ars-workshop/notebooks/ && /ars-workshop/bin/start-jupyter-notebook.sh
 ```
-Enter the Jupyter notebook URL returned by the command in your browser. In the dashboard, open the `WAT-Analysis.ipynb` notebook. Your WAT datasets will be available under `/ars-data/derivatives/wat`. After working through the notebook, you can type Ctrl-c on the command line to stop the notebook server.
+Enter the Jupyter notebook URL returned by the command in your browser. 
+
+## WAT Analysis ##
+In the dashboard, open the `WAT-Analysis.ipynb` notebook. Your WAT datasets will be available under `/ars-data/derivatives/wat`. Work through the cells in the notebook to analyze your WAT data.
+
+## IA API Examples ##
+
+Open the `IA-API-Workshop-Notebook.ipynb` notebook and work through the cells to interact with IA APIs using Python. For command line examples, see the (Web Archive API Workshop)[https://github.com/jeffersonbailey/web-archive-apis-workshop]
 
 When you're done with all the exercises, type in `exit` in the terminal to quit the ARS container.
