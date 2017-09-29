@@ -212,6 +212,6 @@ In the dashboard, open the `WAT-Analysis.ipynb` notebook. Your WAT datasets will
 
 #### IA API Examples ####
 
-Open the `IA-API-Workshop-Notebook.ipynb` notebook and work through the cells to interact with IA APIs using Python. For command line examples, see the (Web Archive API Workshop)[https://github.com/jeffersonbailey/web-archive-apis-workshop]
+Open the `IA-API-Workshop-Notebook.ipynb` notebook and work through the cells to interact with IA APIs using Python. For command line examples, see the [Web Archive API Workshop](https://github.com/jeffersonbailey/web-archive-apis-workshop)
 
 When you're done with all the exercises, type in `exit` in the terminal to quit the ARS container.
