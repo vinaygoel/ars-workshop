@@ -207,10 +207,10 @@ cd /ars-workshop/notebooks/ && /ars-workshop/bin/start-jupyter-notebook.sh
 ```
 Enter the Jupyter notebook URL returned by the command in your browser. 
 
-## WAT Analysis ##
+#### WAT Analysis ####
 In the dashboard, open the `WAT-Analysis.ipynb` notebook. Your WAT datasets will be available under `/ars-data/derivatives/wat`. Work through the cells in the notebook to analyze your WAT data.
 
-## IA API Examples ##
+#### IA API Examples ####
 
 Open the `IA-API-Workshop-Notebook.ipynb` notebook and work through the cells to interact with IA APIs using Python. For command line examples, see the (Web Archive API Workshop)[https://github.com/jeffersonbailey/web-archive-apis-workshop]
 
